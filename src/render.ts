@@ -6,16 +6,14 @@ export class Camera
 	zoom : number = 50
 }
 
-export const camera : Camera = new Camera()
-
 export function toScreenCoordinates(p : Point, c : Camera, canvas : HTMLCanvasElement): Point
 {
-	return new Point(canvas.width/2 + p.x*c.zoom, canvas.height/2 - p.y*c.zoom)
+	return new Point(canvas.width/2 + (p.x-c.p.x)*c.zoom, canvas.height/2 - (p.y-c.p.y)*c.zoom)
 }
 
 export function fromScreenCoordinates(p : Point, c : Camera, canvas : HTMLCanvasElement): Point
 {
-	return new Point((p.x-canvas.width/2)/c.zoom, (canvas.height/2 - p.y)/c.zoom)
+	return new Point((p.x-canvas.width/2)/c.zoom + c.p.x, (canvas.height/2 - p.y)/c.zoom + c.p.y)
 }
 
 export function isOnScreen(p : Point, c : Camera, canvas : HTMLCanvasElement)
@@ -56,22 +54,21 @@ export function renderGrid(c : Camera, canvas : HTMLCanvasElement, ctx : CanvasR
 	}
 }
 
-export function render(canvas : HTMLCanvasElement, ctx : CanvasRenderingContext2D): void
+export function render(canvas : HTMLCanvasElement, ctx : CanvasRenderingContext2D, c : Camera): void
 {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = '#000000';
 	ctx.fillRect(0,0,canvas.width,canvas.height)
-	renderGrid(camera,canvas,ctx)
+	renderGrid(c,canvas,ctx)
 	
 }
 
-export function setZoomControls(): void
+export function setZoomControls(c : Camera): void
 {
 	const slider = document.getElementById('zoom-slider') as HTMLInputElement;
         
 	slider.addEventListener('input', function() {
-		camera.zoom = Number(this.value) + 10
-		console.log(camera.zoom)
+		c.zoom = Number(this.value) + 10
 	});
 }
 

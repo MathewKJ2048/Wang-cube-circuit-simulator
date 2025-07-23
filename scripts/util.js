@@ -8,4 +8,13 @@ export class Point {
         this.x = x;
         this.y = y;
     }
+    add(p) {
+        return new Point(this.x + p.x, this.y + p.y);
+    }
+    sub(p) {
+        return new Point(this.x - p.x, this.y - p.y);
+    }
+    scale(k) {
+        return new Point(this.x * k, this.y * k);
+    }
 }

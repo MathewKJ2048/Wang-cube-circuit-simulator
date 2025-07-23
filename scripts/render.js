@@ -5,12 +5,11 @@ export class Camera {
         this.zoom = 50;
     }
 }
-export const camera = new Camera();
 export function toScreenCoordinates(p, c, canvas) {
-    return new Point(canvas.width / 2 + p.x * c.zoom, canvas.height / 2 - p.y * c.zoom);
+    return new Point(canvas.width / 2 + (p.x - c.p.x) * c.zoom, canvas.height / 2 - (p.y - c.p.y) * c.zoom);
 }
 export function fromScreenCoordinates(p, c, canvas) {
-    return new Point((p.x - canvas.width / 2) / c.zoom, (canvas.height / 2 - p.y) / c.zoom);
+    return new Point((p.x - canvas.width / 2) / c.zoom + c.p.x, (canvas.height / 2 - p.y) / c.zoom + c.p.y);
 }
 export function isOnScreen(p, c, canvas) {
     let sc = toScreenCoordinates(p, c, canvas);
@@ -39,16 +38,15 @@ export function renderGrid(c, canvas, ctx) {
         ctx.stroke();
     }
 }
-export function render(canvas, ctx) {
+export function render(canvas, ctx, c) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    renderGrid(camera, canvas, ctx);
+    renderGrid(c, canvas, ctx);
 }
-export function setZoomControls() {
+export function setZoomControls(c) {
     const slider = document.getElementById('zoom-slider');
     slider.addEventListener('input', function () {
-        camera.zoom = Number(this.value) + 10;
-        console.log(camera.zoom);
+        c.zoom = Number(this.value) + 10;
     });
 }

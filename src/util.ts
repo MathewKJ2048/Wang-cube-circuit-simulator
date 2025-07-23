@@ -10,4 +10,16 @@ export class Point
 		this.x = x
 		this.y = y
 	}
+	public add(p : Point)
+	{
+		return new Point(this.x+p.x,this.y+p.y)
+	}
+	public sub(p : Point)
+	{
+		return new Point(this.x-p.x,this.y-p.y)
+	}
+	public scale(k : number)
+	{
+		return new Point(this.x*k, this.y*k)
+	}
 }
