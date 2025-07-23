@@ -11,19 +11,20 @@ html, body {
 	width: 100%;
 }
 
-.left-section {
+
+.left-section, .right-section {
 	width: 20%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 }
 
-.right-section {
-	width: 20%;
-	height: 100%;
+.left-lower, .left-upper {
+	width: 100%;
+	height: 50%;
 	display: flex;
-	flex-direction: column;
 }
+
 
 .centre-section {
 	width: 60%;

@@ -11,41 +11,111 @@ export async function WangFileToJSON(
 	filename = 'wang-cube-simulation'
   ): Promise<void> {
 	try {
-	  // Convert to JSON with 2-space indentation
-	  const jsonString = JSON.stringify(data, null, 2);
+	  const jsonString = JSON.stringify(data, null, 4);
 	  const blob = new Blob([jsonString], { type: 'application/json' });
   
-	  
 	  // Legacy download approach
-		{
-		const url = URL.createObjectURL(blob);
-		const a = document.createElement('a');
-		a.href = url;
-		a.download = `${filename}.json`;
-		document.body.appendChild(a);
-		a.click();
-		
-		// Cleanup
-		setTimeout(() => {
-		  document.body.removeChild(a);
-		  URL.revokeObjectURL(url);
-		}, 100);
-	  }
+	const url = URL.createObjectURL(blob);
+	const a = document.createElement('a');
+	a.href = url;
+	a.download = `${filename}.json`;
+	document.body.appendChild(a);
+	a.click();
+	
+	// Cleanup
+	setTimeout(() => {
+		document.body.removeChild(a);
+		URL.revokeObjectURL(url);
+	}, 100);
+	  
 	} catch (err) {
 	  if (err instanceof Error && err.name !== 'AbortError') {
 		console.error('Failed to save JSON file:', err.message);
-		throw err; // Re-throw for caller to handle
+		throw err; 
 	  }
-	  // User canceled the save dialog - silent return
+
 	}
   }
 
 
-export function setupLoadSaveButtons(): void {
+/**
+ * Opens a file picker for JSON files and returns parsed content
+ * @param expectedType Optional type guard function to validate the JSON structure
+ * @returns Promise resolving to the parsed JSON content
+ */
+export async function openJsonFile<T = unknown>(
+	expectedType?: (data: unknown) => data is T
+  ): Promise<T> 
+{
+	try 
+	{
+		const input = document.createElement('input');
+		input.type = 'file';
+		input.accept = '.json,application/json';
+	  
+		return new Promise((resolve, reject) => {
+		  input.onchange = async () => {
+			if (input.files?.[0]) {
+			  try {
+				const result = await parseJsonFile(input.files[0], expectedType);
+				resolve(result);
+			  } catch (err) {
+				reject(err);
+			  }
+			} else {
+			  reject(new Error('No file selected'));
+			}
+		  };
+		  input.click();
+		});
+	  
+	} catch (err) {
+	  if (err instanceof Error && err.name !== 'AbortError') {
+		console.error('File selection failed:', err);
+		throw err;
+	  }
+	  throw new Error('File selection cancelled');
+	}
+}
+  
+
+// Helper function to parse and validate JSON file
+// T is a template so the function returns a promise of type T
+// the typeGuard is a custom function used to check type
+async function parseJsonFile<T>(
+file: File,
+typeGuard?: (data: unknown) => data is T
+): Promise<T> {
+const content = await file.text();
+
+try {
+	const parsed = JSON.parse(content);
+	
+	if (typeGuard && !typeGuard(parsed)) {
+	console.log(parsed)
+	throw new Error('File content does not match expected type');
+	}
+	
+	return parsed;
+} catch (err) {
+	throw new Error(`Invalid JSON: ${err instanceof Error ? err.message : String(err)}`);
+}
+}
+
+
+
+export function setupLoadSaveButtons(): void 
+{
 	const saveButton : HTMLButtonElement = document.getElementById('save-button') as HTMLButtonElement
 	saveButton.addEventListener('click', async() => 
 	{
 		WangFileToJSON(new WangFile())
 		console.log("file saving called")
+	})
+	const loadButton : HTMLButtonElement = document.getElementById('load-button') as HTMLButtonElement
+	loadButton.addEventListener('click',async() => 
+	{
+		let data = await openJsonFile<WangFile>(WangFile.isWangFile);	
+		console.log(data)
 	})
 }
