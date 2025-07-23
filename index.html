@@ -12,14 +12,20 @@
 				<div class="left-lower">Tile editor</div>
 			</div>
 			<div class="centre-section">
-				<div class = "panel">
-					<button id="load-button">Load</button>
-					<button id="save-button">Save</button>
-					<button onclick="document.getElementById('zoom-slider').stepDown()">-</button>
+				<div class="upper-centre">
+					<button id="default-button">*</button>
+					<button id="select-button">[]</button>
+					<button id="erase-button">x</button>
+					<button id="save-button">S</button>
+
 					<input type="range" id="zoom-slider" min="0" max="100" value="50">
-					<button onclick="document.getElementById('zoom-slider').stepUp()">+</button>
+
+					<button id="upload-button">U</button>
+					<button id="download-button">D</button>
 				</div>
-				<canvas id="canvas"></canvas>
+				<div class = "middle-centre">
+					<canvas id="canvas"></canvas>
+				</div>
 			</div>
 			<div class="right-section">right panel</div>
 		</div>

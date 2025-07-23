@@ -103,15 +103,15 @@ try {
 
 
 
-export function setupLoadSaveButtons(): void 
+export function setupUploadDownloadButtons(): void 
 {
-	const saveButton : HTMLButtonElement = document.getElementById('save-button') as HTMLButtonElement
+	const saveButton : HTMLButtonElement = document.getElementById('download-button') as HTMLButtonElement
 	saveButton.addEventListener('click', async() => 
 	{
 		WangFileToJSON(new WangFile())
 		console.log("file saving called")
 	})
-	const loadButton : HTMLButtonElement = document.getElementById('load-button') as HTMLButtonElement
+	const loadButton : HTMLButtonElement = document.getElementById('upload-button') as HTMLButtonElement
 	loadButton.addEventListener('click',async() => 
 	{
 		let data = await openJsonFile<WangFile>(WangFile.isWangFile);	

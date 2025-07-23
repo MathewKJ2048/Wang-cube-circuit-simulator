@@ -97,13 +97,13 @@ function parseJsonFile(file, typeGuard) {
         }
     });
 }
-export function setupLoadSaveButtons() {
-    const saveButton = document.getElementById('save-button');
+export function setupUploadDownloadButtons() {
+    const saveButton = document.getElementById('download-button');
     saveButton.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
         WangFileToJSON(new WangFile());
         console.log("file saving called");
     }));
-    const loadButton = document.getElementById('load-button');
+    const loadButton = document.getElementById('upload-button');
     loadButton.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
         let data = yield openJsonFile(WangFile.isWangFile);
         console.log(data);

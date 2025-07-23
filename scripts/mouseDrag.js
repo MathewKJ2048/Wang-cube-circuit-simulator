@@ -10,8 +10,8 @@ export function implementMouseDrag(ui_state, c, canvas) {
         if (ui_state.dragState === DragState.DRAGGING) {
             let current = getMouseScreenPosition(e, canvas);
             let diff = current.sub(ui_state.mouseScreenPosition).scale(1 / c.zoom);
-            c.r.x += diff.x;
-            c.r.y += diff.y;
+            c.r.x -= diff.x;
+            c.r.y += diff.y; // direction of drag is opposite
         }
         ui_state.mouseScreenPosition = getMouseScreenPosition(e, canvas);
     });
