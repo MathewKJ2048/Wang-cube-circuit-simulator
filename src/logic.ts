@@ -1,16 +1,7 @@
 
-import {Vector} from './util.js'
+import {Vector, Color} from './util.js'
 
-export class Color
-{
-	r : number = 0
-	g : number = 0
-	b : number  = 0
-	public static isColor(obj:unknown): obj is Color
-	{
-		return typeof obj === 'object' && obj !== null && 'r' in obj && 'g' in obj && 'b' in obj && typeof obj.r === 'number' && typeof obj.g === 'number' && typeof obj.b === 'number'
-	}
-}
+
 
 export const ANYTHING : string = ""
 export class TileType
@@ -75,5 +66,21 @@ export class WangFile // stores the whole context, to be in a json file
 		&& 'savedSubPlaneTilings' in obj && Array.isArray(obj.savedSubPlaneTilings) && obj.savedSubPlaneTilings.every(PlaneTiling.isPlaneTiling)
 		&& 'planeTilings' in obj && Array.isArray(obj.planeTilings) && obj.planeTilings.every(PlaneTiling.isPlaneTiling)
 	}
+	public overWrite(wf : WangFile): void
+	{
+		this.tileTypes = wf.tileTypes
+		this.savedSubPlaneTilings = wf.savedSubPlaneTilings
+		this.planeTilings = wf.planeTilings
+	}
 
+}
+
+export function getStarterWangFile(): WangFile
+{
+	let w : WangFile = new WangFile();
+	let placeholder : TileType = new TileType();
+	placeholder.color = new Color(200,200,200);
+	placeholder.name = "placeholder"
+	w.tileTypes.push(placeholder)
+	return w
 }

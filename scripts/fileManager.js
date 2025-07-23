@@ -97,15 +97,15 @@ function parseJsonFile(file, typeGuard) {
         }
     });
 }
-export function setupUploadDownloadButtons() {
+export function setupUploadDownloadButtons(wf) {
     const saveButton = document.getElementById('download-button');
     saveButton.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
-        WangFileToJSON(new WangFile());
+        WangFileToJSON(wf);
         console.log("file saving called");
     }));
     const loadButton = document.getElementById('upload-button');
     loadButton.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
         let data = yield openJsonFile(WangFile.isWangFile);
-        console.log(data);
+        wf.overWrite(data);
     }));
 }
