@@ -1,37 +1,22 @@
-import { Point } from './util.js';
-export class Camera {
-    constructor() {
-        this.p = new Point();
-        this.zoom = 50;
-    }
-}
-export function toScreenCoordinates(p, c, canvas) {
-    return new Point(canvas.width / 2 + (p.x - c.p.x) * c.zoom, canvas.height / 2 - (p.y - c.p.y) * c.zoom);
-}
-export function fromScreenCoordinates(p, c, canvas) {
-    return new Point((p.x - canvas.width / 2) / c.zoom + c.p.x, (canvas.height / 2 - p.y) / c.zoom + c.p.y);
-}
-export function isOnScreen(p, c, canvas) {
-    let sc = toScreenCoordinates(p, c, canvas);
-    return 0 <= sc.x && sc.x <= canvas.width && 0 <= sc.y && sc.y <= canvas.height;
-}
+import { Vector } from './util.js';
+import { fromScreenCoordinates, toScreenCoordinates } from './renderUtil.js';
 export function renderGrid(c, canvas, ctx) {
-    let min_x_p = Math.floor(fromScreenCoordinates(new Point(0, 0), c, canvas).x);
-    let max_x_p = Math.ceil(fromScreenCoordinates(new Point(canvas.width, 0), c, canvas).x);
-    let max_y_p = Math.ceil(fromScreenCoordinates(new Point(0, 0), c, canvas).y);
-    let min_y_p = Math.floor(fromScreenCoordinates(new Point(0, canvas.height), c, canvas).y);
+    let min_x = Math.floor(fromScreenCoordinates(new Vector(0, 0), c, canvas).x);
+    let max_x = Math.ceil(fromScreenCoordinates(new Vector(canvas.width, 0), c, canvas).x);
+    let max_y = Math.ceil(fromScreenCoordinates(new Vector(0, 0), c, canvas).y);
+    let min_y = Math.floor(fromScreenCoordinates(new Vector(0, canvas.height), c, canvas).y);
     ctx.strokeStyle = "white";
-    for (let i = min_x_p - 0.5; i <= max_x_p + 0.5; i++) {
-        let start = toScreenCoordinates(new Point(i, min_y_p - 0.5), c, canvas);
-        let end = toScreenCoordinates(new Point(i, max_y_p + 0.5), c, canvas);
+    for (let i = min_x - 0.5; i <= max_x + 0.5; i++) {
+        let start = toScreenCoordinates(new Vector(i, min_y - 0.5), c, canvas);
+        let end = toScreenCoordinates(new Vector(i, max_y + 0.5), c, canvas);
         ctx.beginPath();
         ctx.moveTo(start.x, start.y);
         ctx.lineTo(end.x, end.y);
         ctx.stroke();
     }
-    for (let i = min_y_p - 0.5; i <= max_y_p + 0.5; i++) {
-        let start = toScreenCoordinates(new Point(min_x_p - 0.5, i), c, canvas);
-        let end = toScreenCoordinates(new Point(max_x_p + 0.5, i), c, canvas);
+    for (let i = min_y - 0.5; i <= max_y + 0.5; i++) {
+        let start = toScreenCoordinates(new Vector(min_x - 0.5, i), c, canvas);
+        let end = toScreenCoordinates(new Vector(max_x + 0.5, i), c, canvas);
         ctx.beginPath();
         ctx.moveTo(start.x, start.y);
         ctx.lineTo(end.x, end.y);

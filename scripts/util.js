@@ -1,5 +1,5 @@
-export class Point {
-    static isPoint(obj) {
+export class Vector {
+    static isVector(obj) {
         return typeof obj === 'object' && obj !== null && 'x' in obj && 'y' in obj && typeof obj.x === 'number' && typeof obj.y === 'number';
     }
     constructor(x = 0, y = 0) {
@@ -9,12 +9,12 @@ export class Point {
         this.y = y;
     }
     add(p) {
-        return new Point(this.x + p.x, this.y + p.y);
+        return new Vector(this.x + p.x, this.y + p.y);
     }
     sub(p) {
-        return new Point(this.x - p.x, this.y - p.y);
+        return new Vector(this.x - p.x, this.y - p.y);
     }
     scale(k) {
-        return new Point(this.x * k, this.y * k);
+        return new Vector(this.x * k, this.y * k);
     }
 }

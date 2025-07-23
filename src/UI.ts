@@ -1,4 +1,4 @@
-import { Point } from "./util.js"
+import { Vector } from "./util.js"
 
 
 export enum DragState
@@ -11,13 +11,13 @@ export enum DragState
 export class UIState
 {
 	dragState: DragState = DragState.FREE
-	mousePoint: Point = new Point() // stores old values of x and y
+	mouseScreenPosition: Vector = new Vector() // stores old values of x and y
 }
 
-export function getMouseScreenCoordinates(e : MouseEvent, canvas : HTMLCanvasElement)
+export function getMouseScreenPosition(e : MouseEvent, canvas : HTMLCanvasElement)
 {
 	const rect = canvas.getBoundingClientRect();
 	const mouseX = e.clientX - rect.left;
 	const mouseY = e.clientY - rect.top;
-	return new Point(mouseX, mouseY)
+	return new Vector(mouseX, mouseY)
 }

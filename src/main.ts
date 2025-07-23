@@ -1,6 +1,7 @@
 import { canvasSetup, getCanvas, getContext } from "./canvasSetup.js"
 import { setupLoadSaveButtons } from "./fileManager.js"
-import { render, setZoomControls, Camera } from "./render.js"
+import { Camera } from "./renderUtil.js"
+import { render, setZoomControls } from './render.js'
 import { UIState } from "./UI.js"
 import { implementMouseDrag } from "./mouseDrag.js"
 

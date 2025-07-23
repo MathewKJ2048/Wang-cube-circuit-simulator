@@ -1,4 +1,4 @@
-import { Point } from "./util.js";
+import { Vector } from "./util.js";
 export var DragState;
 (function (DragState) {
     DragState[DragState["FREE"] = 0] = "FREE";
@@ -7,12 +7,12 @@ export var DragState;
 export class UIState {
     constructor() {
         this.dragState = DragState.FREE;
-        this.mousePoint = new Point(); // stores old values of x and y
+        this.mouseScreenPosition = new Vector(); // stores old values of x and y
     }
 }
-export function getMouseScreenCoordinates(e, canvas) {
+export function getMouseScreenPosition(e, canvas) {
     const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    return new Point(mouseX, mouseY);
+    return new Vector(mouseX, mouseY);
 }

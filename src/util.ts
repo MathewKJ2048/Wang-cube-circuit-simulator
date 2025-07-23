@@ -1,8 +1,8 @@
-export class Point
+export class Vector
 {
 	x : number = 0
 	y : number  = 0
-	public static isPoint(obj:unknown): obj is Point {
+	public static isVector(obj:unknown): obj is Vector {
 		return typeof obj === 'object' && obj !== null && 'x' in obj && 'y' in obj && typeof obj.x === 'number' && typeof obj.y === 'number'
 	}
 	constructor(x : number = 0, y: number = 0)
@@ -10,16 +10,16 @@ export class Point
 		this.x = x
 		this.y = y
 	}
-	public add(p : Point)
+	public add(p : Vector)
 	{
-		return new Point(this.x+p.x,this.y+p.y)
+		return new Vector(this.x+p.x,this.y+p.y)
 	}
-	public sub(p : Point)
+	public sub(p : Vector)
 	{
-		return new Point(this.x-p.x,this.y-p.y)
+		return new Vector(this.x-p.x,this.y-p.y)
 	}
 	public scale(k : number)
 	{
-		return new Point(this.x*k, this.y*k)
+		return new Vector(this.x*k, this.y*k)
 	}
 }

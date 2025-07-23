@@ -1,4 +1,4 @@
-import { Point } from './util.js';
+import { Vector } from './util.js';
 export class Color {
     constructor() {
         this.r = 0;
@@ -36,11 +36,11 @@ export class TileType {
 export class Tile {
     constructor() {
         this.tileType = new TileType();
-        this.location = new Point();
+        this.r = new Vector();
     }
     static isTile(obj) {
         return typeof obj === 'object' && obj !== null
-            && 'location' in obj && Point.isPoint(obj.location)
+            && 'r' in obj && Vector.isVector(obj.r)
             && 'tileType' in obj && TileType.isTileType(obj.tileType);
     }
 }
