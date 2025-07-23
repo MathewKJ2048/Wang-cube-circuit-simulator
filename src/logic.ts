@@ -1,17 +1,6 @@
 
-export class Point
-{
-	x : number = 0
-	y : number  = 0
-	public static isPoint(obj:unknown): obj is Point {
-		return typeof obj === 'object' && obj !== null && 'x' in obj && 'y' in obj && typeof obj.x === 'number' && typeof obj.y === 'number'
-	}
-}
-export class Camera
-{
-	p : Point = new Point()
-	zoom : number = 1
-}
+import {Point} from './util.js'
+
 export class Color
 {
 	r : number = 0

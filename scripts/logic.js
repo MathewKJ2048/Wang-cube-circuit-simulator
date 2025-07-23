@@ -1,18 +1,4 @@
-export class Point {
-    constructor() {
-        this.x = 0;
-        this.y = 0;
-    }
-    static isPoint(obj) {
-        return typeof obj === 'object' && obj !== null && 'x' in obj && 'y' in obj && typeof obj.x === 'number' && typeof obj.y === 'number';
-    }
-}
-export class Camera {
-    constructor() {
-        this.p = new Point();
-        this.zoom = 1;
-    }
-}
+import { Point } from './util.js';
 export class Color {
     constructor() {
         this.r = 0;

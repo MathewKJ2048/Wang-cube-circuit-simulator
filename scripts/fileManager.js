@@ -88,7 +88,6 @@ function parseJsonFile(file, typeGuard) {
         try {
             const parsed = JSON.parse(content);
             if (typeGuard && !typeGuard(parsed)) {
-                console.log(parsed);
                 throw new Error('File content does not match expected type');
             }
             return parsed;

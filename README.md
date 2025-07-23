@@ -29,3 +29,13 @@ UI elements:
 
 zoom in
 zoom out
+
+
+## User stories:
+
+- enter with a sample tiling, sample tiletype etc
+- save and load files with config
+- zoom in and out
+- search for a tiletype and see it displayed
+- add a new tiletype and see errors instantly show up
+- delete a tiletype and see it instantly updated in the screen
