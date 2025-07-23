@@ -49,8 +49,12 @@ html, body {
 
 button
 {
-	background-color: gray;
-	border-radius: 10%;
+	border-radius: 16%;
 	height: 32px;
 	width: 32px;
+}
+
+.panel
+{
+	background-color: grey;
 }
