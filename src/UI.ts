@@ -21,3 +21,4 @@ export function getMouseScreenPosition(e : MouseEvent, canvas : HTMLCanvasElemen
 	const mouseY = e.clientY - rect.top;
 	return new Vector(mouseX, mouseY)
 }
+
