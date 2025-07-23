@@ -50,6 +50,20 @@ export function setZoomControls(c : Camera): void
 	slider.addEventListener('input', function() {
 		c.zoom = Number(this.value) + 10
 	});
+
+	
+	function zoom(amount : number):void
+	{
+		let newValue = Number(slider.value) + amount
+		newValue = Math.max(Number(slider.min), Math.min(Number(slider.max), newValue));
+		slider.value = newValue.toString()
+		slider.dispatchEvent(new Event('input'));
+	}
+	const zoomInButton = document.getElementById('zoom-in-button') as HTMLButtonElement;
+	const zoomOutButton = document.getElementById('zoom-out-button') as HTMLButtonElement;
+	zoomInButton.addEventListener('click',()=>{zoom(10)})
+	zoomOutButton.addEventListener('click',()=>{zoom(-10)})
+
 }
 
 

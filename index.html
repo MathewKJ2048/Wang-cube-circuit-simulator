@@ -14,15 +14,22 @@
 			<div class="centre-section">
 				<div class="upper-centre">
 					
+					<div class="panel">
+						<button title="view" id="default-button">*</button>
+						<button title="select" id="select-button">[]</button>
+						<button title="erase" id="erase-button">x</button>
+						<button title="save selection" id="save-button">S</button>
+					</div>
+					<div class = "panel">
+						<button title="zoom-out" id="zoom-out-button">-</button>
+						<input type="range" id="zoom-slider" min="0" max="100" value="50">
+						<button title="zoom-in" id="zoom-in-button">+</button>
+					</div>
+					<div class = "panel">
+						<button title="download file" id="upload-button">U</button>
+						<button title="upload file" id="download-button">D</button>
+					</div>
 					
-					<button title="view" id="default-button">*</button>
-					<button title="select" id="select-button">[]</button>
-					<button title="erase" id="erase-button">x</button>
-					<button title="save selection" id="save-button">S</button>
-					<input type="range" id="zoom-slider" min="0" max="100" value="50">
-
-					<button title="download file" id="upload-button">U</button>
-					<button title="upload file" id="download-button">D</button>
 				</div>
 				<div class = "middle-centre">
 					<canvas id="canvas"></canvas>

@@ -52,9 +52,15 @@ button
 	border-radius: 16%;
 	height: 32px;
 	width: 32px;
+	border-radius: 999px;
 }
 
 .panel
 {
-	background-color: grey;
+	display: flex;
+	gap: 1vh;
+	border: 3px solid rgb(207, 112, 255);
+	margin: 1vh;
+	padding: 1vh;
+	border-radius: 999px;
 }

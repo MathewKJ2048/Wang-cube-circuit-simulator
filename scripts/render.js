@@ -34,4 +34,14 @@ export function setZoomControls(c) {
     slider.addEventListener('input', function () {
         c.zoom = Number(this.value) + 10;
     });
+    function zoom(amount) {
+        let newValue = Number(slider.value) + amount;
+        newValue = Math.max(Number(slider.min), Math.min(Number(slider.max), newValue));
+        slider.value = newValue.toString();
+        slider.dispatchEvent(new Event('input'));
+    }
+    const zoomInButton = document.getElementById('zoom-in-button');
+    const zoomOutButton = document.getElementById('zoom-out-button');
+    zoomInButton.addEventListener('click', () => { zoom(10); });
+    zoomOutButton.addEventListener('click', () => { zoom(-10); });
 }
