@@ -40,3 +40,12 @@ export class Color
 		return typeof obj === 'object' && obj !== null && 'r' in obj && 'g' in obj && 'b' in obj && typeof obj.r === 'number' && typeof obj.g === 'number' && typeof obj.b === 'number'
 	}
 }
+
+export function getFraction(value: number, min: number, max: number) : number
+{
+	return (value-min)/(max-min)
+}
+export function getValue(fraction: number, min: number, max: number) : number
+{
+	return fraction*(max-min)+min
+}

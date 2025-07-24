@@ -3,11 +3,12 @@ import { Camera, fromScreenCoordinates, toScreenCoordinates } from './renderUtil
 import {zoomInButton, zoomOutButton} from "./elements.js"
 import { canvas, ctx } from './elements.js'
 import { SelectionZone } from './selection.js'
+import { UIState, Mode } from './UI.js'
 
 
-export function renderSelectionZone(sz : SelectionZone, c: Camera): void
+export function renderSelectionZone(sz : SelectionZone, c: Camera, ui_state: UIState): void
 {
-	if(!sz.active) return
+	if (ui_state.mode !== Mode.SELECT_PIN) return
 	let tl: Vector = toScreenCoordinates(sz.topLeft,c)
 	let br: Vector = toScreenCoordinates(sz.bottomRight,c)
 	ctx.strokeStyle = "blue"
@@ -59,27 +60,7 @@ export function renderBackground(c : Camera): void
 	ctx.fillRect(0,0,canvas.width,canvas.height)
 }
 
-export function setZoomControls(c : Camera): void
-{
-	const slider = document.getElementById('zoom-slider') as HTMLInputElement;
-        
-	slider.addEventListener('input', function() {
-		c.zoom = Number(this.value) + 10
-	});
 
-	
-	function zoom(amount : number):void
-	{
-		let newValue = Number(slider.value) + amount
-		newValue = Math.max(Number(slider.min), Math.min(Number(slider.max), newValue));
-		slider.value = newValue.toString()
-		slider.dispatchEvent(new Event('input'));
-	}
-	
-	zoomInButton.addEventListener('click',()=>{zoom(10)})
-	zoomOutButton.addEventListener('click',()=>{zoom(-10)})
-
-}
 
 
 

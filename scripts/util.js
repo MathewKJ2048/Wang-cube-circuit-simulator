@@ -31,3 +31,9 @@ export class Color {
         return typeof obj === 'object' && obj !== null && 'r' in obj && 'g' in obj && 'b' in obj && typeof obj.r === 'number' && typeof obj.g === 'number' && typeof obj.b === 'number';
     }
 }
+export function getFraction(value, min, max) {
+    return (value - min) / (max - min);
+}
+export function getValue(fraction, min, max) {
+    return fraction * (max - min) + min;
+}

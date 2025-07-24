@@ -2,17 +2,18 @@ import { canvas, ctx } from "./elements.js";
 import { canvasSetup } from "./canvasSetup.js"
 import { setupUploadDownloadButtons } from "./fileManager.js"
 import { Camera } from "./renderUtil.js"
-import { renderBackground, renderGrid, renderSelectionZone, setZoomControls } from './render.js'
+import { renderBackground, renderGrid, renderSelectionZone } from './render.js'
 import { UIState } from "./UI.js"
 import { implementMouseDrag } from "./mouseDrag.js"
 import { WangFile, getStarterWangFile } from "./logic.js"
 import { setupSelection, SelectionZone } from "./selection.js";
+import { setViewControls } from "./viewControls.js";
 
 
 canvasSetup()
 
 let camera : Camera = new Camera();
-setZoomControls(camera)
+setViewControls(camera)
 
 let ui_state : UIState = new UIState()
 implementMouseDrag(ui_state, camera)
@@ -28,7 +29,7 @@ function render()
 {
 	renderBackground(camera)
 	renderGrid(camera)
-	renderSelectionZone(selectionZone, camera)
+	renderSelectionZone(selectionZone, camera, ui_state)
 }
 
 function animate() {

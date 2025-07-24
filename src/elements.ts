@@ -7,12 +7,15 @@ export const uploadButton : HTMLButtonElement = document.getElementById('upload-
 
 export const zoomInButton : HTMLButtonElement = document.getElementById('zoom-in-button') as HTMLButtonElement;
 export const zoomOutButton : HTMLButtonElement = document.getElementById('zoom-out-button') as HTMLButtonElement;
+export const resetViewButton : HTMLButtonElement = document.getElementById('reset-view-button') as HTMLButtonElement;
+export const zoomSlider = document.getElementById('zoom-slider') as HTMLInputElement;
 
 
-export const cutButton : HTMLButtonElement = document.getElementById('-button') as HTMLButtonElement;
-export const copyButton : HTMLButtonElement = document.getElementById('-button') as HTMLButtonElement;
-export const pasteButton : HTMLButtonElement = document.getElementById('-button') as HTMLButtonElement;
-export const saveButton : HTMLButtonElement = document.getElementById('-button') as HTMLButtonElement;
+export const cutButton : HTMLButtonElement = document.getElementById('cut-button') as HTMLButtonElement;
+export const deleteButton : HTMLButtonElement = document.getElementById('delete-button') as HTMLButtonElement;
+export const copyButton : HTMLButtonElement = document.getElementById('copy-button') as HTMLButtonElement;
+export const pasteButton : HTMLButtonElement = document.getElementById('paste-button') as HTMLButtonElement;
+export const saveButton : HTMLButtonElement = document.getElementById('save-button') as HTMLButtonElement;
 
 export const defaultButton : HTMLButtonElement = document.getElementById('default-button') as HTMLButtonElement;
 export const selectButton : HTMLButtonElement = document.getElementById('select-button') as HTMLButtonElement;

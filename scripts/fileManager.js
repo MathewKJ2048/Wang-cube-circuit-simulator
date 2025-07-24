@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { downloadButton, uploadButton } from "./elements.js";
 import { WangFile } from "./logic.js";
 /**
  * Converts an object to a downloadable JSON file
@@ -98,13 +99,11 @@ function parseJsonFile(file, typeGuard) {
     });
 }
 export function setupUploadDownloadButtons(wf) {
-    const saveButton = document.getElementById('download-button');
-    saveButton.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
+    downloadButton.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
         WangFileToJSON(wf);
         console.log("file saving called");
     }));
-    const loadButton = document.getElementById('upload-button');
-    loadButton.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
+    uploadButton.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
         let data = yield openJsonFile(WangFile.isWangFile);
         wf.overWrite(data);
     }));
