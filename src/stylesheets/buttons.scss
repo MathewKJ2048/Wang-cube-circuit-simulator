@@ -1,0 +1,37 @@
+
+
+@use "./colors.scss";
+
+$button-size: 32px;
+
+button
+{
+	background-color: hsl(colors.$base-hue,100%,30%);
+	height: $button-size;
+	width: $button-size;
+	border-radius: 999px;
+	border: none;
+}
+
+button:hover 
+{
+	background-color: hsl(colors.$accent-hue,50%,60%);
+}
+  
+button:active 
+{
+	background-color: hsl(colors.$accent-hue,50%,50%);
+}
+  
+button:disabled 
+{
+	background-color: hsl(colors.$base-hue,0%,30%);
+	cursor: default;
+}
+
+button img
+{
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}

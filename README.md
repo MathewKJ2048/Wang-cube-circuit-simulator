@@ -55,3 +55,13 @@ zoom out
 - step back
 - play/pause
 - speed controls (speed up, speed down, speed bar)
+
+
+## UI nomenclature:
+
+- screen divided into three sections with fixed ratios
+- each section contains multiple panes
+- top and pane in the middle contains two control-panes (one left and one right)
+- each control pane holds multiple control groups
+- each control group holds elements like buttons and other stuff
+- right control pane shrinks, left control pane grows

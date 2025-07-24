@@ -1,0 +1,103 @@
+@use "sass:math";
+@use "./colors.scss";
+@use "./borders.scss";
+@use "./buttons.scss";
+@use "./sections.scss";
+@use "./controls.scss";
+
+
+$panel-width: 20;
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+	height: 100%;
+	width: 100%;
+	font-family: monospace;
+	font-size:large;
+	background-color: black;
+	color: white;
+}
+
+
+
+
+.canvas-pane
+{
+	flex-grow: 1;
+	min-height: 0;
+	@include borders.custom-border(colors.$base-hue);
+}
+
+
+
+.container {
+	display: flex;
+	height: 100%;
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+.left-lower, .left-upper {
+	width: 100%;
+	height: 50%;
+	display: flex;
+}
+
+
+
+
+.upper-centre
+{
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+}
+.left-pane
+{
+	display: flex;
+	flex-direction: row;
+}
+.right-pane
+{
+	display: flex;
+	flex-direction: row;
+	flex-direction: row-reverse;
+	flex-grow: 1;
+}
+
+
+
+.lower-centre
+{
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+}
+
+
+
+
+
+.tile-editor-fields
+{
+	border: var(--panel-border);
+	display: flex;
+	flex-direction: column;
+	margin: 1vh;
+	padding: 1vh;
+	border-radius: 4%;
+}
+.tile-editor-field
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}

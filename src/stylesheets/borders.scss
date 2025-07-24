@@ -1,0 +1,14 @@
+@use "colors.scss";
+
+@mixin custom-border($hue: colors.$base-hue)
+{
+	border: 4px solid hsl($hue, 100%, 20%);
+	border-radius: 4px;
+	margin: 2px;
+}
+@mixin custom-border-complete($hue: colors.$base-hue)
+{
+	@include custom-border($hue);
+	gap: 4px;
+	padding: 4px;
+}

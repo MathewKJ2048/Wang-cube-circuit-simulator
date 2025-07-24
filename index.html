@@ -2,27 +2,40 @@
 <html lang="en">
 	<head>
 		<title>Wang Cube Simulator</title>
-		<link rel="stylesheet" href="style.css">
-		<link rel="icon" href="favicon.svg" type="image/svg+xml">
+		<link rel="stylesheet" href="./build/stylesheets/styles.css">
+		<link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
 	</head>
 	<body>
 		<div class="container">
-			<div class="left-section">
+			<div class="side-section">
 				<div class="left-upper">
 					Tile picker
 					<div id="tile-picker-dynamic"></div>
 				</div>
-				<div class="left-lower">Tile editor</div>
+				<div class="left-lower">
+					<div class="tile-editor-fields-wrapper">
+						<div class="tile-editor-fields">
+							<div class="tile-editor-field"><label for="tile-name">Name:</label><input type="text" id="tile-name" name="tile-name"><br></div>
+							<div class="tile-editor-field"><label for="tile-up">Up:</label><input type="text" id="tile-up" name="tile-up"><br></div>
+							<div class="tile-editor-field"><label for="tile-down">Down:</label><input type="text" id="tile-down" name="tile-down"><br></div>
+							<div class="tile-editor-field"><label for="tile-left">Left:</label><input type="text" id="tile-left" name="tile-left"><br></div>
+							<div class="tile-editor-field"><label for="tile-right">Right:</label><input type="text" id="tile-right" name="tile-right"><br></div>
+							<div class="tile-editor-field"><label for="tile-front">Front:</label><input type="text" id="tile-front" name="tile-front"><br></div>
+							<div class="tile-editor-field"><label for="tile-back">Back:</label><input type="text" id="tile-back" name="tile-back"><br></div>
+							
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="centre-section">
-				<div class="upper-centre">
-					<div class="left-pane">
-						<div class="panel">
+				<div class="control-pane">
+					<div class="control-pane-left">
+						<div class="control-group">
 							<button title="view" id="default-button"><img src = "./icons/arrow.svg"/></button>
 							<button title="select" id="select-button"><img src = "./icons/select.svg"/></button>
 							<button title="erase" id="erase-button"><img src = "./icons/erase.svg"/></button>
 						</div>
-						<div class="panel">
+						<div class="control-group">
 							<button title="save selection" id="save-button"><img src = "./icons/save.svg"/></button>
 							<button title = "cut selection"  id="cut-button"><img src = "./icons/cut.svg"></button>
 							<button title = "delete selection"  id="delete-button"><img src = "./icons/delete.svg"></button>
@@ -30,8 +43,8 @@
 							<button title = "paste selection"  id="paste-button"><img src = "./icons/paste.svg"></button>
 						</div>
 					</div>
-					<div class="right-pane">
-						<div class = "panel">
+					<div class="control-pane-right">
+						<div class = "control-group">
 							<button title="upload file" id="upload-button"><img src = "./icons/upload.svg"/></button>
 							<button title="download file" id="download-button"><img src = "./icons/download.svg"/></button>
 							<button title="help" id="help-button"><img src = "./icons/help.svg"/></button>
@@ -39,18 +52,18 @@
 					</div>
 					
 				</div>
-				<div class = "middle-centre">
+				<div class = "canvas-pane">
 					<canvas id="canvas"></canvas>
 				</div>
-				<div class = "lower-centre">
-					<div class="left-pane">
-						<div class="panel">
+				<div class = "control-pane">
+					<div class="control-pane-left">
+						<div class="control-group">
 							<button title="step backward" id="step-backward-button"><img src = "./icons/left.svg"/></button>
 							<button title="step forward" id="step-forward-button"><img src = "./icons/right.svg"/></button>
 						</div>
 					</div>
-					<div class="right-pane">
-						<div class = "panel">
+					<div class="control-pane-right">
+						<div class = "control-group">
 							<button title="toggle-grid" id="toggle-grid-button"><img src = "./icons/grid.svg"/></button>
 							<button title="reset-view" id="reset-view-button"><img src = "./icons/reset-view.svg"/></button>
 							<button title="zoom-out" id="zoom-out-button"><img src = "./icons/zoom-out.svg"/></button>
@@ -62,9 +75,9 @@
 				</div>
 
 			</div>
-			<div class="right-section">right panel</div>
+			<div class="side-section">right panel</div>
 		</div>
-		<script src="scripts/main.js" type="module"></script>
+		<script src="./build/scripts/main.js" type="module"></script>
 		
 	</body>
 </html>

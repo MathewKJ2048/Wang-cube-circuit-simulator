@@ -1,0 +1,24 @@
+@use "./colors.scss";
+@use "./borders.scss";
+
+.control-pane
+{
+	display: flex;
+	flex-shrink: 0;
+}
+.control-pane-left
+{
+	display: flex;
+	flex-grow: 1;
+}
+.control-pane-right
+{
+	display: flex;
+	flex-shrink: 0;
+}
+.control-group
+{
+	@include borders.custom-border-complete(colors.$base-hue);
+	border-radius: 999px;
+	display: flex;
+}

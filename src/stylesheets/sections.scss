@@ -1,0 +1,17 @@
+%principal-section
+{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.side-section
+{
+	@extend %principal-section;
+	width: 20%;
+}
+.centre-section 
+{
+	@extend %principal-section;
+	width: 60%;
+}
