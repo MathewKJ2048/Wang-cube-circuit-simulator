@@ -1,18 +1,7 @@
+import { canvas, ctx } from "./elements.js";
 
 
-export function getCanvas() : HTMLCanvasElement
-{
-	const canvas : HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
-	return canvas
-}
-
-export function getContext(canvas : HTMLCanvasElement) : CanvasRenderingContext2D
-{
-	const ctx : CanvasRenderingContext2D = canvas.getContext('2d')!;
-	return ctx
-}
-
-export function canvasSetup(canvas : HTMLCanvasElement, ctx : CanvasRenderingContext2D): void 
+export function canvasSetup(): void 
 {
 	if (!canvas || !ctx) 
 	{

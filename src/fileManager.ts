@@ -1,3 +1,4 @@
+import { downloadButton, uploadButton } from "./elements.js";
 import { WangFile } from "./logic.js"
 
 /**
@@ -105,14 +106,13 @@ try {
 
 export function setupUploadDownloadButtons(wf : WangFile): void 
 {
-	const saveButton : HTMLButtonElement = document.getElementById('download-button') as HTMLButtonElement
-	saveButton.addEventListener('click', async() => 
+	downloadButton.addEventListener('click', async() => 
 	{
 		WangFileToJSON(wf)
 		console.log("file saving called")
 	})
-	const loadButton : HTMLButtonElement = document.getElementById('upload-button') as HTMLButtonElement
-	loadButton.addEventListener('click',async() => 
+	
+	uploadButton.addEventListener('click',async() => 
 	{
 		let data = await openJsonFile<WangFile>(WangFile.isWangFile);	
 		wf.overWrite(data)

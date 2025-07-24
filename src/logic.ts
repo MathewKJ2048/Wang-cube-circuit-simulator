@@ -75,12 +75,17 @@ export class WangFile // stores the whole context, to be in a json file
 
 }
 
-export function getStarterWangFile(): WangFile
+export function getPlaceholderTileType(): TileType
 {
-	let w : WangFile = new WangFile();
 	let placeholder : TileType = new TileType();
 	placeholder.color = new Color(200,200,200);
 	placeholder.name = "placeholder"
-	w.tileTypes.push(placeholder)
+	return placeholder
+}
+
+export function getStarterWangFile(): WangFile
+{
+	let w : WangFile = new WangFile();
+	w.tileTypes.push(getPlaceholderTileType())
 	return w
 }

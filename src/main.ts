@@ -1,31 +1,39 @@
-import { canvasSetup, getCanvas, getContext } from "./canvasSetup.js"
+import { canvas, ctx } from "./elements.js";
+import { canvasSetup } from "./canvasSetup.js"
 import { setupUploadDownloadButtons } from "./fileManager.js"
 import { Camera } from "./renderUtil.js"
-import { render, setZoomControls } from './render.js'
+import { renderBackground, renderGrid, renderSelectionZone, setZoomControls } from './render.js'
 import { UIState } from "./UI.js"
 import { implementMouseDrag } from "./mouseDrag.js"
 import { WangFile, getStarterWangFile } from "./logic.js"
+import { setupSelection, SelectionZone } from "./selection.js";
 
 
-const canvas : HTMLCanvasElement = getCanvas()
-const ctx : CanvasRenderingContext2D = getContext(canvas)
-canvasSetup(canvas, ctx)
-
-
+canvasSetup()
 
 let camera : Camera = new Camera();
 setZoomControls(camera)
 
 let ui_state : UIState = new UIState()
-implementMouseDrag(ui_state, camera, canvas)
+implementMouseDrag(ui_state, camera)
 
 const wf : WangFile = getStarterWangFile();
 setupUploadDownloadButtons(wf)
 
+const selectionZone : SelectionZone = new SelectionZone()
+setupSelection(ui_state, selectionZone, camera)
+
+
+function render()
+{
+	renderBackground(camera)
+	renderGrid(camera)
+	renderSelectionZone(selectionZone, camera)
+}
 
 function animate() {
 	requestAnimationFrame(animate);
-	render(canvas, ctx, camera)
+	render()
 }
 animate()
 
