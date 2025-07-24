@@ -8,6 +8,7 @@ import { implementMouseDrag } from "./mouseDrag.js"
 import { WangFile, getStarterWangFile } from "./logic.js"
 import { setupSelection, SelectionZone } from "./selection.js";
 import { setViewControls } from "./viewControls.js";
+import { listTiles } from "./tilePicker.js";
 
 
 canvasSetup()
@@ -20,6 +21,7 @@ implementMouseDrag(ui_state, camera)
 
 const wf : WangFile = getStarterWangFile();
 setupUploadDownloadButtons(wf)
+listTiles(wf)
 
 const selectionZone : SelectionZone = new SelectionZone()
 setupSelection(ui_state, selectionZone, camera)

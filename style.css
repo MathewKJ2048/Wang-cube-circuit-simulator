@@ -39,6 +39,18 @@ html, body {
 	flex-direction: row;
 	flex-shrink: 0;
 }
+.left-pane
+{
+	display: flex;
+	flex-direction: row;
+}
+.right-pane
+{
+	display: flex;
+	flex-direction: row;
+	flex-direction: row-reverse;
+	flex-grow: 1;
+}
 
 .middle-centre
 {
@@ -47,18 +59,25 @@ html, body {
 	min-height: 0;
 }
 
+.lower-centre
+{
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+}
+
 button
 {
-	background-color: rgb(97, 10, 141);
-	height: 42px;
-	width: 42px;
+	background-color: rgb(10, 124, 141);
+	height: 32px;
+	width: 32px;
 	border-radius: 993px;
 	border: none;
 }
 
 /* Hover State */
 button:hover {
-	background-color: #7c4dff;
+	background-color: #4d88ff;
 	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 
 				0 6px 10px 0 rgba(0, 0, 0, 0.14), 
 				0 1px 18px 0 rgba(0, 0, 0, 0.12);
@@ -68,7 +87,7 @@ button:hover {
   
   /* Active/Pressed State */
 button:active {
-	background-color: #3700b3;
+	background-color: #0057b3;
 	box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 
 				0 8px 10px 1px rgba(0, 0, 0, 0.14), 
 				0 3px 14px 2px rgba(0, 0, 0, 0.12);
@@ -93,7 +112,7 @@ button img
 {
 	display: flex;
 	gap: 1vh;
-	border: 3px solid rgb(207, 112, 255);
+	border: 3px solid rgb(112, 212, 255);
 	margin: 1vh;
 	padding: 1vh;
 	border-radius: 999px;

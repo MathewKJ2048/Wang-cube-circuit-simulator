@@ -8,40 +8,59 @@
 	<body>
 		<div class="container">
 			<div class="left-section">
-				<div class="left-upper">Tile picker</div>
+				<div class="left-upper">
+					Tile picker
+					<div id="tile-picker-dynamic"></div>
+				</div>
 				<div class="left-lower">Tile editor</div>
 			</div>
 			<div class="centre-section">
 				<div class="upper-centre">
-					
-					<div class="panel">
-						<button title="view" id="default-button"><img src = "./icons/arrow.svg"/></button>
-						<button title="select" id="select-button"><img src = "./icons/select.svg"/></button>
-						<button title="erase" id="erase-button"><img src = "./icons/erase.svg"/></button>
+					<div class="left-pane">
+						<div class="panel">
+							<button title="view" id="default-button"><img src = "./icons/arrow.svg"/></button>
+							<button title="select" id="select-button"><img src = "./icons/select.svg"/></button>
+							<button title="erase" id="erase-button"><img src = "./icons/erase.svg"/></button>
+						</div>
+						<div class="panel">
+							<button title="save selection" id="save-button"><img src = "./icons/save.svg"/></button>
+							<button title = "cut selection"  id="cut-button"><img src = "./icons/cut.svg"></button>
+							<button title = "delete selection"  id="delete-button"><img src = "./icons/delete.svg"></button>
+							<button title = "copy selection"  id="copy-button"><img src = "./icons/copy.svg"></button>
+							<button title = "paste selection"  id="paste-button"><img src = "./icons/paste.svg"></button>
+						</div>
 					</div>
-					<div class="panel">
-						<button title="save selection" id="save-button"><img src = "./icons/save.svg"/></button>
-						<button title = "cut selection"  id="cut-button"><img src = "./icons/cut.svg"></button>
-						<button title = "delete selection"  id="delete-button"><img src = "./icons/delete.svg"></button>
-						<button title = "copy selection"  id="copy-button"><img src = "./icons/copy.svg"></button>
-						<button title = "paste selection"  id="paste-button"><img src = "./icons/paste.svg"></button>
-					</div>
-					<div class = "panel">
-						<button title="reset-view" id="reset-view-button"><img src = "./icons/reset-view.svg"/></button>
-						<button title="zoom-out" id="zoom-out-button"><img src = "./icons/zoom-out.svg"/></button>
-						<input type="range" id="zoom-slider" min="0" max="100" value="50">
-						<button title="zoom-in" id="zoom-in-button"><img src = "./icons/zoom-in.svg"/></button>
-					</div>
-					<div class = "panel">
-						<button title="upload file" id="upload-button"><img src = "./icons/upload.svg"/></button>
-						<button title="download file" id="download-button"><img src = "./icons/download.svg"/></button>
-						<button title="temp" id="temp-button"><img src = "./icons/right.svg"/></button>
+					<div class="right-pane">
+						<div class = "panel">
+							<button title="upload file" id="upload-button"><img src = "./icons/upload.svg"/></button>
+							<button title="download file" id="download-button"><img src = "./icons/download.svg"/></button>
+							<button title="help" id="help-button"><img src = "./icons/help.svg"/></button>
+						</div>
 					</div>
 					
 				</div>
 				<div class = "middle-centre">
 					<canvas id="canvas"></canvas>
 				</div>
+				<div class = "lower-centre">
+					<div class="left-pane">
+						<div class="panel">
+							<button title="step backward" id="step-backward-button"><img src = "./icons/left.svg"/></button>
+							<button title="step forward" id="step-forward-button"><img src = "./icons/right.svg"/></button>
+						</div>
+					</div>
+					<div class="right-pane">
+						<div class = "panel">
+							<button title="toggle-grid" id="toggle-grid-button"><img src = "./icons/grid.svg"/></button>
+							<button title="reset-view" id="reset-view-button"><img src = "./icons/reset-view.svg"/></button>
+							<button title="zoom-out" id="zoom-out-button"><img src = "./icons/zoom-out.svg"/></button>
+							<input type="range" id="zoom-slider" min="0" max="100" value="50">
+							<button title="zoom-in" id="zoom-in-button"><img src = "./icons/zoom-in.svg"/></button>
+						</div>
+					</div>
+					
+				</div>
+
 			</div>
 			<div class="right-section">right panel</div>
 		</div>

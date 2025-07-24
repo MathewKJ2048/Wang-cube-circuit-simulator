@@ -48,3 +48,10 @@ zoom out
 - erase mode - anything it touches while dragging is eliminated
 - place down mode: activated by clicking a tile in the tile search - same as erase but it places down the tile
 - circuit-place-down mode: same as place-down-mode, but now it's a whole circuit
+
+## run features:
+
+- step forward
+- step back
+- play/pause
+- speed controls (speed up, speed down, speed bar)

@@ -7,6 +7,7 @@ import { implementMouseDrag } from "./mouseDrag.js";
 import { getStarterWangFile } from "./logic.js";
 import { setupSelection, SelectionZone } from "./selection.js";
 import { setViewControls } from "./viewControls.js";
+import { listTiles } from "./tilePicker.js";
 canvasSetup();
 let camera = new Camera();
 setViewControls(camera);
@@ -14,6 +15,7 @@ let ui_state = new UIState();
 implementMouseDrag(ui_state, camera);
 const wf = getStarterWangFile();
 setupUploadDownloadButtons(wf);
+listTiles(wf);
 const selectionZone = new SelectionZone();
 setupSelection(ui_state, selectionZone, camera);
 function render() {
