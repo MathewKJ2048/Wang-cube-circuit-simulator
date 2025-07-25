@@ -6,6 +6,8 @@
 {
 	display: flex;
 	flex-direction: row;
+	overflow-x: auto;
+	flex-shrink: 0;
 	@include borders.custom-border-complete();
 }
 
@@ -21,6 +23,4 @@
 {
 	display: flex;
 	flex-direction: row;
-	margin-top: borders.$standard-margin;
-	margin-bottom: borders.$standard-margin;
 }

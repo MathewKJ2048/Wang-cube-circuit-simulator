@@ -15,13 +15,14 @@ export enum Mode
 
 
 
-export class UIState
+export class UIState // to do with the main canvas
 {
 	dragState: DragState = DragState.FREE
 	mouseScreenPosition: Vector = new Vector() // stores old values of x and y
 	clipboard: PlaneTiling | null = null
 	placeTileType: TileType | null = null
 	mode: Mode = Mode.DEFAULT
+	gridEnabled: boolean = true
 }
 
 export function getMouseScreenCoordinates(e : MouseEvent)

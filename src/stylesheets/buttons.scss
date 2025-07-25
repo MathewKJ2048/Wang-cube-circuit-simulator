@@ -9,6 +9,7 @@ button
 	background-color: hsl(colors.$base-hue,100%,30%);
 	height: $button-size;
 	width: $button-size;
+	flex-shrink: 0;
 	border-radius: 999px;
 	border: none;
 }
@@ -22,6 +23,7 @@ button:active
 {
 	background-color: hsl(colors.$accent-hue,50%,50%);
 }
+
   
 button:disabled 
 {

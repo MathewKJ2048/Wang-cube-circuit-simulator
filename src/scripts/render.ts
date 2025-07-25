@@ -22,9 +22,9 @@ export function renderSelectionZone(sz : SelectionZone, c: Camera, ui_state: UIS
 }
 
 
-export function renderGrid(c : Camera): void
+export function renderGrid(c : Camera, ui_state: UIState): void
 {
-	
+	if(!ui_state.gridEnabled)return;	
 
 	let min_x = Math.floor(fromScreenCoordinates(new Vector(0,0),c).x)
 	let max_x = Math.ceil(fromScreenCoordinates(new Vector(canvas.width,0),c).x)
