@@ -118,20 +118,41 @@
 
 			</div>
 			<div class="side-section">
-				<div class="tile-editor-pane">
-					<div class="tile-editor-fields-wrapper">
-						<div class="tile-editor-fields">
-							<div class="tile-editor-field"><label for="tile-name">Name:</label><input type="text" id="tile-name" name="tile-name"><br></div>
-							<div class="tile-editor-field"><label for="tile-up">Up:</label><input type="text" id="tile-up" name="tile-up"><br></div>
-							<div class="tile-editor-field"><label for="tile-down">Down:</label><input type="text" id="tile-down" name="tile-down"><br></div>
-							<div class="tile-editor-field"><label for="tile-left">Left:</label><input type="text" id="tile-left" name="tile-left"><br></div>
-							<div class="tile-editor-field"><label for="tile-right">Right:</label><input type="text" id="tile-right" name="tile-right"><br></div>
-							<div class="tile-editor-field"><label for="tile-front">Front:</label><input type="text" id="tile-front" name="tile-front"><br></div>
-							<div class="tile-editor-field"><label for="tile-back">Back:</label><input type="text" id="tile-back" name="tile-back"><br></div>
-							<input type="color">
-						</div>
-					</div>
+				<div class="preview-pane">
+					<canvas id="preview-canvas"></canvas>
 				</div>
+				<div class="tile-editor-pane">
+					<div class="tile-editor-field">
+						<input type="text" id="tile-name" name="tile-name">
+						<input type="color">
+					</div>
+					<div class="tile-editor-field">
+						<input type="text" id="tile-up" name="tile-up">
+						<input type="color" id="color-chooser-">
+					</div>
+					<div class="tile-editor-field">
+						<input type="text" id="tile-down" name="tile-down">
+						<input type="color" id="color-chooser-">
+					</div>
+					<div class="tile-editor-field">
+						<input type="text" id="tile-left" name="tile-left">
+						<input type="color" id="color-chooser-">
+					</div>
+					<div class="tile-editor-field">
+						<input type="text" id="tile-right" name="tile-right">
+						<input type="color" id="color-chooser-">
+					</div>
+					<div class="tile-editor-field">
+						<input type="text" id="tile-front" name="tile-front">
+						<input type="color" id="color-chooser-">
+					</div>
+					<div class="tile-editor-field">
+						<input type="text" id="tile-back" name="tile-back">
+						<input type="color" id="color-chooser-back">
+					</div>
+					
+				</div>
+					
 			</div>
 		</div>
 		<script src="./build/scripts/main.js" type="module"></script>

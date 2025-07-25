@@ -1,15 +1,9 @@
-.tile-editor-fields
-{
-	border: var(--panel-border);
-	display: flex;
-	flex-direction: column;
-	margin: 1vh;
-	padding: 1vh;
-	border-radius: 4%;
-}
+
+@use "./borders.scss";
+
 .tile-editor-field
 {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
+	gap: borders.$standard-gap;
 }

@@ -1,20 +1,23 @@
-import { canvas, ctx } from "./elements.js";
+import { canvas, previewCanvas } from "./elements.js";
 
 
 export function canvasSetup(): void 
 {
-	if (!canvas || !ctx) 
+	
+	function resizeCanvas(cv : HTMLCanvasElement): void 
 	{
-		console.error('Canvas initialization failed');
-		return
+		const container = cv.parentElement!;
+		cv.width = container.clientWidth;
+		cv.height = container.clientHeight;
 	}
-	function resizeCanvas(): void 
+	function resizeAllCanvas() : void
 	{
-		const container = canvas.parentElement!;
-		canvas.width = container.clientWidth;
-		canvas.height = container.clientHeight;
+		resizeCanvas(canvas);
+		resizeCanvas(previewCanvas);
 	}
-	resizeCanvas();
-	window.addEventListener('resize', resizeCanvas);
+	resizeAllCanvas()
+	window.addEventListener('resize', ()=>{
+		resizeAllCanvas()
+	});
 	
 }

@@ -11,7 +11,7 @@ export function renderSelectionZone(sz : SelectionZone, c: Camera, ui_state: UIS
 	if (ui_state.mode !== Mode.SELECT_PIN) return
 	let tl: Vector = toScreenCoordinates(sz.topLeft,c)
 	let br: Vector = toScreenCoordinates(sz.bottomRight,c)
-	ctx.strokeStyle = "blue"
+	ctx.strokeStyle = "cyan"
 	ctx.beginPath()
 	ctx.moveTo(tl.x,tl.y)
 	ctx.lineTo(tl.x,br.y)
