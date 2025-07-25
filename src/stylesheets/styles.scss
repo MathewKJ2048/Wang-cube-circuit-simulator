@@ -1,42 +1,31 @@
-@use "sass:math";
+
 @use "./colors.scss";
 @use "./borders.scss";
 @use "./buttons.scss";
 @use "./sections.scss";
 @use "./controls.scss";
+@use "./panes.scss";
+@use "./tile-editor.scss";
+@use "./tile-picker.scss";
+@use "./textinput.scss";
 
 
-$panel-width: 20;
 
 
-html, body {
+
+
+html, body 
+{
     margin: 0;
     padding: 0;
 	height: 100%;
 	width: 100%;
 	font-family: monospace;
-	font-size:large;
-	background-color: black;
-	color: white;
+	font-size:medium;
+	background-color: colors.$back-ground-color;
+	color: colors.$text-color
 }
 
-
-
-
-.canvas-pane
-{
-	flex-grow: 1;
-	min-height: 0;
-	@include borders.custom-border(colors.$base-hue);
-}
-
-
-
-.container {
-	display: flex;
-	height: 100%;
-	width: 100%;
-}
 
 
 
@@ -84,20 +73,3 @@ html, body {
 
 
 
-
-
-.tile-editor-fields
-{
-	border: var(--panel-border);
-	display: flex;
-	flex-direction: column;
-	margin: 1vh;
-	padding: 1vh;
-	border-radius: 4%;
-}
-.tile-editor-field
-{
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-}

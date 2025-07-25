@@ -1,0 +1,32 @@
+
+@use "./borders.scss";
+@use "./colors.scss";
+
+.control-pane
+{
+	display: flex;
+	flex-shrink: 0;
+}
+
+.canvas-pane
+{
+	flex-grow: 1;
+	min-height: 0;
+	@include borders.custom-border(colors.$base-hue);
+}
+
+.tile-picker-pane
+{
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	min-height: 0;
+}
+
+.tile-editor-pane
+{
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	@include borders.custom-border(colors.$accent-hue);
+}

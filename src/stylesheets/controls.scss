@@ -1,11 +1,7 @@
 @use "./colors.scss";
 @use "./borders.scss";
 
-.control-pane
-{
-	display: flex;
-	flex-shrink: 0;
-}
+
 .control-pane-left
 {
 	display: flex;

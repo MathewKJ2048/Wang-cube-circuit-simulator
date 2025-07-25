@@ -64,4 +64,13 @@ zoom out
 - top and pane in the middle contains two control-panes (one left and one right)
 - each control pane holds multiple control groups
 - each control group holds elements like buttons and other stuff
-- right control pane shrinks, left control pane grows
+- right control pane shrinks, left control pane 
+
+## Tile plane system:
+
+- text field with text input, every time text is entered, it does a search for matches
+- if the text field is empty, default text is the search emoji, and all match empty
+- text field has a add button and a regex toggle button, is it's own control group
+- the results show up in a results sub-pane, which is generated entirely
+- each entry has the tile name, a button with "add" and a button with "edit" and one with "delete". The add button is square, with the tile's color. The edit button loads the tile into the tile editor
+- the tile editor has the following button: save changes

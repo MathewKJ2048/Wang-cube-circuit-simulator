@@ -1,0 +1,27 @@
+@use "./colors.scss";
+@use "./borders.scss";
+
+input[type="text"] 
+{
+	color: colors.$text-color;  
+	background-color: colors.$back-ground-color; 
+	border-radius: borders.$standard-border-radius;
+	padding: borders.$standard-padding;
+	
+	/* Focus State */
+	outline: none;                /* Remove default focus outline */
+	flex-grow: 1;
+	
+}
+  
+  input[type="text"]:hover {
+	border-color: #666666;        /* Lighter gray on hover */
+  }
+  
+  input[type="text"]::placeholder {
+	color: #aaaaaa;               /* Light gray placeholder */
+	opacity: 1;                   /* Ensure visibility */
+	
+  }
+
+

@@ -21,7 +21,7 @@ implementMouseDrag(ui_state, camera)
 
 const wf : WangFile = getStarterWangFile();
 setupUploadDownloadButtons(wf)
-listTiles(wf)
+// listTiles(wf)
 
 const selectionZone : SelectionZone = new SelectionZone()
 setupSelection(ui_state, selectionZone, camera)
