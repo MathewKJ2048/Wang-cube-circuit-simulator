@@ -52,6 +52,7 @@
 						</div>
 					</div>
 					<div class="control-pane" id="tile-picker-controls">
+						
 						<div class="control-group">
 							<button title="create tile" id="create-tile-button"><img src = "./icons/add.svg"/></button>
 							<button title = "edit tile"  id="edit-tile-button"><img src = "./icons/edit.svg"></button>
@@ -78,6 +79,11 @@
 						</div>
 					</div>
 					<div class="control-pane-right">
+						<div class="control-group">
+							<button title="step backward" id="step-backward-button"><img src = "./icons/left.svg"/></button>
+							<button title="step forward" id="step-forward-button"><img src = "./icons/right.svg"/></button>
+							<button title="reset time" id="reset-time-button"><img src = "./icons/reset.svg"/></button>
+						</div>
 						<div class = "control-group">
 							<button title="upload file" id="upload-button"><img src = "./icons/upload.svg"/></button>
 							<button title="download file" id="download-button"><img src = "./icons/download.svg"/></button>
@@ -92,13 +98,15 @@
 				<div class = "control-pane" id="lower-control-pane">
 					<div class="control-pane-left">
 						<div class="control-group">
-							<button title="step backward" id="step-backward-button"><img src = "./icons/left.svg"/></button>
-							<button title="step forward" id="step-forward-button"><img src = "./icons/right.svg"/></button>
+							<button title="pause/play" id="pause-play-button"><img src = "./icons/play.svg"/></button>
+							<button title="slow down" id="slow-down-button"><img src = "./icons/slow.svg"/></button>
+							<input type="range" id="speed-slider" min="0" max="100" value="50">
+							<button title="speed up" id="speed-up-button"><img src = "./icons/fast.svg"/></button>
 						</div>
 					</div>
 					<div class="control-pane-right">
 						<div class = "control-group">
-							<button title="toggle-grid" id="toggle-grid-button"><img src = "./icons/grid.svg"/></button>
+							<button title="toggle grid" id="toggle-grid-button"><img src = "./icons/grid.svg"/></button>
 							<button title="reset-view" id="reset-view-button"><img src = "./icons/reset-view.svg"/></button>
 							<button title="zoom-out" id="zoom-out-button"><img src = "./icons/zoom-out.svg"/></button>
 							<input type="range" id="zoom-slider" min="0" max="100" value="50">
@@ -120,7 +128,7 @@
 							<div class="tile-editor-field"><label for="tile-right">Right:</label><input type="text" id="tile-right" name="tile-right"><br></div>
 							<div class="tile-editor-field"><label for="tile-front">Front:</label><input type="text" id="tile-front" name="tile-front"><br></div>
 							<div class="tile-editor-field"><label for="tile-back">Back:</label><input type="text" id="tile-back" name="tile-back"><br></div>
-							
+							<input type="color">
 						</div>
 					</div>
 				</div>

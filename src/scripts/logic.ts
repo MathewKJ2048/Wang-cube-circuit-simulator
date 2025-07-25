@@ -1,7 +1,23 @@
 
 import {Vector, Color} from './util.js'
 
+export type stringColorMap = {
+	[key: string]: Color;
+}
 
+function isStringColorMap(obj: unknown): obj is stringColorMap 
+{
+	if (typeof obj !== 'object' || obj === null) return false;
+	for (const key in obj) 
+	{
+	  if (Object.prototype.hasOwnProperty.call(obj,key))
+	  {
+		const color = (obj as Record<string, unknown>)[key];
+		if (! Color.isColor(color)) return false
+	  }
+	}
+	return true
+}
 
 export const ANYTHING : string = ""
 export class TileType
@@ -56,21 +72,30 @@ export class PlaneTiling // stores a section of a tiling in space
 
 export class WangFile // stores the whole context, to be in a json file
 {
-	tileTypes: TileType[] = []
-	savedSubPlaneTilings: PlaneTiling[] = []
-	planeTilings : PlaneTiling[] = []
+	tileTypes: TileType[] = [] // the types of tiles that are allowed
+	savedSubPlaneTilings: PlaneTiling[] = [] // saved sub-circuits
+	mainPlaneTiling: PlaneTiling = new PlaneTiling()
+	cachedPlaneTiling: PlaneTiling = new PlaneTiling() // cache used to reset after simulation
+	colorMap : stringColorMap = {}
+
+
 	public static isWangFile(obj: unknown): obj is WangFile
 	{
 		return typeof obj === 'object' && obj !== null
 		&& 'tileTypes' in obj && Array.isArray(obj.tileTypes) && obj.tileTypes.every(TileType.isTileType)
 		&& 'savedSubPlaneTilings' in obj && Array.isArray(obj.savedSubPlaneTilings) && obj.savedSubPlaneTilings.every(PlaneTiling.isPlaneTiling)
-		&& 'planeTilings' in obj && Array.isArray(obj.planeTilings) && obj.planeTilings.every(PlaneTiling.isPlaneTiling)
+		&& 'mainPlaneTiling' in obj && PlaneTiling.isPlaneTiling(obj.mainPlaneTiling)
+		&& 'cachedPlaneTiling' in obj && PlaneTiling.isPlaneTiling(obj.cachedPlaneTiling)
+		&& 'colorMap' in obj && isStringColorMap(obj.colorMap)
+
 	}
 	public overWrite(wf : WangFile): void
 	{
 		this.tileTypes = wf.tileTypes
 		this.savedSubPlaneTilings = wf.savedSubPlaneTilings
-		this.planeTilings = wf.planeTilings
+		this.mainPlaneTiling = wf.mainPlaneTiling
+		this.cachedPlaneTiling = wf.cachedPlaneTiling
+		this.colorMap = wf.colorMap
 	}
 
 }
@@ -89,3 +114,5 @@ export function getStarterWangFile(): WangFile
 	w.tileTypes.push(getPlaceholderTileType())
 	return w
 }
+
+
