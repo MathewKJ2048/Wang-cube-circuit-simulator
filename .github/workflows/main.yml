@@ -24,12 +24,12 @@ jobs:
         run: npm run build
 
       - name: GitHub Pages 
-        run: 
+        run: |
           git branch -f gh-pages HEAD
           git checkout gh-pages
           git config user.name "Github Pages Overwriter"
           git config user.email "GithubPagesOverwriter@users.noreply.github.com"
-          
+
 
 
       
