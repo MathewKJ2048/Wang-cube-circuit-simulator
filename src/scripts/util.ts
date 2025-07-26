@@ -22,6 +22,10 @@ export class Vector
 	{
 		return new Vector(this.x*k, this.y*k)
 	}
+	public equals(p : Vector)
+	{
+		return this.x === p.x && this.y === p.y
+	}
 }
 
 export class Color
@@ -38,6 +42,10 @@ export class Color
 	public static isColor(obj:unknown): obj is Color
 	{
 		return typeof obj === 'object' && obj !== null && 'r' in obj && 'g' in obj && 'b' in obj && typeof obj.r === 'number' && typeof obj.g === 'number' && typeof obj.b === 'number'
+	}
+	public equals(c : Color): boolean
+	{
+		return this.r === c.r && this.g === c.g && this.b === c.b
 	}
 }
 

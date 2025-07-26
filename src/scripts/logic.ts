@@ -67,6 +67,15 @@ export class PlaneTiling // stores a section of a tiling in space
 		&& 'name' in obj && typeof obj.name === 'string'
 		&& 'tiles' in obj && Array.isArray(obj.tiles) && obj.tiles.every(Tile.isTile)
 	}
+	public validate() : boolean
+	{
+		// a plane tiling is valid iff no two tiles share the same location
+		for(const t of this.tiles)
+			for(const t_ of this.tiles)
+				if (t!==t_ && t.r.equals(t_.r))
+					return false
+		return true
+	}
 }
 
 
