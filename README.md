@@ -3,6 +3,15 @@
 
 A tool to simulate digital circuits using Wang cubes
 
+## Install instructions:
+
+```
+git clone https://github.com/MathewKJ2048/Wang-cube-circuit-simulator
+npm install
+npm run build
+```
+The web-app is launched by setting up a live server pointing to `/dist/index.html`. For development with a vite server, run `npm run dev` and follow the link provided (usually `localhost:5137`).
+
 ## Design decisions:
 
 camera - an object with a zoom level, x and y
