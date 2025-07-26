@@ -1,4 +1,4 @@
-import { Camera } from "./renderUtil.js";
+import { Camera } from "./render_util.js";
 import { resetViewButton, zoomInButton, zoomOutButton, zoomSlider } from "./elements.js";
 import { getFraction, getValue } from "./util.js";
 

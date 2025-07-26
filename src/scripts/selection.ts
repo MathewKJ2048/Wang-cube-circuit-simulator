@@ -1,7 +1,7 @@
 import { UIState, Mode, getMousePosition } from "./UI.js";
 import { Vector } from "./util.js";
 import { canvas, selectButton } from "./elements.js";
-import { Camera } from "./renderUtil.js";
+import { Camera } from "./render_util.js";
 
 
 export class SelectionZone

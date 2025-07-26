@@ -9,8 +9,9 @@ A tool to simulate digital circuits using Wang cubes
 git clone https://github.com/MathewKJ2048/Wang-cube-circuit-simulator
 npm install
 npm run build
+npm run preview
 ```
-The web-app is launched by setting up a live server pointing to `/dist/index.html`. For development with a vite server, run `npm run dev` and follow the link provided (usually `localhost:5137`).
+The web-app is launched by opening the link provided (usually `localhost:4173` for vite). For development with a vite server, run `npm run dev` and follow the link provided (usually `localhost:5137` for vite).
 
 ## Design decisions:
 

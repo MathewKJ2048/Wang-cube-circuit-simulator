@@ -1,7 +1,7 @@
 import { Vector } from "./util.js"
 import { PlaneTiling, TileType } from "./logic.js"
 import { canvas } from "./elements.js"
-import { fromScreenCoordinates, Camera } from "./renderUtil.js"
+import { fromScreenCoordinates, Camera } from "./render_util.js"
 
 
 export class DragState

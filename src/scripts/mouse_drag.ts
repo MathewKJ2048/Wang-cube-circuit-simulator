@@ -1,4 +1,4 @@
-import { Camera } from "./renderUtil.js";
+import { Camera } from "./render_util.js";
 import { canvas } from "./elements.js";
 
 
