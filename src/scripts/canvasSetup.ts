@@ -1,4 +1,4 @@
-import { canvas, previewCanvas } from "./elements.js";
+import { canvas, previewCanvas } from "./elements";
 
 
 export function canvasSetup(): void 

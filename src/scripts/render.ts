@@ -1,6 +1,5 @@
 import {Vector} from './util.js'
 import { Camera, fromScreenCoordinates, toScreenCoordinates } from './renderUtil.js'
-import {zoomInButton, zoomOutButton} from "./elements.js"
 import { canvas, ctx } from './elements.js'
 import { SelectionZone } from './selection.js'
 import { UIState, Mode } from './UI.js'
@@ -53,7 +52,7 @@ export function renderGrid(c : Camera, ui_state: UIState): void
 	}
 }
 
-export function renderBackground(c : Camera): void
+export function renderBackground(): void
 {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = '#000000';

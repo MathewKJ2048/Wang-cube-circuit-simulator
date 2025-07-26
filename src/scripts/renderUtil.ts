@@ -1,5 +1,5 @@
 import { Vector } from "./util.js"
-import { canvas, ctx } from "./elements.js"
+import { canvas } from "./elements.js"
 
 export class Camera
 {

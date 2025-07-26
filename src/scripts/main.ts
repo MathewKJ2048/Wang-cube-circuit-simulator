@@ -1,4 +1,4 @@
-import { canvas, ctx } from "./elements.js";
+
 import { canvasSetup } from "./canvasSetup.js"
 import { setupUploadDownloadButtons } from "./fileManager.js"
 import { Camera } from "./renderUtil.js"
@@ -8,7 +8,6 @@ import { implementMouseDrag } from "./mouseDrag.js"
 import { WangFile, getStarterWangFile } from "./logic.js"
 import { setupSelection, SelectionZone } from "./selection.js";
 import { setViewControls } from "./viewControls.js";
-import { listTiles } from "./tilePicker.js";
 import { setGridToggle } from "./gridToggle.js";
 import { setRegexToggle } from "./regexToggle.js";
 
@@ -34,7 +33,7 @@ setupSelection(ui_state, selectionZone, camera)
 
 function render()
 {
-	renderBackground(camera)
+	renderBackground()
 	renderGrid(camera, ui_state)
 	renderSelectionZone(selectionZone, camera, ui_state)
 }

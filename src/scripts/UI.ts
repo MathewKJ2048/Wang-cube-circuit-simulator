@@ -4,13 +4,18 @@ import { canvas } from "./elements.js"
 import { fromScreenCoordinates, Camera } from "./renderUtil.js"
 
 
-export enum DragState
+export class DragState
 {
-	FREE, DRAGGING
+	static FREE = 1;
+	static DRAGGING = 2
 }
-export enum Mode
+export class Mode
 {
-	DEFAULT, SELECT_FREE, SELECT_PIN, ERASE, PLACE 
+	static DEFAULT = 0 
+	static SELECT_FREE = 1
+	static SELECT_PIN = 2
+	static ERASE = 3
+	static PLACE = 4
 }
 
 

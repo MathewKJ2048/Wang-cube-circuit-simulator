@@ -7,10 +7,10 @@ import { UIState, DragState, getMouseScreenCoordinates } from "./UI.js";
 
 export function implementMouseDrag(ui_state: UIState, c : Camera) : void
 {
-	canvas.addEventListener("mouseup",(e)=>{
+	canvas.addEventListener("mouseup",()=>{
 		ui_state.dragState = DragState.FREE
 	})
-	canvas.addEventListener("mousedown",(e)=>{
+	canvas.addEventListener("mousedown",()=>{
 		ui_state.dragState = DragState.DRAGGING
 	})
 	canvas.addEventListener("mousemove",(e) =>{

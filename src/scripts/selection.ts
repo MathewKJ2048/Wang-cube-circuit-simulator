@@ -13,9 +13,8 @@ export class SelectionZone
 
 export function setupSelection(ui_state: UIState, selectionZone : SelectionZone, c: Camera): void
 {
-	selectButton.addEventListener('click',(e)=>{
+	selectButton.addEventListener('click',()=>{
 		ui_state.mode = Mode.SELECT_FREE
-		console.log(Mode[ui_state.mode])
 	})
 
 	canvas.addEventListener('click',(e)=>
@@ -30,7 +29,6 @@ export function setupSelection(ui_state: UIState, selectionZone : SelectionZone,
 		{
 			ui_state.mode = Mode.DEFAULT
 		}
-		console.log(Mode[ui_state.mode])
 	})
 
 	canvas.addEventListener('mousemove',(e)=>
