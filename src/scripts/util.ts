@@ -22,9 +22,9 @@ export class Vector
 	{
 		return new Vector(this.x*k, this.y*k)
 	}
-	public equals(p : Vector)
+	public static equals(p : Vector, q: Vector)
 	{
-		return this.x === p.x && this.y === p.y
+		return q.x === p.x && q.y === p.y
 	}
 }
 
@@ -43,9 +43,9 @@ export class Color
 	{
 		return typeof obj === 'object' && obj !== null && 'r' in obj && 'g' in obj && 'b' in obj && typeof obj.r === 'number' && typeof obj.g === 'number' && typeof obj.b === 'number'
 	}
-	public equals(c : Color): boolean
+	public static equals(c : Color, c_ : Color): boolean
 	{
-		return this.r === c.r && this.g === c.g && this.b === c.b
+		return c_.r === c.r && c_.g === c.g && c_.b === c.b
 	}
 }
 

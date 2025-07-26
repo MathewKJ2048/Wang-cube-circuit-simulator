@@ -42,6 +42,10 @@ export class TileType
 		&& 'name' in obj && typeof obj.name === 'string'
 		&& 'color' in obj && Color.isColor(obj.color)
 	}
+	public equals(tt: TileType): boolean
+	{
+		return this.up === tt.up && this.down === tt.down && this.left === tt.left && this.right === tt.right && this.front === tt.front && this.back === tt.back
+	}
 }
 
 export class Tile
@@ -67,12 +71,12 @@ export class PlaneTiling // stores a section of a tiling in space
 		&& 'name' in obj && typeof obj.name === 'string'
 		&& 'tiles' in obj && Array.isArray(obj.tiles) && obj.tiles.every(Tile.isTile)
 	}
-	public validate() : boolean
+	public static validate(pt : PlaneTiling) : boolean
 	{
 		// a plane tiling is valid iff no two tiles share the same location
-		for(const t of this.tiles)
-			for(const t_ of this.tiles)
-				if (t!==t_ && t.r.equals(t_.r))
+		for(const t of pt.tiles)
+			for(const t_ of pt.tiles)
+				if (t!==t_ && Vector.equals(t.r,t_.r))
 					return false
 		return true
 	}
@@ -105,6 +109,24 @@ export class WangFile // stores the whole context, to be in a json file
 		this.mainPlaneTiling = wf.mainPlaneTiling
 		this.cachedPlaneTiling = wf.cachedPlaneTiling
 		this.colorMap = wf.colorMap
+	}
+	public static checkTileTypeCoverage(tts : TileType[], pt : PlaneTiling): boolean
+	{
+		// make sure types of all tiles in the plane-tiling are present in the list of types
+		return pt.tiles.every(
+			t => tts.some(
+				tt => t.tileType.equals(tt)
+		))
+	}
+	public static validate(wf : WangFile) : boolean
+	{
+		function validatePlaneTiling(pt : PlaneTiling)
+		{
+			return PlaneTiling.validate(pt) && WangFile.checkTileTypeCoverage(wf.tileTypes,pt)
+		}
+		return validatePlaneTiling(wf.mainPlaneTiling) 
+		&& validatePlaneTiling(wf.cachedPlaneTiling) 
+		&& wf.savedSubPlaneTilings.every(pt => validatePlaneTiling(pt))
 	}
 
 }
