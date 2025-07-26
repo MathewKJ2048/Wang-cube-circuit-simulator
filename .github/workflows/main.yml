@@ -23,10 +23,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: GitHub Pages Overwriter
-        uses: rayluo/github-pages-overwriter@v1.3
-        with:
-          source-directory: ./dist
-          target-branch: gh-pages
+      - name: GitHub Pages 
+        run: 
+          git branch -f gh-pages HEAD
+          git checkout gh-pages
+          git config user.name "Github Pages Overwriter"
+          git config user.email "GithubPagesOverwriter@users.noreply.github.com"
+          
+
 
       
