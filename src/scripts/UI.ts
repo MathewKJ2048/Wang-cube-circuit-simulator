@@ -28,6 +28,7 @@ export class UIState // to do with the main canvas
 	placeTileType: TileType | null = null
 	mode: Mode = Mode.DEFAULT
 	gridEnabled: boolean = true
+	regexEnabled: boolean = false
 }
 
 export function getMouseScreenCoordinates(e : MouseEvent)

@@ -1,13 +1,21 @@
 
-import { regexToggleButton, toggleGridButton } from "./elements.js";
+import { regexToggleButton } from "./elements.js";
+import { UIState } from "./UI.js";
 
-export function setRegexToggle(): void  // the state of the button itself is used to determine search
+export function setRegexToggle(ui_state: UIState): void  // the state of the button itself is used to determine search
 {
 	regexToggleButton.addEventListener('click',()=>
 	{
-		if(toggleGridButton.classList.contains("active"))
-			toggleGridButton.classList.remove("active");
-		else toggleGridButton.classList.add("active");
-		console.log(toggleGridButton.classList)
+		ui_state.regexEnabled = !ui_state.regexEnabled
+		if (ui_state.regexEnabled)
+		{
+			regexToggleButton.classList.add("pressed")
+		}
+		else
+		{
+			regexToggleButton.classList.remove("pressed")
+		}
+		console.log(ui_state.regexEnabled)
+		console.log(regexToggleButton.classList)
 	})
 }

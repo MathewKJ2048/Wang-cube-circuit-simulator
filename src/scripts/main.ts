@@ -20,7 +20,7 @@ setViewControls(camera)
 let ui_state : UIState = new UIState()
 implementMouseDrag(ui_state, camera)
 setGridToggle(ui_state)
-setRegexToggle()
+setRegexToggle(ui_state)
 
 
 const wf : WangFile = getStarterWangFile();
