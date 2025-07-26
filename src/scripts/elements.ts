@@ -32,6 +32,7 @@ export const selectButton : HTMLButtonElement = document.getElementById('select-
 export const eraseButton : HTMLButtonElement = document.getElementById('erase-button') as HTMLButtonElement;
 
 export const regexToggleButton : HTMLButtonElement = document.getElementById('regex-button') as HTMLButtonElement;
+export const searchInput : HTMLInputElement = document.getElementById('search-tile-picker') as HTMLInputElement;
 
 
 export const createTileTypeButton : HTMLButtonElement = document.getElementById('create-tile-button') as HTMLButtonElement;

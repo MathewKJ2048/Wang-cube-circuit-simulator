@@ -1,4 +1,6 @@
+@use "sass:math";
+
 $base-hue: 180;
-$accent-hue: 240;
+$accent-hue: $base-hue+60;
 $back-ground-color: black;
 $text-color: white;

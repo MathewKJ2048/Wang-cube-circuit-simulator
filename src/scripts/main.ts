@@ -9,7 +9,8 @@ import { WangFile, getStarterWangFile } from "./logic.js"
 import { setupSelection, SelectionZone } from "./selection.js";
 import { setViewControls } from "./view_controls.js";
 import { setGridToggle } from "./grid_toggle.js";
-import { setRegexToggle } from "./regexToggle.js";
+import { setUpSearch } from "./search.js";
+
 
 
 canvasSetup()
@@ -20,15 +21,16 @@ setViewControls(camera)
 let ui_state : UIState = new UIState()
 implementMouseDrag(ui_state, camera)
 setGridToggle(ui_state)
-setRegexToggle(ui_state)
+
 
 
 const wf : WangFile = getStarterWangFile();
 setupUploadDownloadButtons(wf)
-// listTiles(wf)
+setUpSearch(ui_state, wf)
 
 const selectionZone : SelectionZone = new SelectionZone()
 setupSelection(ui_state, selectionZone, camera)
+
 
 
 function render()

@@ -29,6 +29,7 @@ export class UIState // to do with the main canvas
 	mode: Mode = Mode.DEFAULT
 	gridEnabled: boolean = true
 	regexEnabled: boolean = false
+	searchQuery: string = ""
 }
 
 export function getMouseScreenCoordinates(e : MouseEvent)

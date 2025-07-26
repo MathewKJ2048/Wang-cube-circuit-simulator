@@ -15,26 +15,29 @@ input[type="text"]
 	flex-shrink: 1;
 	
 }
-  
-  input[type="text"]:hover {
-	border-color: #666666;        /* Lighter gray on hover */
-  }
-  
-  input[type="text"]::placeholder {
-	color: #aaaaaa;               /* Light gray placeholder */
-	opacity: 1;                   /* Ensure visibility */
-	
-  }
 
-  input[type="color"]
-  {
-	flex-shrink: 0;
-	margin: 0;
-	padding: 0;
-	border-radius: 999px;
-	width: buttons.$button-size;
-	height: buttons.$button-size;
 
-  }
+  
+input[type="text"]:hover {
+border-color: #666666;        /* Lighter gray on hover */
+}
+
+input[type="text"]::placeholder {
+color: #aaaaaa;               /* Light gray placeholder */
+opacity: 1;                   /* Ensure visibility */
+
+}
+
+input[type="color"]
+{
+flex-shrink: 0;
+margin: 0;
+padding: 0;
+border-radius: 999px;
+width: buttons.$button-size;
+height: buttons.$button-size;
+
+}
+
 
 
