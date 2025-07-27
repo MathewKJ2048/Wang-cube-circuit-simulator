@@ -1,5 +1,5 @@
 
-import { setUpAllCanvases, updateAllCanvases } from "./canvases.js"
+import { setUpCanvas, updateCanvas } from "./canvas.js"
 import { setUpUploadDownloadButtons } from "./file_manager.js"
 import { render } from './render.js'
 import { UIState } from "./UI.js"
@@ -10,14 +10,15 @@ import { setUpGridToggle, updateGridToggle } from "./grid_toggle.js";
 import { setUpSearch, updateSearch } from "./search.js";
 import { setUpPicker, updatePicker } from "./picker.js"
 import { setUpEditor } from "./editor.js"
+import { setUpPreview } from "./preview.js"
 
 
 const wf : WangFile = getStarterWangFile();
 const ui_state : UIState = new UIState();
 
 
-setUpAllCanvases()
-updateAllCanvases()
+setUpCanvas()
+updateCanvas()
 
 setUpViewControls(ui_state)
 updateViewControls(ui_state)
@@ -40,6 +41,8 @@ updatePicker(ui_state, wf)
 
 setUpEditor(ui_state, wf)
 
+
+setUpPreview(ui_state, wf)
 
 
 function animate() {

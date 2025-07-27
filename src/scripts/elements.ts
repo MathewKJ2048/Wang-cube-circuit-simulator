@@ -2,8 +2,6 @@
 export const canvas : HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
 export const ctx : CanvasRenderingContext2D = canvas.getContext('2d')!;
 
-export const previewCanvas : HTMLCanvasElement = document.getElementById('preview-canvas') as HTMLCanvasElement;
-export const previewCtx : CanvasRenderingContext2D = previewCanvas.getContext('2d')!;
 
 export const downloadButton : HTMLButtonElement = document.getElementById('download-button') as HTMLButtonElement
 export const uploadButton : HTMLButtonElement = document.getElementById('upload-button') as HTMLButtonElement

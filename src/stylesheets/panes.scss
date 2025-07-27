@@ -36,7 +36,11 @@
 
 .preview-pane
 {
+	display: flex;
 	flex-grow: 1;
 	min-height: 0;
 	@include borders.custom-border(colors.$base-hue);
+	overflow-y: auto;
+	overflow-x: auto;
 }
+

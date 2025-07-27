@@ -1,4 +1,4 @@
-import { canvas, previewCanvas } from "./elements";
+import { canvas } from "./elements";
 
 
 export function resizeCanvas(cv : HTMLCanvasElement): void
@@ -8,16 +8,15 @@ export function resizeCanvas(cv : HTMLCanvasElement): void
 	cv.height = container.clientHeight;
 }
 
-export function updateAllCanvases(): void
+export function updateCanvas(): void
 {
 	resizeCanvas(canvas);
-	resizeCanvas(previewCanvas);
 }
 
-export function setUpAllCanvases(): void
+export function setUpCanvas(): void
 {
 	window.addEventListener('resize', ()=>{
-		updateAllCanvases()
+		updateCanvas()
 	});
 }
 

@@ -2,6 +2,8 @@ import { Vector } from "./util.js"
 import { PlaneTiling, TileType } from "./logic.js"
 import { canvas } from "./elements.js"
 import { fromScreenCoordinates, Camera } from "./render_util.js"
+import type { PerspectiveCamera } from "three";
+import { getPerspectiveCamera } from "./preview.js";
 
 
 export class DragState
@@ -26,6 +28,7 @@ export type PickedToken = TileType | PlaneTiling | null
 export class UIState // to do with the main canvas
 {
 	camera: Camera = new Camera() // camera used to render the canvas
+	perspectiveCamera : PerspectiveCamera = getPerspectiveCamera()
 	dragState: DragState = DragState.FREE // checks whether the mouse is dragging
 	mouseScreenPosition: Vector = new Vector() // stores old values of x and y
 	pickedToken : PickedToken = null;
