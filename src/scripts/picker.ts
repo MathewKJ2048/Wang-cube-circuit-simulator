@@ -1,5 +1,6 @@
-import { createPickerButton } from "./elements";
-import { TileType, WangFile } from "./logic";
+import { updateEditor } from "./editor";
+import { createPickerButton, deletePickerButton } from "./elements";
+import { PlaneTiling, TileType, WangFile } from "./logic";
 import { UIState, type PickedToken } from "./UI";
 
 /*
@@ -25,6 +26,7 @@ function generateResultForPickedToken(pt : PickedToken, ui_state: UIState): HTML
 	radioInput.name = 'picker-radio-group';
 	radioInput.addEventListener('click', () => {
 		ui_state.pickedToken = pt
+		updateEditor(ui_state)
 	})
 
 	container.appendChild(textInput);
@@ -37,9 +39,35 @@ function setUpPickerCreateButton(ui_state: UIState, wf: WangFile): void
 {
 	createPickerButton.addEventListener('click',()=>{
 		const tt : TileType =  WangFile.addNewTileType(wf)
-		updatePicker(ui_state, wf)
 		ui_state.pickedToken = tt
-		console.log(ui_state.pickedToken)
+		updatePicker(ui_state, wf)
+		updateEditor(ui_state)
+	})
+}
+
+function setUpPickerDeleteButton(ui_state: UIState, wf: WangFile): void
+{
+	deletePickerButton.addEventListener('click',()=>
+	{
+		const pt = ui_state.pickedToken
+		if(pt===null)return
+		if(TileType.isTileType(pt))
+		{
+			if(WangFile.deleteTileType(pt, wf))
+			{
+				ui_state.pickedToken=null
+				// TODO fill in error case
+			}
+		}
+		if(PlaneTiling.isPlaneTiling(pt))
+		{
+			if(WangFile.deleteSavedPlaneTiling(pt,wf))
+			{
+				ui_state.pickedToken=null
+			}
+		}
+		updatePicker(ui_state, wf)
+		updateEditor(ui_state)
 	})
 }
 
@@ -73,9 +101,11 @@ export function updatePicker(ui_state: UIState, wf: WangFile): void
 	generateResultForPickedToken
 	resultsPanel.innerHTML = ""
 	filteredResultTokens.forEach(t => resultsPanel.appendChild(generateResultForPickedToken(t, ui_state)))
+
 }
 
 export function setUpPicker(ui_state: UIState, wf: WangFile)
 {
 	setUpPickerCreateButton(ui_state, wf)
+	setUpPickerDeleteButton(ui_state, wf)
 }

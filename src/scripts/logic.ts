@@ -1,5 +1,5 @@
 
-import {Vector, Color, deleteFromList} from './util.js'
+import {Vector, Color, deleteFromList, DEFAULT_COLOR} from './util.js'
 
 export type stringColorMap = {
 	[key: string]: Color;
@@ -19,7 +19,7 @@ function isStringColorMap(obj: unknown): obj is stringColorMap
 	return true
 }
 
-export const ANYTHING : string = ""
+export const ANYTHING : string = "anything"
 export class TileType
 {
 	up : string = ANYTHING
@@ -29,7 +29,7 @@ export class TileType
 	front : string = ANYTHING
 	back : string = ANYTHING
 	name : string = ""
-	color : Color = new Color();
+	color : Color = DEFAULT_COLOR;
 	public static isTileType(obj:unknown): obj is TileType
 	{
 		return typeof obj === 'object' && obj !== null 
@@ -89,7 +89,9 @@ export class WangFile // stores the whole context, to be in a json file
 	savedSubPlaneTilings: PlaneTiling[] = [] // saved sub-circuits
 	mainPlaneTiling: PlaneTiling = new PlaneTiling()
 	cachedPlaneTiling: PlaneTiling = new PlaneTiling() // cache used to reset after simulation
-	colorMap : stringColorMap = {}
+	colorMap : stringColorMap = {
+		ANYTHING: new Color(0,0,0)
+	}
 
 
 	public static isWangFile(obj: unknown): obj is WangFile
@@ -146,7 +148,7 @@ export class WangFile // stores the whole context, to be in a json file
 		}
 		const name = generateName(base, num) // unique string
 		const tt : TileType = new TileType()
-		tt.name = tt.front = name // guarantees difference
+		tt.name = tt.front = tt.back = name // guarantees difference, and persistence
 		wf.tileTypes.push(tt)
 		return tt
 	}
@@ -163,6 +165,11 @@ export class WangFile // stores the whole context, to be in a json file
 			wf.tileTypes = deleteFromList<TileType>(wf.tileTypes,tt)
 		}
 		return answer
+	}
+	public static deleteSavedPlaneTiling(pt : PlaneTiling, wf : WangFile) : boolean
+	{
+		wf.savedSubPlaneTilings = deleteFromList(wf.savedSubPlaneTilings,pt)
+		return true
 	}
 
 }

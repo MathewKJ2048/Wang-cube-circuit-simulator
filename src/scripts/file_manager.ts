@@ -1,5 +1,7 @@
 import { downloadButton, uploadButton } from "./elements.js";
 import { WangFile } from "./logic.js"
+import { updatePicker } from "./picker.js";
+import type { UIState } from "./UI.js";
 
 /**
  * Converts an object to a downloadable JSON file
@@ -104,7 +106,7 @@ try {
 
 
 
-export function setupUploadDownloadButtons(wf : WangFile): void 
+export function setUpUploadDownloadButtons(ui_state: UIState, wf : WangFile): void 
 {
 	downloadButton.addEventListener('click', async() => 
 	{
@@ -116,5 +118,6 @@ export function setupUploadDownloadButtons(wf : WangFile): void
 	{
 		let data = await openJsonFile<WangFile>(WangFile.isWangFile);	
 		wf.overWrite(data)
+		updatePicker(ui_state, wf)
 	})
 }

@@ -1,6 +1,6 @@
 
 import { setUpAllCanvases, updateAllCanvases } from "./canvases.js"
-import { setupUploadDownloadButtons } from "./file_manager.js"
+import { setUpUploadDownloadButtons } from "./file_manager.js"
 import { render } from './render.js'
 import { UIState } from "./UI.js"
 import { setUpMouseDrag } from "./mouse_drag.js"
@@ -28,11 +28,11 @@ setUpGridToggle(ui_state)
 updateGridToggle(ui_state)
 
 
-setupUploadDownloadButtons(wf)
+setUpUploadDownloadButtons(ui_state, wf)
 
 
 setUpSearch(ui_state, wf)
-updateSearch(ui_state, wf)
+updateSearch(ui_state) // no need wang file since search bar state doesn't depend on wang file
 
 setUpPicker(ui_state, wf)
 updatePicker(ui_state, wf)

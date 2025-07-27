@@ -43,3 +43,21 @@ export const deletePickerButton : HTMLButtonElement = document.getElementById('d
 export const stepForwardButton : HTMLButtonElement = document.getElementById('step-forward-button') as HTMLButtonElement;
 export const stepBackwardButton : HTMLButtonElement = document.getElementById('step-back-button') as HTMLButtonElement;
 export const resetTimeButton : HTMLButtonElement = document.getElementById('reset-time-button') as HTMLButtonElement;
+
+
+export const nameInput : HTMLInputElement = document.getElementById('editor-name') as HTMLInputElement;
+export const upInput : HTMLInputElement = document.getElementById('editor-up') as HTMLInputElement;
+export const downInput : HTMLInputElement = document.getElementById('editor-down') as HTMLInputElement;
+export const leftInput : HTMLInputElement = document.getElementById('editor-left') as HTMLInputElement;
+export const rightInput : HTMLInputElement = document.getElementById('editor-right') as HTMLInputElement;
+export const frontInput : HTMLInputElement = document.getElementById('editor-front') as HTMLInputElement;
+export const backInput : HTMLInputElement = document.getElementById('editor-back') as HTMLInputElement;
+
+
+export const colorPickerName : HTMLInputElement = document.getElementById('color-chooser-name') as HTMLInputElement;
+export const colorPickerUp : HTMLInputElement = document.getElementById('color-chooser-up') as HTMLInputElement;
+export const colorPickerDown : HTMLInputElement = document.getElementById('color-chooser-down') as HTMLInputElement;
+export const colorPickerLeft : HTMLInputElement = document.getElementById('color-chooser-left') as HTMLInputElement;
+export const colorPickerRight : HTMLInputElement = document.getElementById('color-chooser-right') as HTMLInputElement;
+export const colorPickerFront : HTMLInputElement = document.getElementById('color-chooser-front') as HTMLInputElement;
+export const colorPickerBack : HTMLInputElement = document.getElementById('color-chooser-back') as HTMLInputElement;

@@ -43,7 +43,7 @@ export function setUpSearch(ui_state : UIState, wf : WangFile): void
 	setUpRegexToggleButton(ui_state, wf)
 }
 
-export function updateSearch(ui_state : UIState, wf : WangFile) : void
+export function updateSearch(ui_state : UIState) : void
 {
 	updateRegexToggleButton(ui_state)
 }

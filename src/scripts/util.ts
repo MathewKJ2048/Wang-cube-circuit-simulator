@@ -47,7 +47,16 @@ export class Color
 	{
 		return c_.r === c.r && c_.g === c.g && c_.b === c.b
 	}
+	public static toHex(c: Color) 
+	{
+		// Convert RGB to hex format (#RRGGBB)
+		const toHex = (value: number) => Math.min(255, Math.max(0, value)).toString(16).padStart(2, '0');
+		const hexColor = `#${toHex(c.r)}${toHex(c.g)}${toHex(c.b)}`;
+		return hexColor
+	}
 }
+
+export const DEFAULT_COLOR : Color = new Color(100,100,100)
 
 export function getFraction(value: number, min: number, max: number) : number
 {
@@ -62,3 +71,21 @@ export function deleteFromList<T>(l : T[], o : T): T[]
 {
 	return l.filter(e => {return e !== o})
 }
+
+export function getColorFromStringHash(str: string): string {
+	let hash = 0;
+	
+	// Generate a hash code from the string
+	for (let i = 0; i < str.length; i++) {
+	  hash = str.charCodeAt(i) * hash;
+	}
+	
+	// Convert the hash to a hex color
+	let color = '#';
+	for (let i = 0; i < 3; i++) {
+	  const value = (hash >> (i * 8)) & 0xFF;
+	  color += ('00' + value.toString(16)).substr(-2);
+	}
+	
+	return color;
+  }
