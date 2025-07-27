@@ -128,6 +128,26 @@ export class WangFile // stores the whole context, to be in a json file
 		&& validatePlaneTiling(wf.cachedPlaneTiling) 
 		&& wf.savedSubPlaneTilings.every(pt => validatePlaneTiling(pt))
 	}
+	public static addNewTileType(wf : WangFile) // generates a unique TileType and adds it
+	{
+		function generateName(b: string, n: number) : string
+		{
+			return b+String(n)
+		}
+
+		const base : string = "new-tile-"
+		let num : number = 0
+		while(wf.tileTypes.some((tt)=>tt.front===generateName(base,num)))
+		{
+			num = num+1
+		}
+		const name = generateName(base, num) // unique string
+		const tt : TileType = new TileType()
+		tt.name = tt.front = name // guarantees difference
+		wf.tileTypes.push(tt)
+		console.log(tt)
+
+	}
 
 }
 

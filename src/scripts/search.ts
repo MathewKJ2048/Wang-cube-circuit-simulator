@@ -27,7 +27,7 @@ function updateSearchResults(ui_state : UIState, wf : WangFile) : void
 		wf.tileTypes.filter(
 			tt => 
 			match(tt.name,ui_state.searchQuery,ui_state.regexEnabled
-	)))
+	)),ui_state)
 }
 
 function setRegexToggle(ui_state: UIState, wf : WangFile): void  

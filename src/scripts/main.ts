@@ -10,6 +10,7 @@ import { setupSelection, SelectionZone } from "./selection.js";
 import { setViewControls } from "./view_controls.js";
 import { setGridToggle } from "./grid_toggle.js";
 import { setUpSearch } from "./search.js";
+import { setupTileTypeEditingButtons } from "./tile_editor.js"
 
 
 
@@ -18,15 +19,18 @@ canvasSetup()
 let camera : Camera = new Camera();
 setViewControls(camera)
 
-let ui_state : UIState = new UIState()
+
+const wf : WangFile = getStarterWangFile();
+
+
+let ui_state : UIState = new UIState(wf.tileTypes[0])
+
 implementMouseDrag(ui_state, camera)
 setGridToggle(ui_state)
 
-
-
-const wf : WangFile = getStarterWangFile();
 setupUploadDownloadButtons(wf)
 setUpSearch(ui_state, wf)
+setupTileTypeEditingButtons(ui_state, wf)
 
 const selectionZone : SelectionZone = new SelectionZone()
 setupSelection(ui_state, selectionZone, camera)
