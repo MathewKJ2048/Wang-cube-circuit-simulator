@@ -97,3 +97,8 @@ zoom out
 - the colorpicker is nonetheless affected by the name fields
 - the name field edits are not implemented at this moment since there are validation rules for a successful edit
 - the colormap has no rules, in essence
+
+
+## Edit policy:
+
+- If a color is edited, it gets edited, that's it

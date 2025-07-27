@@ -1,6 +1,7 @@
 import { backInput, colorPickerBack, colorPickerDown, colorPickerFront, colorPickerLeft, colorPickerName, colorPickerRight, colorPickerUp, downInput, frontInput, leftInput, nameInput, rightInput, upInput } from "./elements";
 import { PlaneTiling, TileType, WangFile, } from "./logic";
-import type { PickedToken, UIState } from "./UI";
+import { updatePicker } from "./picker";
+import type { UIState } from "./UI";
 import { Color } from "./util";
 
 
@@ -90,6 +91,27 @@ function setUpDirectionColorPickers(ui_state: UIState, wf : WangFile): void
 	})
 }
 
+function setUpNameInput(ui_state : UIState, wf : WangFile): void
+{
+	nameInput.addEventListener("input",(event)=>{
+		const new_name: string = (event.target as HTMLInputElement).value
+		const pt = ui_state.pickedToken
+		if(pt === null)return
+		if(PlaneTiling.isPlaneTiling(pt))
+		{
+			pt.name = new_name
+		}
+		if(TileType.isTileType(pt))
+		{
+			const new_tt = TileType.getCopy(pt)
+			new_tt.name = new_name
+			if(WangFile.editTileType(pt,new_tt,wf))ui_state.pickedToken = new_tt
+		}
+		updateEditor(ui_state, wf)
+		updatePicker(ui_state, wf)
+		
+	})
+}
 
 
 
@@ -130,4 +152,5 @@ export function setUpEditor(ui_state : UIState, wf : WangFile): void
 {
 	setUpNameColorPicker(ui_state)
 	setUpDirectionColorPickers(ui_state, wf)
+	setUpNameInput(ui_state, wf)
 }

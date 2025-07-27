@@ -22,6 +22,9 @@ function isStringColorMap(obj: unknown): obj is stringColorMap
 export const ANYTHING : string = "anything"
 export class TileType
 {
+	private static UID = 0;
+	public readonly uid: number;
+
 	up : string = ANYTHING
 	down : string = ANYTHING
 	left : string = ANYTHING
@@ -30,6 +33,26 @@ export class TileType
 	back : string = ANYTHING
 	name : string = ""
 	color : Color = DEFAULT_COLOR;
+
+	constructor()
+	{
+		TileType.UID+=1
+		this.uid = TileType.UID;
+	}
+	public static getCopy(tt : TileType): TileType
+	{
+		const copy = new TileType()
+		copy.up = tt.up
+		copy.down = tt.down
+		copy.left = tt.left
+		copy.right = tt.right
+		copy.front = tt.front
+		copy.back = tt.back
+		copy.name = tt.name
+		copy.color = new Color(tt.color.r,tt.color.g,tt.color.b)
+		return copy
+	}
+
 	public static isTileType(obj:unknown): obj is TileType
 	{
 		return typeof obj === 'object' && obj !== null 
@@ -41,8 +64,13 @@ export class TileType
 		&& 'back' in obj && typeof obj.back === 'string'
 		&& 'name' in obj && typeof obj.name === 'string'
 		&& 'color' in obj && Color.isColor(obj.color)
+		&& 'uid' in obj && typeof obj.uid === 'number'
 	}
 	public static equals(tt: TileType, tt_ : TileType): boolean
+	{
+		return tt.uid === tt_.uid
+	}
+	public static equivalent(tt: TileType, tt_ : TileType): boolean
 	{
 		return tt_.up === tt.up && tt_.down === tt.down && tt_.left === tt.left && tt_.right === tt.right && tt_.front === tt.front && tt_.back === tt.back
 	}
@@ -54,8 +82,12 @@ export class TileType
 
 export class Tile
 {
-	tileType : TileType = new TileType();
+	tileType : TileType; // not initialized because of UID
 	r : Vector = new Vector();
+	constructor(tt : TileType)
+	{
+		this.tileType = tt
+	}
 	public static isTile(obj: unknown): obj is Tile
 	{
 		return typeof obj === 'object' && obj !== null
@@ -67,8 +99,11 @@ export class Tile
 
 export class PlaneTiling // stores a section of a tiling in space
 {
+	
+
 	tiles : Tile[] = [];
 	name : string = "";
+
 	public static isPlaneTiling(obj: unknown) : obj is PlaneTiling
 	{
 		return typeof obj === 'object' && obj !== null
@@ -169,6 +204,19 @@ export class WangFile // stores the whole context, to be in a json file
 			wf.tileTypes = deleteFromList<TileType>(wf.tileTypes,tt)
 		}
 		return answer
+	}
+	public static editTileType(tt : TileType, new_tt: TileType, wf : WangFile) : boolean
+	{
+		if(TileType.equals(tt,new_tt))return false
+		wf.tileTypes = deleteFromList(wf.tileTypes,tt)
+		wf.tileTypes.push(new_tt)
+
+		// manual upload, used instead of editing reference values since json doesn't support references when the WangFile is serialized
+		WangFile.getAllPlaneTilings(wf).forEach(pt => pt.tiles.forEach(t => {
+			if(TileType.equals(t.tileType,tt))t.tileType = new_tt 
+		}))
+		
+		return true
 	}
 	public static deleteSavedPlaneTiling(pt : PlaneTiling, wf : WangFile) : boolean
 	{
