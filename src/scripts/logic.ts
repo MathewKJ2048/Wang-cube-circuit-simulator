@@ -1,5 +1,5 @@
 
-import {Vector, Color} from './util.js'
+import {Vector, Color, deleteFromList} from './util.js'
 
 export type stringColorMap = {
 	[key: string]: Color;
@@ -42,9 +42,9 @@ export class TileType
 		&& 'name' in obj && typeof obj.name === 'string'
 		&& 'color' in obj && Color.isColor(obj.color)
 	}
-	public equals(tt: TileType): boolean
+	public static equals(tt: TileType, tt_ : TileType): boolean
 	{
-		return this.up === tt.up && this.down === tt.down && this.left === tt.left && this.right === tt.right && this.front === tt.front && this.back === tt.back
+		return tt_.up === tt.up && tt_.down === tt.down && tt_.left === tt.left && tt_.right === tt.right && tt_.front === tt.front && tt_.back === tt.back
 	}
 }
 
@@ -110,13 +110,18 @@ export class WangFile // stores the whole context, to be in a json file
 		this.cachedPlaneTiling = wf.cachedPlaneTiling
 		this.colorMap = wf.colorMap
 	}
+	public static getAllPlaneTilings(wf : WangFile) : PlaneTiling[]
+	{
+		return [wf.cachedPlaneTiling,wf.mainPlaneTiling].concat(wf.savedSubPlaneTilings)
+	}
 	public static checkTileTypeCoverage(tts : TileType[], pt : PlaneTiling): boolean
 	{
 		// make sure types of all tiles in the plane-tiling are present in the list of types
-		return pt.tiles.every(
-			t => tts.some(
-				tt => t.tileType.equals(tt)
-		))
+		function isCovered(t : Tile): boolean
+		{
+			return tts.some(tt => TileType.equals(t.tileType,tt))
+		}
+		return pt.tiles.every(t => isCovered(t))
 	}
 	public static validate(wf : WangFile) : boolean
 	{
@@ -124,11 +129,9 @@ export class WangFile // stores the whole context, to be in a json file
 		{
 			return PlaneTiling.validate(pt) && WangFile.checkTileTypeCoverage(wf.tileTypes,pt)
 		}
-		return validatePlaneTiling(wf.mainPlaneTiling) 
-		&& validatePlaneTiling(wf.cachedPlaneTiling) 
-		&& wf.savedSubPlaneTilings.every(pt => validatePlaneTiling(pt))
+		return WangFile.getAllPlaneTilings(wf).every(pt => validatePlaneTiling(pt))
 	}
-	public static addNewTileType(wf : WangFile) // generates a unique TileType and adds it
+	public static addNewTileType(wf : WangFile): TileType // generates a unique TileType and adds it
 	{
 		function generateName(b: string, n: number) : string
 		{
@@ -145,8 +148,21 @@ export class WangFile // stores the whole context, to be in a json file
 		const tt : TileType = new TileType()
 		tt.name = tt.front = name // guarantees difference
 		wf.tileTypes.push(tt)
-		console.log(tt)
-
+		return tt
+	}
+	public static deleteTileType(tt : TileType, wf : WangFile) : boolean 
+	{
+		// check if there is any tile t in pt that is of type tt, returns true if no tile t exists
+		function checkTileTypeUsed(tt: TileType, pt : PlaneTiling) : boolean
+		{
+			return !pt.tiles.some((t) => TileType.equals(tt,t.tileType))
+		}
+		const answer : boolean = WangFile.getAllPlaneTilings(wf).every(pt=>checkTileTypeUsed(tt, pt))
+		if(answer)
+		{
+			wf.tileTypes = deleteFromList<TileType>(wf.tileTypes,tt)
+		}
+		return answer
 	}
 
 }

@@ -19,20 +19,20 @@ export class Mode
 }
 
 
+export type PickedToken = TileType | PlaneTiling | null
+
+
 
 export class UIState // to do with the main canvas
 {
-	dragState: DragState = DragState.FREE
+	camera: Camera = new Camera() // camera used to render the canvas
+	dragState: DragState = DragState.FREE // checks whether the mouse is dragging
 	mouseScreenPosition: Vector = new Vector() // stores old values of x and y
-	selection : TileType | PlaneTiling;
+	pickedToken : PickedToken = null;
 	mode: Mode = Mode.DEFAULT
 	gridEnabled: boolean = true
 	regexEnabled: boolean = false
 	searchQuery: string = ""
-	constructor(selection: TileType | PlaneTiling)
-	{
-		this.selection = selection
-	}
 }
 
 export function getMouseScreenCoordinates(e : MouseEvent)

@@ -1,29 +1,16 @@
 import {Vector} from './util.js'
 import { Camera, fromScreenCoordinates, toScreenCoordinates } from './render_util.js'
 import { canvas, ctx } from './elements.js'
-import { SelectionZone } from './selection.js'
-import { UIState, Mode } from './UI.js'
+import { UIState } from './UI.js'
 
 
-export function renderSelectionZone(sz : SelectionZone, c: Camera, ui_state: UIState): void
-{
-	if (ui_state.mode !== Mode.SELECT_PIN) return
-	let tl: Vector = toScreenCoordinates(sz.topLeft,c)
-	let br: Vector = toScreenCoordinates(sz.bottomRight,c)
-	ctx.strokeStyle = "cyan"
-	ctx.beginPath()
-	ctx.moveTo(tl.x,tl.y)
-	ctx.lineTo(tl.x,br.y)
-	ctx.lineTo(br.x,br.y)
-	ctx.lineTo(br.x,tl.y)
-	ctx.lineTo(tl.x,tl.y)
-	ctx.stroke()
-}
 
 
-export function renderGrid(c : Camera, ui_state: UIState): void
+
+export function renderGrid(ui_state: UIState): void
 {
 	if(!ui_state.gridEnabled)return;	
+	const c: Camera = ui_state.camera
 
 	let min_x = Math.floor(fromScreenCoordinates(new Vector(0,0),c).x)
 	let max_x = Math.ceil(fromScreenCoordinates(new Vector(canvas.width,0),c).x)
@@ -52,11 +39,20 @@ export function renderGrid(c : Camera, ui_state: UIState): void
 	}
 }
 
-export function renderBackground(): void
+
+
+function renderBackground(): void
 {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = '#000000';
 	ctx.fillRect(0,0,canvas.width,canvas.height)
+}
+
+
+export function render(ui_state: UIState): void
+{
+	renderBackground()
+	renderGrid(ui_state)
 }
 
 

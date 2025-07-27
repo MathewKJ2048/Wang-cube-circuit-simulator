@@ -16,7 +16,7 @@
 	@include borders.custom-border(colors.$base-hue);
 }
 
-.tile-picker-pane
+.picker-pane
 {
 	display: flex;
 	flex-direction: column;
@@ -24,7 +24,7 @@
 	min-height: 0;
 }
 
-.tile-editor-pane
+.editor-pane
 {
 	display: flex;
 	flex-direction: column;

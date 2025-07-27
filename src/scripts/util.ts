@@ -57,3 +57,8 @@ export function getValue(fraction: number, min: number, max: number) : number
 {
 	return fraction*(max-min)+min
 }
+
+export function deleteFromList<T>(l : T[], o : T): T[]
+{
+	return l.filter(e => {return e !== o})
+}

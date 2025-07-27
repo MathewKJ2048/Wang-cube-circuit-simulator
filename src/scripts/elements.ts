@@ -32,12 +32,12 @@ export const selectButton : HTMLButtonElement = document.getElementById('select-
 export const eraseButton : HTMLButtonElement = document.getElementById('erase-button') as HTMLButtonElement;
 
 export const regexToggleButton : HTMLButtonElement = document.getElementById('regex-button') as HTMLButtonElement;
-export const searchInput : HTMLInputElement = document.getElementById('search-tile-picker') as HTMLInputElement;
+export const searchInput : HTMLInputElement = document.getElementById('search-picker') as HTMLInputElement;
 
 
-export const createTileTypeButton : HTMLButtonElement = document.getElementById('create-tile-button') as HTMLButtonElement;
-export const editTileTypeButton : HTMLButtonElement = document.getElementById('edit-tile-button') as HTMLButtonElement;
-export const deleteTileTypeButton : HTMLButtonElement = document.getElementById('delete-tile-button') as HTMLButtonElement;
+export const createPickerButton : HTMLButtonElement = document.getElementById('create-picker-button') as HTMLButtonElement;
+export const editPickerButton : HTMLButtonElement = document.getElementById('edit-picker-button') as HTMLButtonElement;
+export const deletePickerButton : HTMLButtonElement = document.getElementById('delete-picker-button') as HTMLButtonElement;
 
 
 export const stepForwardButton : HTMLButtonElement = document.getElementById('step-forward-button') as HTMLButtonElement;

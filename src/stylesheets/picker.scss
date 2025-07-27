@@ -2,7 +2,7 @@
 @use "./borders.scss";
 @use "./colors.scss";
 
-.tile-picker-static
+.picker-static
 {
 	display: flex;
 	flex-direction: row;
@@ -11,7 +11,7 @@
 	@include borders.custom-border-complete();
 }
 
-.tile-picker-dynamic
+.picker-dynamic
 {
 	display: flex;
 	flex-direction: column;
@@ -19,7 +19,7 @@
 	@include borders.custom-border-complete();
 }
 
-.tile-picker-search-result
+.picker-search-result
 {
 	display: flex;
 	flex-direction: row;

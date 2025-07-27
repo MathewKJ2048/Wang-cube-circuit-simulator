@@ -84,3 +84,11 @@ zoom out
 - the results show up in a results sub-pane, which is generated entirely
 - each entry has the tile name, a button with "add" and a button with "edit" and one with "delete". The add button is square, with the tile's color. The edit button loads the tile into the tile editor
 - the tile editor has the following button: save changes
+
+
+## UI system:
+
+- each UI component has a setUp and an Update
+- setUps cannot call anything, they can only add listeners. The listeners may call updates
+- updates are responsible solely for the state of the component itself, and cannot call imported updates
+- thus, the only condition to prevent infinite loops is to ensure no updates within a file call each other recursively

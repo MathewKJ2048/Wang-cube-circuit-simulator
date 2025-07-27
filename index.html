@@ -8,22 +8,22 @@
 	<body>
 		<div class="container">
 			<div class="side-section">
-				<div class="tile-picker-pane">
-					<div class="tile-picker-static">
+				<div class="picker-pane">
+					<div class="picker-static">
 						<button class="state-button" title="enable regex search" id="regex-button"><img src = "./icons/regex.svg"/></button>
-						<input type="text" id="search-tile-picker">
+						<input type="text" id="search-picker">
 					</div>
-					<div class="tile-picker-dynamic" id="tile-picker-dynamic">
-						<div class="tile-picker-search-result">
+					<div class="picker-dynamic" id="picker-dynamic">
+						<div class="picker-search-result">
 							<input type="text" value="This is a long non-editable text that can be scrolled horizontally, placed as a placeholder for testing" readonly><input type="radio" name="radioGroup">
 						</div>
 					</div>
-					<div class="control-pane" id="tile-picker-controls">
+					<div class="control-pane" id="picker-controls">
 						
 						<div class="control-group">
-							<button title="create tile" id="create-tile-button"><img src = "./icons/add.svg"/></button>
-							<button title = "edit tile"  id="edit-tile-button"><img src = "./icons/edit.svg"></button>
-							<button title = "delete tile"  id="delete-tile-button"><img src = "./icons/delete.svg"></button>
+							<button title="create tile" id="create-picker-button"><img src = "./icons/add.svg"/></button>
+							<button title = "edit selection"  id="edit-picker-button"><img src = "./icons/edit.svg"></button>
+							<button title = "delete selection"  id="delete-picker-button"><img src = "./icons/delete.svg"></button>
 						</div>
 					</div>
 				</div>
@@ -88,33 +88,33 @@
 				<div class="preview-pane">
 					<canvas id="preview-canvas"></canvas>
 				</div>
-				<div class="tile-editor-pane">
-					<div class="tile-editor-field">
-						<input type="text" id="tile-name" name="tile-name">
-						<input type="color">
+				<div class="editor-pane">
+					<div class="editor-field">
+						<input type="text" id="editor-name" name="editor-name">
+						<input type="color" id="color-chooser-name">
 					</div>
-					<div class="tile-editor-field">
-						<input type="text" id="tile-up" name="tile-up">
-						<input type="color" id="color-chooser-">
+					<div class="editor-field">
+						<input type="text" id="editor-up" name="editor-up">
+						<input type="color" id="color-chooser-up">
 					</div>
-					<div class="tile-editor-field">
-						<input type="text" id="tile-down" name="tile-down">
-						<input type="color" id="color-chooser-">
+					<div class="editor-field">
+						<input type="text" id="editor-down" name="editor-down">
+						<input type="color" id="color-chooser-down">
 					</div>
-					<div class="tile-editor-field">
-						<input type="text" id="tile-left" name="tile-left">
-						<input type="color" id="color-chooser-">
+					<div class="editor-field">
+						<input type="text" id="editor-left" name="editor-left">
+						<input type="color" id="color-chooser-left">
 					</div>
-					<div class="tile-editor-field">
-						<input type="text" id="tile-right" name="tile-right">
-						<input type="color" id="color-chooser-">
+					<div class="editor-field">
+						<input type="text" id="editor-right" name="editor-right">
+						<input type="color" id="color-chooser-right">
 					</div>
-					<div class="tile-editor-field">
-						<input type="text" id="tile-front" name="tile-front">
-						<input type="color" id="color-chooser-">
+					<div class="editor-field">
+						<input type="text" id="editor-front" name="editor-front">
+						<input type="color" id="color-chooser-front">
 					</div>
-					<div class="tile-editor-field">
-						<input type="text" id="tile-back" name="tile-back">
+					<div class="editor-field">
+						<input type="text" id="editor-back" name="editor-back">
 						<input type="color" id="color-chooser-back">
 					</div>
 					
