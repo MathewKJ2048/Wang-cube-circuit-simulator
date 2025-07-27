@@ -1,6 +1,6 @@
 import { backInput, colorPickerBack, colorPickerDown, colorPickerFront, colorPickerLeft, colorPickerName, colorPickerRight, colorPickerUp, downInput, frontInput, leftInput, nameInput, rightInput, upInput } from "./elements";
-import { PlaneTiling, TileType, } from "./logic";
-import type { UIState } from "./UI";
+import { PlaneTiling, TileType, WangFile, } from "./logic";
+import type { PickedToken, UIState } from "./UI";
 import { Color } from "./util";
 
 
@@ -30,11 +30,70 @@ function toggleAllColorPickers(disabled : boolean = true): void
 	[colorPickerBack,colorPickerDown,colorPickerFront,colorPickerLeft,colorPickerRight,colorPickerUp, colorPickerName].forEach(cpx => cpx.disabled=disabled)
 	
 }
+function setUpNameColorPicker(ui_state: UIState) : void
+{
+	colorPickerName.addEventListener('input', (e) => {
+		const hexColor = (e.target as HTMLInputElement).value;
+		if(TileType.isTileType(ui_state.pickedToken))
+			ui_state.pickedToken.color = Color.fromHex(hexColor)
+	})
+}
+function setUpDirectionColorPickers(ui_state: UIState, wf : WangFile): void
+{
+	colorPickerUp.addEventListener('input',(e)=>
+	{
+		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
+		const pt = ui_state.pickedToken
+		if(TileType.isTileType(pt))
+			WangFile.registerColor(pt.up,c,wf)
+		updateEditor(ui_state,wf)
+	})
+	colorPickerDown.addEventListener('input',(e)=>
+	{
+		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
+		const pt = ui_state.pickedToken
+		if(TileType.isTileType(pt))
+			WangFile.registerColor(pt.down,c,wf)
+		updateEditor(ui_state,wf)
+	})
+	colorPickerLeft.addEventListener('input',(e)=>
+	{
+		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
+		const pt = ui_state.pickedToken
+		if(TileType.isTileType(pt))
+			WangFile.registerColor(pt.left,c,wf)
+		updateEditor(ui_state,wf)
+	})
+	colorPickerRight.addEventListener('input',(e)=>
+	{
+		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
+		const pt = ui_state.pickedToken
+		if(TileType.isTileType(pt))
+			WangFile.registerColor(pt.right,c,wf)
+		updateEditor(ui_state,wf)
+	})
+	colorPickerFront.addEventListener('input',(e)=>
+	{
+		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
+		const pt = ui_state.pickedToken
+		if(TileType.isTileType(pt))
+			WangFile.registerColor(pt.front,c,wf)
+		updateEditor(ui_state,wf)
+	})
+	colorPickerBack.addEventListener('input',(e)=>
+	{
+		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
+		const pt = ui_state.pickedToken
+		if(TileType.isTileType(pt))
+			WangFile.registerColor(pt.back,c,wf)
+		updateEditor(ui_state,wf)
+	})
+}
 
 
 
 
-export function updateEditor(ui_state : UIState): void
+export function updateEditor(ui_state : UIState, wf : WangFile): void
 {
 	const pt = ui_state.pickedToken
 	if(pt === null)
@@ -54,13 +113,21 @@ export function updateEditor(ui_state : UIState): void
 	if(TileType.isTileType(pt))
 	{
 		setValues(pt.name,pt.up,pt.down,pt.left,pt.right,pt.front,pt.back)
-		colorPickerName.value = Color.toHex(pt.color)
 		toggleAllColorPickers(false)
+		setColors(
+			pt.color,
+			WangFile.getColorFromString(pt.up,wf),
+			WangFile.getColorFromString(pt.down,wf),
+			WangFile.getColorFromString(pt.left,wf),
+			WangFile.getColorFromString(pt.right,wf),
+			WangFile.getColorFromString(pt.front,wf),
+			WangFile.getColorFromString(pt.back,wf),
+		)
 	}
-	console.log("updated editor")
 }
 
-export function setUpEditor(): void
+export function setUpEditor(ui_state : UIState, wf : WangFile): void
 {
-
+	setUpNameColorPicker(ui_state)
+	setUpDirectionColorPickers(ui_state, wf)
 }

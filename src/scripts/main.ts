@@ -9,6 +9,7 @@ import { setUpViewControls, updateViewControls } from "./view_controls.js";
 import { setUpGridToggle, updateGridToggle } from "./grid_toggle.js";
 import { setUpSearch, updateSearch } from "./search.js";
 import { setUpPicker, updatePicker } from "./picker.js"
+import { setUpEditor } from "./editor.js"
 
 
 const wf : WangFile = getStarterWangFile();
@@ -36,6 +37,8 @@ updateSearch(ui_state) // no need wang file since search bar state doesn't depen
 
 setUpPicker(ui_state, wf)
 updatePicker(ui_state, wf)
+
+setUpEditor(ui_state, wf)
 
 
 

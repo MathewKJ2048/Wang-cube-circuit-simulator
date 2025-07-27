@@ -46,6 +46,10 @@ export class TileType
 	{
 		return tt_.up === tt.up && tt_.down === tt.down && tt_.left === tt.left && tt_.right === tt.right && tt_.front === tt.front && tt_.back === tt.back
 	}
+	public static getStrings(tt : TileType) : string[]
+	{
+		return [tt.up,tt.down,tt.left,tt.right,tt.front,tt.back]
+	}
 }
 
 export class Tile
@@ -89,7 +93,7 @@ export class WangFile // stores the whole context, to be in a json file
 	savedSubPlaneTilings: PlaneTiling[] = [] // saved sub-circuits
 	mainPlaneTiling: PlaneTiling = new PlaneTiling()
 	cachedPlaneTiling: PlaneTiling = new PlaneTiling() // cache used to reset after simulation
-	colorMap : stringColorMap = {
+	colorMap : stringColorMap = { // only for the sides, not the main
 		ANYTHING: new Color(0,0,0)
 	}
 
@@ -172,20 +176,37 @@ export class WangFile // stores the whole context, to be in a json file
 		return true
 	}
 
+	public static getColorFromString(s : string, wf : WangFile): Color
+	{
+		if(s in wf.colorMap) return wf.colorMap[s]
+		return new Color()
+	}
+	public static registerColor(s: string, c : Color, wf : WangFile): void
+	{
+		wf.colorMap[s] = c
+	}
+	public static trimColorMap(wf: WangFile) : void // remove unused colors from map
+	{
+		const newColorMap : stringColorMap = {}
+		wf.tileTypes.forEach(t => TileType.getStrings(t).forEach(s => newColorMap[s] = wf.colorMap[s]))
+		wf.colorMap = newColorMap
+	}
+
 }
 
 export function getPlaceholderTileType(): TileType
 {
 	let placeholder : TileType = new TileType();
-	placeholder.color = new Color(200,200,200);
-	placeholder.name = "placeholder"
+	placeholder.color = DEFAULT_COLOR;
+	placeholder.name = placeholder.front = placeholder.back = "placeholder"
 	return placeholder
 }
 
 export function getStarterWangFile(): WangFile
 {
 	let w : WangFile = new WangFile();
-	w.tileTypes.push(getPlaceholderTileType())
+	let tt = getPlaceholderTileType()
+	w.tileTypes.push(tt)
 	return w
 }
 

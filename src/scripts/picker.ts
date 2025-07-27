@@ -10,7 +10,7 @@ import { UIState, type PickedToken } from "./UI";
 */
 
 
-function generateResultForPickedToken(pt : PickedToken, ui_state: UIState): HTMLDivElement
+function generateResultForPickedToken(pt : PickedToken, ui_state: UIState, wf : WangFile): HTMLDivElement
 {
 
 	const container : HTMLDivElement = document.createElement('div');
@@ -26,7 +26,7 @@ function generateResultForPickedToken(pt : PickedToken, ui_state: UIState): HTML
 	radioInput.name = 'picker-radio-group';
 	radioInput.addEventListener('click', () => {
 		ui_state.pickedToken = pt
-		updateEditor(ui_state)
+		updateEditor(ui_state, wf)
 	})
 
 	container.appendChild(textInput);
@@ -41,7 +41,7 @@ function setUpPickerCreateButton(ui_state: UIState, wf: WangFile): void
 		const tt : TileType =  WangFile.addNewTileType(wf)
 		ui_state.pickedToken = tt
 		updatePicker(ui_state, wf)
-		updateEditor(ui_state)
+		updateEditor(ui_state, wf)
 	})
 }
 
@@ -67,7 +67,7 @@ function setUpPickerDeleteButton(ui_state: UIState, wf: WangFile): void
 			}
 		}
 		updatePicker(ui_state, wf)
-		updateEditor(ui_state)
+		updateEditor(ui_state, wf)
 	})
 }
 
@@ -100,7 +100,7 @@ export function updatePicker(ui_state: UIState, wf: WangFile): void
 	const resultsPanel : HTMLBodyElement = document.getElementById("picker-dynamic") as HTMLBodyElement
 	generateResultForPickedToken
 	resultsPanel.innerHTML = ""
-	filteredResultTokens.forEach(t => resultsPanel.appendChild(generateResultForPickedToken(t, ui_state)))
+	filteredResultTokens.forEach(t => resultsPanel.appendChild(generateResultForPickedToken(t, ui_state,wf)))
 
 }
 

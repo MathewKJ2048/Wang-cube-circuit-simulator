@@ -92,3 +92,8 @@ zoom out
 - setUps cannot call anything, they can only add listeners. The listeners may call updates
 - updates are responsible solely for the state of the component itself, and cannot call imported updates
 - thus, the only condition to prevent infinite loops is to ensure no updates within a file call each other recursively
+
+- only the colorpicker can change the colormap
+- the colorpicker is nonetheless affected by the name fields
+- the name field edits are not implemented at this moment since there are validation rules for a successful edit
+- the colormap has no rules, in essence

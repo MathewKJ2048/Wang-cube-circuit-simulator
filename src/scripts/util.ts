@@ -54,6 +54,14 @@ export class Color
 		const hexColor = `#${toHex(c.r)}${toHex(c.g)}${toHex(c.b)}`;
 		return hexColor
 	}
+	public static fromHex(hex: string)
+	{
+		const hexColor = hex.startsWith('#') ? hex.slice(1) : hex;
+		const r = parseInt(hexColor.substring(0, 2), 16);
+		const g = parseInt(hexColor.substring(2, 4), 16);
+		const b = parseInt(hexColor.substring(4, 6), 16);
+		return new Color(r,g,b)
+	}
 }
 
 export const DEFAULT_COLOR : Color = new Color(100,100,100)
@@ -72,20 +80,3 @@ export function deleteFromList<T>(l : T[], o : T): T[]
 	return l.filter(e => {return e !== o})
 }
 
-export function getColorFromStringHash(str: string): string {
-	let hash = 0;
-	
-	// Generate a hash code from the string
-	for (let i = 0; i < str.length; i++) {
-	  hash = str.charCodeAt(i) * hash;
-	}
-	
-	// Convert the hash to a hex color
-	let color = '#';
-	for (let i = 0; i < 3; i++) {
-	  const value = (hash >> (i * 8)) & 0xFF;
-	  color += ('00' + value.toString(16)).substr(-2);
-	}
-	
-	return color;
-  }
