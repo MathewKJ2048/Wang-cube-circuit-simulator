@@ -1,3 +1,5 @@
+
+import { updateControlButtons } from "./control_buttons";
 import { updateEditor } from "./editor";
 import { createPickerButton, deletePickerButton } from "./elements";
 import { PlaneTiling, TileType, WangFile } from "./logic";
@@ -9,6 +11,12 @@ import { UIState, type PickedToken } from "./UI";
 </div>
 */
 
+
+function updateDependencies(ui_state: UIState, wf : WangFile): void
+{
+	updateEditor(ui_state, wf)
+	updateControlButtons(ui_state, wf)
+}
 
 function generateResultForPickedToken(pt : PickedToken, ui_state: UIState, wf : WangFile): HTMLDivElement
 {
@@ -25,8 +33,8 @@ function generateResultForPickedToken(pt : PickedToken, ui_state: UIState, wf : 
 	radioInput.type = 'radio';
 	radioInput.name = 'picker-radio-group';
 	radioInput.addEventListener('click', () => {
-		ui_state.pickedToken = pt
-		updateEditor(ui_state, wf)
+		ui_state.setPickedToken(pt)
+		updateDependencies(ui_state,wf)
 	})
 
 	container.appendChild(textInput);
@@ -39,9 +47,9 @@ function setUpPickerCreateButton(ui_state: UIState, wf: WangFile): void
 {
 	createPickerButton.addEventListener('click',()=>{
 		const tt : TileType =  WangFile.addNewTileType(wf)
-		ui_state.pickedToken = tt
+		ui_state.setPickedToken(tt)
 		updatePicker(ui_state, wf)
-		updateEditor(ui_state, wf)
+		updateDependencies(ui_state,wf)
 	})
 }
 
@@ -49,13 +57,13 @@ function setUpPickerDeleteButton(ui_state: UIState, wf: WangFile): void
 {
 	deletePickerButton.addEventListener('click',()=>
 	{
-		const pt = ui_state.pickedToken
+		const pt = ui_state.getPickedToken()
 		if(pt===null)return
 		if(TileType.isTileType(pt))
 		{
 			if(WangFile.deleteTileType(pt, wf))
 			{
-				ui_state.pickedToken=null
+				ui_state.setPickedToken(null)
 				// TODO fill in error case
 			}
 		}
@@ -63,11 +71,11 @@ function setUpPickerDeleteButton(ui_state: UIState, wf: WangFile): void
 		{
 			if(WangFile.deleteSavedPlaneTiling(pt,wf))
 			{
-				ui_state.pickedToken=null
+				ui_state.setPickedToken(null)
 			}
 		}
-		updatePicker(ui_state, wf)
-		updateEditor(ui_state, wf)
+		updatePicker(ui_state,wf)
+		updateDependencies(ui_state,wf)
 	})
 }
 
@@ -104,7 +112,7 @@ export function updatePicker(ui_state: UIState, wf: WangFile): void
 
 }
 
-export function setUpPicker(ui_state: UIState, wf: WangFile)
+export function setUpPicker(ui_state: UIState, wf: WangFile) : void
 {
 	setUpPickerCreateButton(ui_state, wf)
 	setUpPickerDeleteButton(ui_state, wf)

@@ -102,3 +102,17 @@ zoom out
 ## Edit policy:
 
 - If a color is edited, it gets edited, that's it
+
+PRUNE (Propagating Reductions Using Neighbourhood Elimination)
+
+## UI policy
+
+- When mode is look-around, the mouse moves around and drags etc, clicking has no effect
+- When mode is in placedown, the tile is rendered and placed
+- What is the relation between placedown and pick?
+- suggestion - tight joining
+- clicking mouse sets picked to null?
+- or add a place button? The place button changes the cursor mode, and we need a guarantee that the place button doesn't allow the mode to shift when the pickedElement is null
+- so there's coupling between pickedToken != null and mode = PLACEDOWN MODE
+- in a sense, this is inevitable, since something needs to be picked for PLACEDOWN
+- I suggest leaving the editor decoupled from this, so add a button

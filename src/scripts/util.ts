@@ -49,7 +49,7 @@ export class Color
 	}
 	public static toHex(c: Color) 
 	{
-		// Convert RGB to hex format (#RRGGBB)
+		// Convert RGB to hex format (#rrggbb)
 		const toHex = (value: number) => Math.min(255, Math.max(0, value)).toString(16).padStart(2, '0');
 		const hexColor = `#${toHex(c.r)}${toHex(c.g)}${toHex(c.b)}`;
 		return hexColor

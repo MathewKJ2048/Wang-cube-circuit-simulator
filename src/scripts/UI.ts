@@ -31,11 +31,20 @@ export class UIState // to do with the main canvas
 	perspectiveCamera : PerspectiveCamera = getPerspectiveCamera()
 	dragState: DragState = DragState.FREE // checks whether the mouse is dragging
 	mouseScreenPosition: Vector = new Vector() // stores old values of x and y
-	pickedToken : PickedToken = null;
+	private pickedToken : PickedToken = null;
 	mode: Mode = Mode.DEFAULT
 	gridEnabled: boolean = true
 	regexEnabled: boolean = false
 	searchQuery: string = ""
+	public setPickedToken(pt: PickedToken) : void
+	{
+		this.pickedToken = pt
+		if(this.pickedToken === null && this.mode === Mode.PLACE)this.mode = Mode.DEFAULT
+	}
+	public getPickedToken() : PickedToken
+	{
+		return this.pickedToken
+	}
 }
 
 export function getMouseScreenCoordinates(e : MouseEvent)

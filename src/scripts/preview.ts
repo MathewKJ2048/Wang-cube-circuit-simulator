@@ -42,7 +42,6 @@ export function setUpPreview(ui_state: UIState) : void
 		renderer.render(scene,ui_state.perspectiveCamera)
 	}
 	animate()
-	console.log("preview setup complete")
 }
 
 function getLines(m : Mesh) : Mesh[]
@@ -65,7 +64,6 @@ function getLines(m : Mesh) : Mesh[]
         const edgeGeo = new BoxGeometry(dimensions.x, dimensions.y, dimensions.z);
         const edgeMesh = new Mesh(edgeGeo, edgeMaterial);
         edgeMesh.position.copy(m.position.clone().add(position));
-		console.log(edgeMesh.position)
         edgeGroup.push(edgeMesh);
     };
 
@@ -176,24 +174,15 @@ function rebuildScene(ui_state : UIState, wf : WangFile) : void
 		scene.remove(scene.children[0]); 
 	}
 
-	if(ui_state.pickedToken === null)return
-	if(TileType.isTileType(ui_state.pickedToken))
+	const pt = ui_state.getPickedToken()
+	if(pt === null)return
+	if(TileType.isTileType(pt))
 	{
-		placeTile(ui_state.pickedToken,new Vector(0,0),wf)
+		placeTile(pt,new Vector(0,0),wf)
 		const gridHelper = new GridHelper(3, 3);
 		gridHelper.rotation.x = Math.PI / 2;
 		scene.add(gridHelper);
 	}
-		
-
-	console.log("rebuilding scene")
-	console.log([ui_state,wf])
-
-	
-
-	// Add the GridHelper to the scene
-	
-	
 	
 }
 

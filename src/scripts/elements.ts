@@ -28,6 +28,7 @@ export const saveButton : HTMLButtonElement = document.getElementById('save-butt
 export const defaultButton : HTMLButtonElement = document.getElementById('default-button') as HTMLButtonElement;
 export const selectButton : HTMLButtonElement = document.getElementById('select-button') as HTMLButtonElement;
 export const eraseButton : HTMLButtonElement = document.getElementById('erase-button') as HTMLButtonElement;
+export const placeButton : HTMLButtonElement = document.getElementById('place-button') as HTMLButtonElement;
 
 export const regexToggleButton : HTMLButtonElement = document.getElementById('regex-button') as HTMLButtonElement;
 export const searchInput : HTMLInputElement = document.getElementById('search-picker') as HTMLInputElement;
