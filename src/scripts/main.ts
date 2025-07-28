@@ -50,7 +50,7 @@ updateControlButtons(ui_state, wf)
 
 function animate() {
 	requestAnimationFrame(animate);
-	render(ui_state)
+	render(ui_state, wf)
 }
 
 animate()

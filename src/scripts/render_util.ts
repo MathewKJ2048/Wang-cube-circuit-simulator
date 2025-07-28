@@ -40,3 +40,10 @@ export function isOnScreen(p : Vector, c : Camera)
 	let sc = toScreenCoordinates(p,c)
 	return 0 <= sc.x && sc.x <= canvas.width && 0 <= sc.y && sc.y <= canvas.height
 }
+
+export function snapToGrid(r : Vector): Vector
+{
+	const r_ = new Vector(Math.round(r.x),Math.round(r.y))
+	return r_
+}
+

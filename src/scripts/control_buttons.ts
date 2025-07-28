@@ -8,7 +8,14 @@ function setUpDefaultButton(ui_state: UIState, wf: WangFile)
 	defaultButton.addEventListener('click',()=>{
 		ui_state.mode = Mode.DEFAULT
 		updateControlButtons(ui_state, wf)
-		console.log("updated")
+	})
+}
+
+function setUpPlaceButton(ui_state: UIState, wf: WangFile)
+{
+	placeButton.addEventListener('click',()=>{
+		ui_state.mode = Mode.PLACE
+		updateControlButtons(ui_state, wf)
 	})
 }
 
@@ -29,4 +36,5 @@ export function updateControlButtons(ui_state: UIState, wf : WangFile)
 export function setUpControlButtons(ui_state: UIState, wf : WangFile)
 {
 	setUpDefaultButton(ui_state, wf)
+	setUpPlaceButton(ui_state, wf)
 }

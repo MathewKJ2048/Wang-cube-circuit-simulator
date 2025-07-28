@@ -116,3 +116,15 @@ PRUNE (Propagating Reductions Using Neighbourhood Elimination)
 - so there's coupling between pickedToken != null and mode = PLACEDOWN MODE
 - in a sense, this is inevitable, since something needs to be picked for PLACEDOWN
 - I suggest leaving the editor decoupled from this, so add a button
+
+
+## Nomenclature:
+
+- x-axis = width = left-right
+- y-axis = height = up-down
+- z-axis = depth = front-back
+- plane tiling lies in xy plane
+- x+ -> right
+- y+ -> up
+- z+ -> front
+- time flows in the same direction as z
