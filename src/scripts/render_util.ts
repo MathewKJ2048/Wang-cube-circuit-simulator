@@ -1,6 +1,24 @@
 import { Vector } from "./util.js"
 import { canvas } from "./elements.js"
 
+
+export const CONNECTION_FRACTION = 0.5
+// assume core size is m and connection size is c
+// c = f*m
+// m+c/2+c/2 = 1
+// m+c = 1
+// m = 1/(1+f)
+// c = f/(1+f)
+
+export function getCoreSize() : number
+{
+	return 1/(1+CONNECTION_FRACTION)
+}
+export function getConnectionSize(): number
+{
+	return CONNECTION_FRACTION/(1+CONNECTION_FRACTION)
+}
+
 export class Camera
 {
 	r : Vector = new Vector() // position vector

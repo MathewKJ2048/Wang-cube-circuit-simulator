@@ -62,6 +62,10 @@ export class Color
 		const b = parseInt(hexColor.substring(4, 6), 16);
 		return new Color(r,g,b)
 	}
+	public static toNumber(c : Color): number
+	{
+		return (c.r<<16) + (c.g<<8) + c.b
+	}
 }
 
 export const DEFAULT_COLOR : Color = new Color(100,100,100)

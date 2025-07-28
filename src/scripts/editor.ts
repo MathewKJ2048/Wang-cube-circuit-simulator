@@ -1,6 +1,7 @@
 import { backInput, colorPickerBack, colorPickerDown, colorPickerFront, colorPickerLeft, colorPickerName, colorPickerRight, colorPickerUp, downInput, frontInput, leftInput, nameInput, rightInput, upInput } from "./elements";
 import { PlaneTiling, TileType, WangFile, } from "./logic";
 import { updatePicker } from "./picker";
+import { updatePreview } from "./preview";
 import type { UIState } from "./UI";
 import { Color } from "./util";
 
@@ -30,12 +31,13 @@ function toggleAllColorPickers(disabled : boolean = true): void
 	[colorPickerBack,colorPickerDown,colorPickerFront,colorPickerLeft,colorPickerRight,colorPickerUp, colorPickerName].forEach(cpx => cpx.disabled=disabled)
 	
 }
-function setUpNameColorPicker(ui_state: UIState) : void
+function setUpNameColorPicker(ui_state: UIState, wf : WangFile) : void
 {
 	colorPickerName.addEventListener('input', (e) => {
 		const hexColor = (e.target as HTMLInputElement).value;
 		if(TileType.isTileType(ui_state.pickedToken))
 			ui_state.pickedToken.color = Color.fromHex(hexColor)
+			updateEditor(ui_state, wf)
 	})
 }
 function setUpDirectionColorPickers(ui_state: UIState, wf : WangFile): void
@@ -124,6 +126,7 @@ function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 			const new_tt = TileType.getCopy(pt)
 			new_tt.up = text
 			if(WangFile.editTileType(pt,new_tt,wf))ui_state.pickedToken = new_tt
+			updateEditor(ui_state,wf)
 		}
 	})
 	downInput.addEventListener("input",(event)=>{
@@ -136,6 +139,7 @@ function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 			const new_tt = TileType.getCopy(pt)
 			new_tt.down = text
 			if(WangFile.editTileType(pt,new_tt,wf))ui_state.pickedToken = new_tt
+			updateEditor(ui_state,wf)
 		}
 	})
 	leftInput.addEventListener("input",(event)=>{
@@ -148,6 +152,7 @@ function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 			const new_tt = TileType.getCopy(pt)
 			new_tt.left = text
 			if(WangFile.editTileType(pt,new_tt,wf))ui_state.pickedToken = new_tt
+			updateEditor(ui_state,wf)
 		}
 	})
 	rightInput.addEventListener("input",(event)=>{
@@ -160,6 +165,7 @@ function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 			const new_tt = TileType.getCopy(pt)
 			new_tt.right = text
 			if(WangFile.editTileType(pt,new_tt,wf))ui_state.pickedToken = new_tt
+			updateEditor(ui_state,wf)
 		}
 	})
 	frontInput.addEventListener("input",(event)=>{
@@ -172,6 +178,7 @@ function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 			const new_tt = TileType.getCopy(pt)
 			new_tt.front = text
 			if(WangFile.editTileType(pt,new_tt,wf))ui_state.pickedToken = new_tt
+			updateEditor(ui_state,wf)
 		}
 	})
 	backInput.addEventListener("input",(event)=>{
@@ -184,6 +191,7 @@ function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 			const new_tt = TileType.getCopy(pt)
 			new_tt.back = text
 			if(WangFile.editTileType(pt,new_tt,wf))ui_state.pickedToken = new_tt
+			updateEditor(ui_state,wf)
 		}
 	})
 }
@@ -192,6 +200,7 @@ function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 
 export function updateEditor(ui_state : UIState, wf : WangFile): void
 {
+	updatePreview(ui_state,wf)
 	const pt = ui_state.pickedToken
 	if(pt === null)
 	{
@@ -225,7 +234,7 @@ export function updateEditor(ui_state : UIState, wf : WangFile): void
 
 export function setUpEditor(ui_state : UIState, wf : WangFile): void
 {
-	setUpNameColorPicker(ui_state)
+	setUpNameColorPicker(ui_state, wf)
 	setUpDirectionColorPickers(ui_state, wf)
 	setUpNameInput(ui_state, wf)
 	setUpDirectionInputs(ui_state, wf)

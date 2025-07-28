@@ -9,7 +9,7 @@ import { setUpViewControls, updateViewControls } from "./view_controls.js";
 import { setUpGridToggle, updateGridToggle } from "./grid_toggle.js";
 import { setUpSearch, updateSearch } from "./search.js";
 import { setUpPicker, updatePicker } from "./picker.js"
-import { setUpEditor } from "./editor.js"
+import { setUpEditor, updateEditor } from "./editor.js"
 import { setUpPreview } from "./preview.js"
 
 
@@ -40,9 +40,8 @@ setUpPicker(ui_state, wf)
 updatePicker(ui_state, wf)
 
 setUpEditor(ui_state, wf)
-
-
-setUpPreview(ui_state, wf)
+setUpPreview(ui_state)
+updateEditor(ui_state, wf)
 
 
 function animate() {
