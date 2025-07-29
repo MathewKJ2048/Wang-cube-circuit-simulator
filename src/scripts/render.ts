@@ -6,7 +6,7 @@ import { Mode, UIState } from './UI.js'
 import { Tile, TileType, WangFile } from './logic.js'
 
 
-function renderRect(r : Vector, width : number, height: number, color : Color, c : Camera): void
+function renderRect(r : Vector, width : number, height: number, color : Color, c : Camera, stroke : boolean = true): void
 {
 	function getScreenPointOffset(ox : number, oy : number)
 	{
@@ -25,39 +25,75 @@ function renderRect(r : Vector, width : number, height: number, color : Color, c
 	ctx.lineTo(DL.x,DL.y)
 	ctx.lineTo(UL.x,UL.y)
 	ctx.closePath()
-	ctx.fillStyle = Color.toHex(color)
-	ctx.fill()
+	if(!stroke)
+	{
+		ctx.fillStyle = Color.toHex(color)
+		ctx.fill()
+	}
+	else
+	{
+		ctx.strokeStyle = Color.toHex(color)
+		ctx.stroke()
+	}
+	
 }
 
-function renderTileType(tt : TileType, x: number, y:number, camera : Camera, wf: WangFile)
+function renderTileType(tt : TileType, x: number, y:number, camera : Camera, wf: WangFile, picked : boolean = false)
 {
 	const m = getCoreSize()
 	const c = getConnectionSize()
 	const off = m/2+c/4
+	const outlineColor = new Color(256,256,256)
 
 	function getOffset(x_off:number,y_off:number) : Vector
 	{
 		return new Vector(x+x_off,y+y_off)
 	}
 
-	//left and right
-	renderRect(getOffset(-off,0),c/2,c,WangFile.getColorFromString(tt.left,wf),camera)
-	renderRect(getOffset(off,0),c/2,c,WangFile.getColorFromString(tt.right,wf),camera)
-	// up and down
-	renderRect(getOffset(0,-off),c,c/2,WangFile.getColorFromString(tt.down,wf),camera)
-	renderRect(getOffset(0,off),c,c/2,WangFile.getColorFromString(tt.up,wf),camera)
-	// core
-	renderRect(getOffset(0,0),m,m,tt.color,camera)
-	// front
-	renderRect(getOffset(0,0),c,c,WangFile.getColorFromString(tt.front,wf),camera)
+	const upColor = WangFile.getColorFromString(tt.up,wf)
+	const downColor = WangFile.getColorFromString(tt.down,wf)
+	const leftColor = WangFile.getColorFromString(tt.left,wf)
+	const rightColor = WangFile.getColorFromString(tt.right,wf)
+	const frontColor = WangFile.getColorFromString(tt.front,wf)
+	const coreColor = tt.color
+
+	
+	function draw(outline : boolean = false)
+	{
+		function pickColor(c:Color)
+		{
+			return outline ? outlineColor : c
+		}
+		//left and right
+		renderRect(getOffset(-off,0),c/2,c,pickColor(leftColor),camera,outline)
+		renderRect(getOffset(off,0),c/2,c,pickColor(rightColor),camera,outline)
+		// up and down
+		renderRect(getOffset(0,-off),c,c/2,pickColor(downColor),camera,outline)
+		renderRect(getOffset(0,off),c,c/2,pickColor(upColor),camera,outline)
+		// core
+		renderRect(getOffset(0,0),m,m, pickColor(coreColor),camera,outline)
+		// front
+		renderRect(getOffset(0,0),c,c,pickColor(frontColor),camera,outline)
+	}
+
+	draw()
+	if(picked)draw(true) // outlines if the type is currently picked
+	
 }
-
-
-function renderTile(t : Tile, camera : Camera, wf: WangFile)
+function renderTile(t : Tile, camera : Camera, wf: WangFile, picked : boolean = false)
 {
-	renderTileType(t.tileType,t.r.x,t.r.y,camera,wf)
+	renderTileType(t.tileType,t.r.x,t.r.y,camera,wf, picked)
 }
-
+function renderTiles(ui_state: UIState, wf: WangFile): void
+{
+	const pt = ui_state.getPickedToken()
+	wf.mainPlaneTiling.tiles.forEach(t =>
+	{
+		renderTile(t,ui_state.camera,wf,
+			TileType.isTileType(pt) && TileType.equals(pt,t.tileType)
+			)
+	})
+}
 
 
 function renderGrid(ui_state: UIState): void
@@ -139,7 +175,7 @@ function renderMouse(ui_state: UIState, wf : WangFile): void
 		const pk = ui_state.getPickedToken()
 		if(TileType.isTileType(pk))
 		{
-			renderTileType(pk,mr.x,mr.y,ui_state.camera,wf)
+			renderTileType(pk,mr.x,mr.y,ui_state.camera,wf,true)
 		}
 	}
 	else if(ui_state.mode === Mode.ERASE)
@@ -148,13 +184,8 @@ function renderMouse(ui_state: UIState, wf : WangFile): void
 	}
 }
 
-function renderTiles(ui_state: UIState, wf: WangFile): void
-{
-	wf.mainPlaneTiling.tiles.forEach(t =>
-	{
-		renderTile(t,ui_state.camera,wf)
-	})
-}
+
+
 
 export function render(ui_state: UIState, wf : WangFile): void
 {
