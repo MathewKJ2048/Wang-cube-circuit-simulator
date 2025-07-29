@@ -126,6 +126,10 @@ export class PlaneTiling // stores a section of a tiling in space
 		pt.tiles.push(t)
 		return true
 	}
+	public static getTileAt(r : Vector, pt : PlaneTiling): Tile | null
+	{
+		return pt.tiles.find(tile => Vector.equals(tile.r, r)) ?? null;
+	}
 }
 
 
@@ -249,6 +253,10 @@ export class WangFile // stores the whole context, to be in a json file
 	public static addTile(t : Tile, wf : WangFile) : boolean
 	{
 		return PlaneTiling.addTile(t,wf.mainPlaneTiling)
+	}
+	public static getTileAt(r : Vector, wf : WangFile): Tile | null
+	{
+		return wf.mainPlaneTiling.tiles.find(tile => Vector.equals(tile.r, r)) ?? null;
 	}
 
 }

@@ -1,5 +1,7 @@
+import { updateEditor } from "./editor";
 import { canvas, defaultButton, placeButton } from "./elements";
 import {  Tile, TileType, WangFile } from "./logic";
+import { updatePicker } from "./picker";
 import { getMousePositionSnapped, Mode, type UIState } from "./UI";
 
 
@@ -36,6 +38,22 @@ function setUpPlace(ui_state: UIState, wf: WangFile) : void
 	})
 }
 
+function setUpSelect(ui_state: UIState, wf: WangFile): void
+{
+	canvas.addEventListener('click',(e)=>
+	{
+		if(ui_state.mode!==Mode.DEFAULT)return
+		const mr = getMousePositionSnapped(e,ui_state.camera)
+		const t_n : Tile | null = WangFile.getTileAt(mr,wf)
+		if(Tile.isTile(t_n))
+		{
+			ui_state.setPickedToken(t_n.tileType)
+			updatePicker(ui_state,wf)
+			updateEditor(ui_state,wf)
+			updateControlButtons(ui_state,wf)
+		}
+	})
+}
 
 export function updateControlButtons(ui_state: UIState, wf : WangFile)
 {
@@ -53,6 +71,7 @@ export function updateControlButtons(ui_state: UIState, wf : WangFile)
 export function setUpControlButtons(ui_state: UIState, wf : WangFile)
 {
 	setUpDefaultButton(ui_state, wf)
+	setUpSelect(ui_state, wf)
 	setUpPlaceButton(ui_state, wf)
 	setUpPlace(ui_state, wf)
 }
