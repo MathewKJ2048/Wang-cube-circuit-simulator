@@ -8,16 +8,15 @@ import { getPerspectiveCamera } from "./preview.js";
 
 export class DragState
 {
-	static FREE = 1;
-	static DRAGGING = 2
+	static readonly FREE = 1
+	static readonly DRAGGING = 2
 }
 export class Mode
 {
-	static DEFAULT = 0 
-	static SELECT_FREE = 1
-	static SELECT_PIN = 2
-	static ERASE = 3
-	static PLACE = 4
+	static readonly DEFAULT = 1
+	static readonly SELECT = 2
+	static readonly ERASE = 3
+	static readonly PLACE = 4
 }
 
 

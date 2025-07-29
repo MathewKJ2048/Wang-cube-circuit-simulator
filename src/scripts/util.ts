@@ -79,8 +79,9 @@ export function getValue(fraction: number, min: number, max: number) : number
 	return fraction*(max-min)+min
 }
 
-export function deleteFromList<T>(l : T[], o : T): T[]
+// there's no default for equality to prevent thoughtless application of this function in inappropriate contexts
+export function deleteFromList<T>(l : T[], o : T, equality : (a:T, b:T)=>boolean): T[]
 {
-	return l.filter(e => {return e !== o})
+	return l.filter(e => {return !equality(e,o)})
 }
 

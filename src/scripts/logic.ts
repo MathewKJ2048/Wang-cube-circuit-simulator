@@ -99,6 +99,7 @@ export class Tile
 
 export class PlaneTiling // stores a section of a tiling in space
 {
+	
 
 	tiles : Tile[] = [];
 	name : string = "";
@@ -129,6 +130,18 @@ export class PlaneTiling // stores a section of a tiling in space
 	public static getTileAt(r : Vector, pt : PlaneTiling): Tile | null
 	{
 		return pt.tiles.find(tile => Vector.equals(tile.r, r)) ?? null;
+	}
+	public static deleteTileAt(r : Vector, pt : PlaneTiling) : boolean
+	{
+		let answer : boolean = false
+		pt.tiles.forEach(t => {
+			if(Vector.equals(t.r,r))
+			{
+				pt.tiles = deleteFromList(pt.tiles,t,(a:Tile,b:Tile)=>a===b)
+				answer = true
+			}
+		})
+		return answer
 	}
 }
 
@@ -212,14 +225,14 @@ export class WangFile // stores the whole context, to be in a json file
 		const answer : boolean = WangFile.getAllPlaneTilings(wf).every(pt=>checkTileTypeUsed(tt, pt))
 		if(answer)
 		{
-			wf.tileTypes = deleteFromList<TileType>(wf.tileTypes,tt)
+			wf.tileTypes = deleteFromList<TileType>(wf.tileTypes,tt,TileType.equals)
 		}
 		return answer
 	}
 	public static editTileType(tt : TileType, new_tt: TileType, wf : WangFile) : boolean
 	{
 		if(TileType.equals(tt,new_tt))return false
-		wf.tileTypes = deleteFromList(wf.tileTypes,tt)
+		wf.tileTypes = deleteFromList(wf.tileTypes,tt,TileType.equals)
 		wf.tileTypes.push(new_tt)
 
 		// manual upload, used instead of editing reference values since json doesn't support references when the WangFile is serialized
@@ -231,7 +244,9 @@ export class WangFile // stores the whole context, to be in a json file
 	}
 	public static deleteSavedPlaneTiling(pt : PlaneTiling, wf : WangFile) : boolean
 	{
-		wf.savedSubPlaneTilings = deleteFromList(wf.savedSubPlaneTilings,pt)
+		// planeTilings can be manipulated using only references
+		wf.savedSubPlaneTilings = deleteFromList(wf.savedSubPlaneTilings,pt,
+			(a:PlaneTiling,b:PlaneTiling)=>{return a===b})
 		return true
 	}
 
@@ -257,6 +272,10 @@ export class WangFile // stores the whole context, to be in a json file
 	public static getTileAt(r : Vector, wf : WangFile): Tile | null
 	{
 		return wf.mainPlaneTiling.tiles.find(tile => Vector.equals(tile.r, r)) ?? null;
+	}
+	public static deleteTileAt(r : Vector, wf : WangFile) : boolean
+	{
+		return PlaneTiling.deleteTileAt(r,wf.mainPlaneTiling)
 	}
 
 }

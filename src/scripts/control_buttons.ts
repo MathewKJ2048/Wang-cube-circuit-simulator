@@ -1,5 +1,5 @@
 import { updateEditor } from "./editor";
-import { canvas, defaultButton, placeButton } from "./elements";
+import { canvas, defaultButton,  eraseButton, placeButton, selectButton } from "./elements";
 import {  Tile, TileType, WangFile } from "./logic";
 import { updatePicker } from "./picker";
 import { getMousePositionSnapped, Mode, type UIState } from "./UI";
@@ -55,8 +55,37 @@ function setUpSelect(ui_state: UIState, wf: WangFile): void
 	})
 }
 
+function setUpEraseButton(ui_state: UIState, wf: WangFile): void
+{
+	eraseButton.addEventListener("click", ()=>{
+		ui_state.mode = Mode.ERASE
+		updateControlButtons(ui_state, wf)
+	})
+}
+
+function setUpErase(ui_state: UIState, wf: WangFile): void
+{
+	canvas.addEventListener('click',(e)=>
+	{
+		if(ui_state.mode!==Mode.ERASE)return
+		const mr = getMousePositionSnapped(e,ui_state.camera)
+		WangFile.deleteTileAt(mr,wf)
+	})
+}
+
 export function updateControlButtons(ui_state: UIState, wf : WangFile)
 {
+	function updateWithMode(button : HTMLButtonElement, trigger: Mode)
+	{
+		if(ui_state.mode === trigger)button.classList.add("pressed")
+		else button.classList.remove("pressed")
+	}
+	updateWithMode(defaultButton,Mode.DEFAULT)
+	updateWithMode(eraseButton,Mode.ERASE)
+	updateWithMode(placeButton,Mode.PLACE)
+	updateWithMode(selectButton, Mode.SELECT)
+
+
 	if(ui_state.getPickedToken() === null)
 	{
 		placeButton.disabled = true
@@ -74,4 +103,6 @@ export function setUpControlButtons(ui_state: UIState, wf : WangFile)
 	setUpSelect(ui_state, wf)
 	setUpPlaceButton(ui_state, wf)
 	setUpPlace(ui_state, wf)
+	setUpEraseButton(ui_state, wf)
+	setUpErase(ui_state,wf)
 }

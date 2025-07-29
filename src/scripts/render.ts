@@ -40,14 +40,14 @@ function renderTileType(tt : TileType, x: number, y:number, camera : Camera, wf:
 		return new Vector(x+x_off,y+y_off)
 	}
 
-	// core
-	renderRect(getOffset(0,0),m,m,tt.color,camera)
 	//left and right
 	renderRect(getOffset(-off,0),c/2,c,WangFile.getColorFromString(tt.left,wf),camera)
 	renderRect(getOffset(off,0),c/2,c,WangFile.getColorFromString(tt.right,wf),camera)
 	// up and down
 	renderRect(getOffset(0,-off),c,c/2,WangFile.getColorFromString(tt.down,wf),camera)
 	renderRect(getOffset(0,off),c,c/2,WangFile.getColorFromString(tt.up,wf),camera)
+	// core
+	renderRect(getOffset(0,0),m,m,tt.color,camera)
 	// front
 	renderRect(getOffset(0,0),c,c,WangFile.getColorFromString(tt.front,wf),camera)
 }
@@ -88,9 +88,36 @@ function renderGrid(ui_state: UIState): void
 		ctx.moveTo(start.x,start.y)
 		ctx.lineTo(end.x,end.y)
 		ctx.stroke();
+		
 	}
 }
 
+function renderErase(r : Vector, c : Camera) : void
+{
+	function getScreenPointOffset(ox : number, oy : number)
+	{
+		return toScreenCoordinates(new Vector(r.x+ox,r.y+oy),c)
+	}
+	const side : number = 1 - getConnectionSize()/2
+	const UL = getScreenPointOffset(-side/2,side/2)
+	const UR = getScreenPointOffset(side/2,side/2)
+	const DL = getScreenPointOffset(-side/2,-side/2)
+	const DR = getScreenPointOffset(side/2,-side/2)
+
+	ctx.beginPath();
+	ctx.moveTo(UL.x,UL.y)
+	ctx.lineTo(UR.x,UR.y)
+	ctx.lineTo(DR.x,DR.y)
+	ctx.lineTo(DL.x,DL.y)
+	ctx.lineTo(UL.x,UL.y)
+	ctx.lineTo(DR.x,DR.y)
+	ctx.moveTo(UR.x,UR.y)
+	ctx.lineTo(DL.x,DL.y)
+	ctx.closePath()
+	ctx.strokeStyle = Color.toHex(new Color(256,100,100))
+	ctx.stroke()
+	
+}
 
 
 function renderBackground(): void
@@ -105,15 +132,19 @@ function renderMouse(ui_state: UIState, wf : WangFile): void
 	const mr = snapToGrid(fromScreenCoordinates(ui_state.mouseScreenPosition,ui_state.camera))
 	if(ui_state.mode === Mode.DEFAULT)
 	{
-		
+		// nothing to do
 	}
-	else if(ui_state.mode === Mode.PLACE)
+	else if(ui_state.mode === Mode.PLACE && WangFile.getTileAt(mr,wf)===null)
 	{
 		const pk = ui_state.getPickedToken()
 		if(TileType.isTileType(pk))
 		{
 			renderTileType(pk,mr.x,mr.y,ui_state.camera,wf)
 		}
+	}
+	else if(ui_state.mode === Mode.ERASE)
+	{
+		renderErase(mr,ui_state.camera)
 	}
 }
 
@@ -128,8 +159,8 @@ function renderTiles(ui_state: UIState, wf: WangFile): void
 export function render(ui_state: UIState, wf : WangFile): void
 {
 	renderBackground()
-	renderMouse(ui_state, wf)
 	renderTiles(ui_state,wf)
+	renderMouse(ui_state, wf)
 	renderGrid(ui_state)
 }
 
