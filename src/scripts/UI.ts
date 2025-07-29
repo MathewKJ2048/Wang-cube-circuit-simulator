@@ -1,7 +1,7 @@
 import { Vector } from "./util.js"
 import { PlaneTiling, TileType } from "./logic.js"
 import { canvas } from "./elements.js"
-import { fromScreenCoordinates, Camera } from "./render_util.js"
+import { fromScreenCoordinates, Camera, snapToGrid } from "./render_util.js"
 import type { PerspectiveCamera } from "three";
 import { getPerspectiveCamera } from "./preview.js";
 
@@ -60,3 +60,7 @@ export function getMousePosition(e: MouseEvent, c : Camera) : Vector
 	return fromScreenCoordinates(getMouseScreenCoordinates(e),c);
 }
 
+export function getMousePositionSnapped(e : MouseEvent, c : Camera) : Vector
+{
+	return snapToGrid(getMousePosition(e,c))
+}

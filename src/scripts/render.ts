@@ -3,7 +3,7 @@ import { Camera, fromScreenCoordinates, getConnectionSize, getCoreSize, snapToGr
 import { canvas, ctx } from './elements.js'
 import { Mode, UIState } from './UI.js'
 
-import { TileType, WangFile } from './logic.js'
+import { Tile, TileType, WangFile } from './logic.js'
 
 
 function renderRect(r : Vector, width : number, height: number, color : Color, c : Camera): void
@@ -52,12 +52,12 @@ function renderTileType(tt : TileType, x: number, y:number, camera : Camera, wf:
 	renderRect(getOffset(0,0),c,c,WangFile.getColorFromString(tt.front,wf),camera)
 }
 
-/*
+
 function renderTile(t : Tile, camera : Camera, wf: WangFile)
 {
 	renderTileType(t.tileType,t.r.x,t.r.y,camera,wf)
 }
-*/
+
 
 
 function renderGrid(ui_state: UIState): void
@@ -115,14 +115,21 @@ function renderMouse(ui_state: UIState, wf : WangFile): void
 			renderTileType(pk,mr.x,mr.y,ui_state.camera,wf)
 		}
 	}
+}
 
-	
+function renderTiles(ui_state: UIState, wf: WangFile): void
+{
+	wf.mainPlaneTiling.tiles.forEach(t =>
+	{
+		renderTile(t,ui_state.camera,wf)
+	})
 }
 
 export function render(ui_state: UIState, wf : WangFile): void
 {
 	renderBackground()
 	renderMouse(ui_state, wf)
+	renderTiles(ui_state,wf)
 	renderGrid(ui_state)
 }
 

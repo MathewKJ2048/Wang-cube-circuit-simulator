@@ -99,7 +99,6 @@ export class Tile
 
 export class PlaneTiling // stores a section of a tiling in space
 {
-	
 
 	tiles : Tile[] = [];
 	name : string = "";
@@ -117,6 +116,14 @@ export class PlaneTiling // stores a section of a tiling in space
 			for(const t_ of pt.tiles)
 				if (t!==t_ && Vector.equals(t.r,t_.r))
 					return false
+		return true
+	}
+	// avoid overlaps in added tiles
+	public static addTile(t : Tile, pt : PlaneTiling) : boolean
+	{
+		if(pt.tiles.some(tile => Vector.equals(tile.r,t.r)))
+			return false
+		pt.tiles.push(t)
 		return true
 	}
 }
@@ -238,6 +245,10 @@ export class WangFile // stores the whole context, to be in a json file
 		const newColorMap : stringColorMap = {}
 		wf.tileTypes.forEach(t => TileType.getStrings(t).forEach(s => newColorMap[s] = wf.colorMap[s]))
 		wf.colorMap = newColorMap
+	}
+	public static addTile(t : Tile, wf : WangFile) : boolean
+	{
+		return PlaneTiling.addTile(t,wf.mainPlaneTiling)
 	}
 
 }
