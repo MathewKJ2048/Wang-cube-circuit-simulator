@@ -1,5 +1,5 @@
 import { Vector } from "./util.js"
-import { PlaneTiling, TileType } from "./logic.js"
+import { PlaneTiling, TileType, WangFile } from "./logic.js"
 import { canvas } from "./elements.js"
 import { fromScreenCoordinates, Camera, snapToGrid } from "./render_util.js"
 import type { PerspectiveCamera } from "three";
@@ -35,8 +35,9 @@ export class UIState // to do with the main canvas
 	gridEnabled: boolean = true
 	regexEnabled: boolean = false
 	searchQuery: string = ""
-	public setPickedToken(pt: PickedToken) : void
+	public setPickedToken(pt: PickedToken, wf : WangFile) : void // conditions: picked token must be part of wangfile, and is tied to the mode - mode cannot be PLACe when picker is null
 	{
+		if(TileType.isTileType(pt) && !wf.tileTypes.some(tt => TileType.equals(tt,pt)))console.log("PT INTEGRITY VIOLATED - TILETYPE")
 		this.pickedToken = pt
 		if(this.pickedToken === null && this.mode === Mode.PLACE)this.mode = Mode.DEFAULT
 	}

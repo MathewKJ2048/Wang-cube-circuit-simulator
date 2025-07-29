@@ -18,7 +18,7 @@ function updateDependencies(ui_state: UIState, wf : WangFile): void
 	updateControlButtons(ui_state, wf)
 }
 
-function generateResultForPickedToken(pt : PickedToken, ui_state: UIState, wf : WangFile): HTMLDivElement
+function generateResultForPickableToken( token : PickedToken,ui_state: UIState, wf : WangFile): HTMLDivElement
 {
 
 	const container : HTMLDivElement = document.createElement('div');
@@ -26,15 +26,16 @@ function generateResultForPickedToken(pt : PickedToken, ui_state: UIState, wf : 
 
 	const textInput : HTMLInputElement = document.createElement('input');
 	textInput.type = 'text';
-	textInput.value = (pt===null) ? "" : pt.name;
+	textInput.value = (token===null) ? "" : token.name;
 	textInput.readOnly = true;
 
 	const radioInput : HTMLInputElement = document.createElement('input');
 	radioInput.type = 'radio';
 	radioInput.name = 'picker-radio-group';
 	radioInput.addEventListener('click', () => {
-		ui_state.setPickedToken(pt)
+		ui_state.setPickedToken(token, wf)
 		updateDependencies(ui_state,wf)
+		console.log(wf.tileTypes)
 	})
 
 	container.appendChild(textInput);
@@ -47,9 +48,10 @@ function setUpPickerCreateButton(ui_state: UIState, wf: WangFile): void
 {
 	createPickerButton.addEventListener('click',()=>{
 		const tt : TileType =  WangFile.addNewTileType(wf)
-		ui_state.setPickedToken(tt)
+		ui_state.setPickedToken(tt, wf)
 		updatePicker(ui_state, wf)
 		updateDependencies(ui_state,wf)
+		console.log(wf.tileTypes)
 	})
 }
 
@@ -63,7 +65,7 @@ function setUpPickerDeleteButton(ui_state: UIState, wf: WangFile): void
 		{
 			if(WangFile.deleteTileType(pt, wf))
 			{
-				ui_state.setPickedToken(null)
+				ui_state.setPickedToken(null, wf)
 				// TODO fill in error case
 			}
 		}
@@ -71,7 +73,7 @@ function setUpPickerDeleteButton(ui_state: UIState, wf: WangFile): void
 		{
 			if(WangFile.deleteSavedPlaneTiling(pt,wf))
 			{
-				ui_state.setPickedToken(null)
+				ui_state.setPickedToken(null, wf)
 			}
 		}
 		updatePicker(ui_state,wf)
@@ -98,17 +100,19 @@ function match(name: string, query: string, regex: boolean = false) : boolean
 export function updatePicker(ui_state: UIState, wf: WangFile): void
 {
 	const resultTokens : PickedToken[] = []
-	wf.tileTypes.forEach((tt) => resultTokens.push(tt))
-	wf.savedSubPlaneTilings.forEach((pt) => resultTokens.push(pt))
+	wf.tileTypes.forEach((tt) => resultTokens.push(tt)) // add all tile-types
+	wf.savedSubPlaneTilings.forEach((pt) => resultTokens.push(pt)) // add all saved tilings
+
+	// remove null tokens and ones whose names don't match search query
 	let filteredResultTokens = resultTokens.filter(t => t!==null)
 	filteredResultTokens = filteredResultTokens.filter(t => match(t.name,ui_state.searchQuery,ui_state.regexEnabled))
+
 	filteredResultTokens.sort((t1, t2) => t1.name.localeCompare(t2.name))
 
-
+	// DOM manipulation
 	const resultsPanel : HTMLBodyElement = document.getElementById("picker-dynamic") as HTMLBodyElement
-	generateResultForPickedToken
 	resultsPanel.innerHTML = ""
-	filteredResultTokens.forEach(t => resultsPanel.appendChild(generateResultForPickedToken(t, ui_state,wf)))
+	filteredResultTokens.forEach(t => resultsPanel.appendChild(generateResultForPickableToken(t, ui_state,wf)))
 
 }
 

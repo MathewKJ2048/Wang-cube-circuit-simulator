@@ -20,11 +20,10 @@ function renderRect(r : Vector, width : number, height: number, color : Color, c
 
 	ctx.beginPath()
 	ctx.moveTo(UL.x,UL.y)
-	ctx.lineTo(UR.x,UR.y)
-	ctx.lineTo(DR.x,DR.y)
-	ctx.lineTo(DL.x,DL.y)
-	ctx.lineTo(UL.x,UL.y)
+	const corners : Vector[] = [UR,DR,DL,UL]
+	corners.forEach(X => ctx.lineTo(X.x,X.y))
 	ctx.closePath()
+	
 	if(!stroke)
 	{
 		ctx.fillStyle = Color.toHex(color)

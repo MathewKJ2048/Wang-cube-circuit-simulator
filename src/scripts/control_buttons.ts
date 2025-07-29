@@ -47,7 +47,7 @@ function setUpSelect(ui_state: UIState, wf: WangFile): void
 		const t_n : Tile | null = WangFile.getTileAt(mr,wf)
 		if(Tile.isTile(t_n))
 		{
-			ui_state.setPickedToken(t_n.tileType)
+			ui_state.setPickedToken(t_n.tileType,wf)
 			updatePicker(ui_state,wf)
 			updateEditor(ui_state,wf)
 			updateControlButtons(ui_state,wf)

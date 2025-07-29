@@ -51,54 +51,24 @@ function setUpNameColorPicker(ui_state: UIState, wf : WangFile) : void
 }
 function setUpDirectionColorPickers(ui_state: UIState, wf : WangFile): void
 {
-	colorPickerUp.addEventListener('input',(e)=>
+
+	function setUp(colorPicker: HTMLInputElement, cf : (tt : TileType) => string)
 	{
-		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
-		const pt = ui_state.getPickedToken() 
-		if(TileType.isTileType(pt))
-			WangFile.registerColor(pt.up,c,wf)
-		updateEditor(ui_state,wf)
-	})
-	colorPickerDown.addEventListener('input',(e)=>
-	{
-		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
-		const pt = ui_state.getPickedToken() 
-		if(TileType.isTileType(pt))
-			WangFile.registerColor(pt.down,c,wf)
-		updateEditor(ui_state,wf)
-	})
-	colorPickerLeft.addEventListener('input',(e)=>
-	{
-		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
-		const pt = ui_state.getPickedToken() 
-		if(TileType.isTileType(pt))
-			WangFile.registerColor(pt.left,c,wf)
-		updateEditor(ui_state,wf)
-	})
-	colorPickerRight.addEventListener('input',(e)=>
-	{
-		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
-		const pt = ui_state.getPickedToken() 
-		if(TileType.isTileType(pt))
-			WangFile.registerColor(pt.right,c,wf)
-		updateEditor(ui_state,wf)
-	})
-	colorPickerFront.addEventListener('input',(e)=>
-	{
-		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
-		const pt = ui_state.getPickedToken() 
-		if(TileType.isTileType(pt))
-			WangFile.registerColor(pt.front,c,wf)
-		updateEditor(ui_state,wf)
-	})
-	colorPickerBack.addEventListener('input',(e)=>
-	{
-		const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
-		const pt = ui_state.getPickedToken() 
-		if(TileType.isTileType(pt))
-			WangFile.registerColor(pt.back,c,wf)
-		updateEditor(ui_state,wf)
-	})
+		colorPicker.addEventListener('input',(e)=>
+		{
+			const c : Color = Color.fromHex((e.target as HTMLInputElement).value)
+			const pt = ui_state.getPickedToken() 
+			if(TileType.isTileType(pt))
+				WangFile.registerColor(cf(pt),c,wf)
+			updateEditor(ui_state,wf)
+		})
+	}
+	setUp(colorPickerUp,tt => tt.up)
+	setUp(colorPickerDown,tt => tt.down)
+	setUp(colorPickerLeft,tt => tt.left)
+	setUp(colorPickerRight,tt => tt.right)
+	setUp(colorPickerFront,tt => tt.front)
+	setUp(colorPickerBack,tt => tt.back)
 }
 
 function setUpNameInput(ui_state : UIState, wf : WangFile): void
@@ -115,94 +85,37 @@ function setUpNameInput(ui_state : UIState, wf : WangFile): void
 		{
 			const new_tt = TileType.getCopy(pt)
 			new_tt.name = new_name
-			if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt)
+			if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt,wf)
 		}
 		updateEditor(ui_state, wf)
 		updatePicker(ui_state, wf)
-		
 	})
 }
 
 function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 {
-	upInput.addEventListener("input",(event)=>{
-		const text : string = (event.target as HTMLInputElement).value
-		const pt = ui_state.getPickedToken() 
-		if(pt === null)return
-		if(PlaneTiling.isPlaneTiling(pt))return
-		if(TileType.isTileType(pt))
+	function setUp(input: HTMLInputElement, cf : (tt: TileType,s:string)=>void)
+	{
+		input.addEventListener("input",(event)=>
 		{
-			const new_tt = TileType.getCopy(pt)
-			new_tt.up = text
-			if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt)
+			const text : string = (event.target as HTMLInputElement).value
+			const pt = ui_state.getPickedToken()
+			if(TileType.isTileType(pt))
+			{
+				const new_tt = TileType.getCopy(pt)
+				cf(new_tt,text) // set an attribute of new_tt to equal text
+				if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt,wf)
+			}
+			updatePicker(ui_state,wf)
 			updateEditor(ui_state,wf)
-		}
-	})
-	downInput.addEventListener("input",(event)=>{
-		const text : string = (event.target as HTMLInputElement).value
-		const pt = ui_state.getPickedToken() 
-		if(pt === null)return
-		if(PlaneTiling.isPlaneTiling(pt))return
-		if(TileType.isTileType(pt))
-		{
-			const new_tt = TileType.getCopy(pt)
-			new_tt.down = text
-			if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt)
-			updateEditor(ui_state,wf)
-		}
-	})
-	leftInput.addEventListener("input",(event)=>{
-		const text : string = (event.target as HTMLInputElement).value
-		const pt = ui_state.getPickedToken() 
-		if(pt === null)return
-		if(PlaneTiling.isPlaneTiling(pt))return
-		if(TileType.isTileType(pt))
-		{
-			const new_tt = TileType.getCopy(pt)
-			new_tt.left = text
-			if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt)
-			updateEditor(ui_state,wf)
-		}
-	})
-	rightInput.addEventListener("input",(event)=>{
-		const text : string = (event.target as HTMLInputElement).value
-		const pt = ui_state.getPickedToken() 
-		if(pt === null)return
-		if(PlaneTiling.isPlaneTiling(pt))return
-		if(TileType.isTileType(pt))
-		{
-			const new_tt = TileType.getCopy(pt)
-			new_tt.right = text
-			if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt)
-			updateEditor(ui_state,wf)
-		}
-	})
-	frontInput.addEventListener("input",(event)=>{
-		const text : string = (event.target as HTMLInputElement).value
-		const pt = ui_state.getPickedToken() 
-		if(pt === null)return
-		if(PlaneTiling.isPlaneTiling(pt))return
-		if(TileType.isTileType(pt))
-		{
-			const new_tt = TileType.getCopy(pt)
-			new_tt.front = text
-			if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt)
-			updateEditor(ui_state,wf)
-		}
-	})
-	backInput.addEventListener("input",(event)=>{
-		const text : string = (event.target as HTMLInputElement).value
-		const pt = ui_state.getPickedToken() 
-		if(pt === null)return
-		if(PlaneTiling.isPlaneTiling(pt))return
-		if(TileType.isTileType(pt))
-		{
-			const new_tt = TileType.getCopy(pt)
-			new_tt.back = text
-			if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt)
-			updateEditor(ui_state,wf)
-		}
-	})
+		})
+	}
+	setUp(upInput,(tt,s)=>{tt.up=s})
+	setUp(downInput,(tt,s)=>{tt.down=s})
+	setUp(leftInput,(tt,s)=>{tt.left=s})
+	setUp(rightInput,(tt,s)=>{tt.right=s})
+	setUp(frontInput,(tt,s)=>{tt.front=s})
+	setUp(backInput,(tt,s)=>{tt.back=s})
 }
 
 
@@ -220,7 +133,7 @@ export function updateEditor(ui_state : UIState, wf : WangFile): void
 		toggleNameInput()
 		toggleDirectionInputs()
 	}
-	if(PlaneTiling.isPlaneTiling(pt))
+	else if(PlaneTiling.isPlaneTiling(pt))
 	{
 		const b : Color = new Color()
 		setValues(pt.name,"-","-","-","-","-","-")
@@ -229,21 +142,14 @@ export function updateEditor(ui_state : UIState, wf : WangFile): void
 		toggleNameInput(false)
 		toggleDirectionInputs()
 	}
-	if(TileType.isTileType(pt))
+	else if(TileType.isTileType(pt))
 	{
 		setValues(pt.name,pt.up,pt.down,pt.left,pt.right,pt.front,pt.back)
 		toggleAllColorPickers(false)
 		toggleNameInput(false)
 		toggleDirectionInputs(false)
-		setColors(
-			pt.color,
-			WangFile.getColorFromString(pt.up,wf),
-			WangFile.getColorFromString(pt.down,wf),
-			WangFile.getColorFromString(pt.left,wf),
-			WangFile.getColorFromString(pt.right,wf),
-			WangFile.getColorFromString(pt.front,wf),
-			WangFile.getColorFromString(pt.back,wf),
-		)
+		function foo (s:string) : Color {return WangFile.getColorFromString(s,wf)}
+		setColors(pt.color,foo(pt.up),foo(pt.down),foo(pt.left),foo(pt.right),foo(pt.front),foo(pt.back))
 	}
 }
 

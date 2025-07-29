@@ -40,7 +40,7 @@ export const deletePickerButton : HTMLButtonElement = document.getElementById('d
 
 
 export const stepForwardButton : HTMLButtonElement = document.getElementById('step-forward-button') as HTMLButtonElement;
-export const stepBackwardButton : HTMLButtonElement = document.getElementById('step-back-button') as HTMLButtonElement;
+export const stepBackwardButton : HTMLButtonElement = document.getElementById('step-backward-button') as HTMLButtonElement;
 export const resetTimeButton : HTMLButtonElement = document.getElementById('reset-time-button') as HTMLButtonElement;
 
 

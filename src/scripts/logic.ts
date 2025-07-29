@@ -1,4 +1,5 @@
 
+import { PRUNE } from './algorithm.js';
 import {Vector, Color, deleteFromList, DEFAULT_COLOR} from './util.js'
 
 export type stringColorMap = {
@@ -25,13 +26,15 @@ export class TileType
 	private static UID = 0;
 	public readonly uid: number;
 
+	name : string = ""
+
 	up : string = ANYTHING
 	down : string = ANYTHING
 	left : string = ANYTHING
 	right : string = ANYTHING
 	front : string = ANYTHING
 	back : string = ANYTHING
-	name : string = ""
+	
 	color : Color = DEFAULT_COLOR;
 
 	constructor()
@@ -83,10 +86,11 @@ export class TileType
 export class Tile
 {
 	tileType : TileType; // not initialized because of UID
-	r : Vector = new Vector();
-	constructor(tt : TileType)
+	r : Vector;
+	constructor(tt : TileType, r = new Vector())
 	{
 		this.tileType = tt
+		this.r = r
 	}
 	public static isTile(obj: unknown): obj is Tile
 	{
@@ -239,6 +243,9 @@ export class WangFile // stores the whole context, to be in a json file
 		WangFile.getAllPlaneTilings(wf).forEach(pt => pt.tiles.forEach(t => {
 			if(TileType.equals(t.tileType,tt))t.tileType = new_tt 
 		}))
+
+		console.log("edit triggered")
+		console.log(wf.tileTypes)
 		
 		return true
 	}
@@ -276,6 +283,11 @@ export class WangFile // stores the whole context, to be in a json file
 	public static deleteTileAt(r : Vector, wf : WangFile) : boolean
 	{
 		return PlaneTiling.deleteTileAt(r,wf.mainPlaneTiling)
+	}
+	public static simulate(reverse:boolean, wf : WangFile)
+	{
+		const result = PRUNE(wf.mainPlaneTiling,wf.tileTypes,reverse)
+		if(result!==null)wf.mainPlaneTiling = result
 	}
 
 }

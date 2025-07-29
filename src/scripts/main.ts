@@ -12,6 +12,7 @@ import { setUpPicker, updatePicker } from "./picker.js"
 import { setUpEditor, updateEditor } from "./editor.js"
 import { setUpPreview } from "./preview.js"
 import { setUpControlButtons, updateControlButtons } from "./control_buttons.js"
+import { setUpSimulationButtons, updateSimulationButtons } from "./simulation_buttons.js"
 
 
 const wf : WangFile = getStarterWangFile();
@@ -46,6 +47,9 @@ updateEditor(ui_state, wf)
 
 setUpControlButtons(ui_state, wf)
 updateControlButtons(ui_state, wf)
+
+setUpSimulationButtons(ui_state,wf)
+updateSimulationButtons(ui_state, wf)
 
 
 function animate() {
