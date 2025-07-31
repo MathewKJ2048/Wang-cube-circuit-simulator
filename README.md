@@ -128,3 +128,34 @@ PRUNE (Propagating Reductions Using Neighbourhood Elimination)
 - y+ -> up
 - z+ -> front
 - time flows in the same direction as z
+
+
+## Ideas for additions:
+
+- add a "copy tile" and "rotate tile" buttons, for easy tile-generation, make it somewhat intelligent
+- name consists of core and mods
+- mods are a set of classes
+- core determines the color
+- 3D view mode and 2D edit mode
+- search shows only cores, when selected it shows classes
+- when a core is selected, it autocompletes the specific class
+- class would be things like 0/1, vertical/horizontal/left/right etc
+
+- use 11ty for a user manual
+
+- also when showing the to-be-placed, use a small variant of the tile, then do the placement, or use the outline for colors and place them (the latter sounds even better imo)
+
+
+
+
+## Selection policy:
+
+- there needs to be a selectedToken just like pickedToken, with the same type
+- the goal of the selector is to assign a value to the selected token
+- but no, the selected token needs to always be a planeTiling
+- there is no need for it to be a tileType
+- the selector itself contains of two vectors, each can either be null or not
+- the selector is "null null" by default
+- when the first click of the selector is done, it goes to <start> null
+- then it goes to <start> <end> and also adds in the selected element as a separate plane-tiling
+- switching mode results in a reset to the selector

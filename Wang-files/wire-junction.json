@@ -1,0 +1,945 @@
+{
+    "tileTypes": [
+        {
+            "uid": 103,
+            "name": "sink-right-0",
+            "up": "anything",
+            "down": "anything",
+            "left": "0",
+            "right": "anything",
+            "front": "sink-right",
+            "back": "sink-right",
+            "color": {
+                "r": 129,
+                "g": 61,
+                "b": 156
+            }
+        },
+        {
+            "uid": 137,
+            "name": "sink-right-1",
+            "up": "anything",
+            "down": "anything",
+            "left": "1",
+            "right": "anything",
+            "front": "sink-right",
+            "back": "sink-right",
+            "color": {
+                "r": 129,
+                "g": 61,
+                "b": 156
+            }
+        },
+        {
+            "uid": 187,
+            "name": "wire-horizontal-0",
+            "up": "anything",
+            "down": "anything",
+            "left": "0",
+            "right": "0",
+            "front": "wire-horizontal",
+            "back": "wire-horizontal",
+            "color": {
+                "r": 192,
+                "g": 28,
+                "b": 40
+            }
+        },
+        {
+            "uid": 237,
+            "name": "wire-horizontal-1",
+            "up": "anything",
+            "down": "anything",
+            "left": "1",
+            "right": "1",
+            "front": "wire-horizontal",
+            "back": "wire-horizontal",
+            "color": {
+                "r": 4,
+                "g": 158,
+                "b": 244
+            }
+        },
+        {
+            "uid": 260,
+            "name": "clock-right-0",
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "0",
+            "front": "1",
+            "back": "0",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 262,
+            "name": "clock-right-1",
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "1",
+            "front": "0",
+            "back": "1",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 264,
+            "name": "clock-standalone-0",
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "1",
+            "back": "0",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 285,
+            "name": "clock-standalone-1",
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "0",
+            "back": "1",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 317,
+            "name": "NOT-right-0",
+            "up": "anything",
+            "down": "anything",
+            "left": "0",
+            "right": "1",
+            "front": "NOT-right",
+            "back": "NOT-right",
+            "color": {
+                "r": 38,
+                "g": 162,
+                "b": 105
+            }
+        },
+        {
+            "uid": 351,
+            "name": "NOT-right-1",
+            "up": "anything",
+            "down": "anything",
+            "left": "1",
+            "right": "0",
+            "front": "NOT-right",
+            "back": "NOT-right",
+            "color": {
+                "r": 38,
+                "g": 162,
+                "b": 105
+            }
+        },
+        {
+            "uid": 426,
+            "name": "AND-right-00",
+            "up": "0",
+            "down": "0",
+            "left": "anything",
+            "right": "0",
+            "front": "AND-right",
+            "back": "AND-right",
+            "color": {
+                "r": 198,
+                "g": 70,
+                "b": 0
+            }
+        },
+        {
+            "uid": 447,
+            "name": "AND-right-01",
+            "up": "0",
+            "down": "1",
+            "left": "anything",
+            "right": "0",
+            "front": "AND-right",
+            "back": "AND-right",
+            "color": {
+                "r": 198,
+                "g": 70,
+                "b": 0
+            }
+        },
+        {
+            "uid": 468,
+            "name": "AND-right-10",
+            "up": "1",
+            "down": "0",
+            "left": "anything",
+            "right": "0",
+            "front": "AND-right",
+            "back": "AND-right",
+            "color": {
+                "r": 198,
+                "g": 70,
+                "b": 0
+            }
+        },
+        {
+            "uid": 489,
+            "name": "AND-right-11",
+            "up": "1",
+            "down": "1",
+            "left": "anything",
+            "right": "1",
+            "front": "AND-right",
+            "back": "AND-right",
+            "color": {
+                "r": 198,
+                "g": 70,
+                "b": 0
+            }
+        },
+        {
+            "uid": 658,
+            "name": "wire-bend-right-down-1",
+            "up": "anything",
+            "down": "1",
+            "left": "1",
+            "right": "anything",
+            "front": "wire-bend-right-down",
+            "back": "wire-bend-right-down",
+            "color": {
+                "r": 4,
+                "g": 158,
+                "b": 244
+            }
+        },
+        {
+            "uid": 721,
+            "name": "wire-bend-right-up-0",
+            "up": "0",
+            "down": "anything",
+            "left": "0",
+            "right": "anything",
+            "front": "wire-bend-right-up",
+            "back": "wire-bend-right-up",
+            "color": {
+                "r": 192,
+                "g": 28,
+                "b": 40
+            }
+        },
+        {
+            "uid": 759,
+            "name": "wire-bend-right-up-1",
+            "up": "1",
+            "down": "anything",
+            "left": "1",
+            "right": "anything",
+            "front": "wire-bend-right-up",
+            "back": "wire-bend-right-up",
+            "color": {
+                "r": 4,
+                "g": 158,
+                "b": 244
+            }
+        },
+        {
+            "uid": 1051,
+            "name": "clock-right-half-2",
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "1",
+            "front": "clock-right-half-2",
+            "back": "clock-right-half-1",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 1053,
+            "name": "clock-right-half-0",
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "0",
+            "front": "clock-right-half-0",
+            "back": "clock-right-half-3",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 1055,
+            "name": "clock-right-half-1",
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "0",
+            "front": "clock-right-half-1",
+            "back": "clock-right-half-0",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 1057,
+            "name": "clock-right-half-3",
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "1",
+            "front": "clock-right-half-3",
+            "back": "clock-right-half-2",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 1067,
+            "name": "wire-bend-right-down-0",
+            "up": "anything",
+            "down": "0",
+            "left": "0",
+            "right": "anything",
+            "front": "wire-bend-right-down",
+            "back": "wire-bend-right-down",
+            "color": {
+                "r": 192,
+                "g": 28,
+                "b": 40
+            }
+        },
+        {
+            "uid": 1100,
+            "name": "OR-right-00",
+            "up": "0",
+            "down": "0",
+            "left": "anything",
+            "right": "0",
+            "front": "OR-right",
+            "back": "OR-right",
+            "color": {
+                "r": 229,
+                "g": 165,
+                "b": 10
+            }
+        },
+        {
+            "uid": 1131,
+            "name": "OR-right-01",
+            "up": "0",
+            "down": "1",
+            "left": "anything",
+            "right": "1",
+            "front": "OR-right",
+            "back": "OR-right",
+            "color": {
+                "r": 229,
+                "g": 165,
+                "b": 10
+            }
+        },
+        {
+            "uid": 1162,
+            "name": "OR-right-10",
+            "up": "1",
+            "down": "0",
+            "left": "anything",
+            "right": "1",
+            "front": "OR-right",
+            "back": "OR-right",
+            "color": {
+                "r": 229,
+                "g": 165,
+                "b": 10
+            }
+        },
+        {
+            "uid": 1221,
+            "name": "OR-right-11",
+            "up": "1",
+            "down": "1",
+            "left": "anything",
+            "right": "1",
+            "front": "OR-right",
+            "back": "OR-right",
+            "color": {
+                "r": 229,
+                "g": 165,
+                "b": 10
+            }
+        },
+        {
+            "uid": 1283,
+            "name": "wire-vertical-0",
+            "up": "0",
+            "down": "0",
+            "left": "anything",
+            "right": "anything",
+            "front": "wire-vertical",
+            "back": "wire-vertical",
+            "color": {
+                "r": 192,
+                "g": 28,
+                "b": 40
+            }
+        },
+        {
+            "uid": 1353,
+            "name": "wire-vertical-1",
+            "up": "1",
+            "down": "1",
+            "left": "anything",
+            "right": "anything",
+            "front": "wire-vertical",
+            "back": "wire-vertical",
+            "color": {
+                "r": 4,
+                "g": 158,
+                "b": 244
+            }
+        },
+        {
+            "uid": 1394,
+            "name": "sink-down-0",
+            "up": "0",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "sink-down",
+            "back": "sink-down",
+            "color": {
+                "r": 129,
+                "g": 61,
+                "b": 156
+            }
+        },
+        {
+            "uid": 1439,
+            "name": "sink-down-1",
+            "up": "1",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "sink-down",
+            "back": "sink-down",
+            "color": {
+                "r": 129,
+                "g": 61,
+                "b": 156
+            }
+        },
+        {
+            "uid": 1466,
+            "name": "clock-down-0",
+            "up": "anything",
+            "down": "0",
+            "left": "anything",
+            "right": "anything",
+            "front": "1",
+            "back": "0",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 1486,
+            "name": "clock-down-1",
+            "up": "anything",
+            "down": "1",
+            "left": "anything",
+            "right": "anything",
+            "front": "0",
+            "back": "1",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 1563,
+            "name": "wire-junction-none",
+            "up": "0",
+            "down": "0",
+            "left": "0",
+            "right": "0",
+            "front": "wire-junction",
+            "back": "wire-junction",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 1624,
+            "name": "wire-junction-horizontal",
+            "up": "0",
+            "down": "0",
+            "left": "1",
+            "right": "1",
+            "front": "wire-junction",
+            "back": "wire-junction",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 1657,
+            "name": "wire-junction-vertical",
+            "up": "1",
+            "down": "1",
+            "left": "0",
+            "right": "0",
+            "front": "wire-junction",
+            "back": "wire-junction",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        },
+        {
+            "uid": 1710,
+            "name": "wire-junction-full",
+            "up": "1",
+            "down": "1",
+            "left": "1",
+            "right": "1",
+            "front": "wire-junction",
+            "back": "wire-junction",
+            "color": {
+                "r": 100,
+                "g": 100,
+                "b": 100
+            }
+        }
+    ],
+    "savedSubPlaneTilings": [],
+    "mainPlaneTiling": {
+        "tiles": [
+            {
+                "tileType": {
+                    "uid": 1486,
+                    "name": "clock-down-1",
+                    "up": "anything",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "0",
+                    "back": "1",
+                    "color": {
+                        "r": 100,
+                        "g": 100,
+                        "b": 100
+                    }
+                },
+                "r": {
+                    "x": 0,
+                    "y": 2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1353,
+                    "name": "wire-vertical-1",
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "wire-vertical",
+                    "back": "wire-vertical",
+                    "color": {
+                        "r": 4,
+                        "g": 158,
+                        "b": 244
+                    }
+                },
+                "r": {
+                    "x": 0,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1353,
+                    "name": "wire-vertical-1",
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "wire-vertical",
+                    "back": "wire-vertical",
+                    "color": {
+                        "r": 4,
+                        "g": 158,
+                        "b": 244
+                    }
+                },
+                "r": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1710,
+                    "name": "wire-junction-full",
+                    "up": "1",
+                    "down": "1",
+                    "left": "1",
+                    "right": "1",
+                    "front": "wire-junction",
+                    "back": "wire-junction",
+                    "color": {
+                        "r": 100,
+                        "g": 100,
+                        "b": 100
+                    }
+                },
+                "r": {
+                    "x": 0,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 237,
+                    "name": "wire-horizontal-1",
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "1",
+                    "front": "wire-horizontal",
+                    "back": "wire-horizontal",
+                    "color": {
+                        "r": 4,
+                        "g": 158,
+                        "b": 244
+                    }
+                },
+                "r": {
+                    "x": -1,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 237,
+                    "name": "wire-horizontal-1",
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "1",
+                    "front": "wire-horizontal",
+                    "back": "wire-horizontal",
+                    "color": {
+                        "r": 4,
+                        "g": 158,
+                        "b": 244
+                    }
+                },
+                "r": {
+                    "x": -2,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 237,
+                    "name": "wire-horizontal-1",
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "1",
+                    "front": "wire-horizontal",
+                    "back": "wire-horizontal",
+                    "color": {
+                        "r": 4,
+                        "g": 158,
+                        "b": 244
+                    }
+                },
+                "r": {
+                    "x": 1,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 237,
+                    "name": "wire-horizontal-1",
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "1",
+                    "front": "wire-horizontal",
+                    "back": "wire-horizontal",
+                    "color": {
+                        "r": 4,
+                        "g": 158,
+                        "b": 244
+                    }
+                },
+                "r": {
+                    "x": 3,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 237,
+                    "name": "wire-horizontal-1",
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "1",
+                    "front": "wire-horizontal",
+                    "back": "wire-horizontal",
+                    "color": {
+                        "r": 4,
+                        "g": 158,
+                        "b": 244
+                    }
+                },
+                "r": {
+                    "x": 2,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 237,
+                    "name": "wire-horizontal-1",
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "1",
+                    "front": "wire-horizontal",
+                    "back": "wire-horizontal",
+                    "color": {
+                        "r": 4,
+                        "g": 158,
+                        "b": 244
+                    }
+                },
+                "r": {
+                    "x": 4,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1439,
+                    "name": "sink-down-1",
+                    "up": "1",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "sink-down",
+                    "back": "sink-down",
+                    "color": {
+                        "r": 129,
+                        "g": 61,
+                        "b": 156
+                    }
+                },
+                "r": {
+                    "x": 0,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 137,
+                    "name": "sink-right-1",
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink-right",
+                    "back": "sink-right",
+                    "color": {
+                        "r": 129,
+                        "g": 61,
+                        "b": 156
+                    }
+                },
+                "r": {
+                    "x": 5,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1057,
+                    "name": "clock-right-half-3",
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-right-half-3",
+                    "back": "clock-right-half-2",
+                    "color": {
+                        "r": 100,
+                        "g": 100,
+                        "b": 100
+                    }
+                },
+                "r": {
+                    "x": -3,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1353,
+                    "name": "wire-vertical-1",
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "wire-vertical",
+                    "back": "wire-vertical",
+                    "color": {
+                        "r": 4,
+                        "g": 158,
+                        "b": 244
+                    }
+                },
+                "r": {
+                    "x": 0,
+                    "y": -2
+                }
+            }
+        ],
+        "name": ""
+    },
+    "cachedPlaneTiling": {
+        "tiles": [],
+        "name": ""
+    },
+    "colorMap": {
+        "0": {
+            "r": 192,
+            "g": 28,
+            "b": 40
+        },
+        "1": {
+            "r": 4,
+            "g": 158,
+            "b": 244
+        },
+        "ANYTHING": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+        },
+        "sink-right": {
+            "r": 129,
+            "g": 61,
+            "b": 156
+        },
+        "wire-horizontal": {
+            "r": 61,
+            "g": 56,
+            "b": 70
+        },
+        "NOT-right": {
+            "r": 143,
+            "g": 240,
+            "b": 164
+        },
+        "AND-right": {
+            "r": 255,
+            "g": 190,
+            "b": 111
+        },
+        "new-tile-0": {
+            "r": 129,
+            "g": 61,
+            "b": 156
+        },
+        "wire-bend-right": {
+            "r": 36,
+            "g": 31,
+            "b": 49
+        },
+        "wire-bend-right-down": {
+            "r": 36,
+            "g": 31,
+            "b": 49
+        },
+        "wire-bend-right-up": {
+            "r": 36,
+            "g": 31,
+            "b": 49
+        },
+        "clock-right-half-0": {
+            "r": 4,
+            "g": 158,
+            "b": 244
+        },
+        "clock-right-half-1": {
+            "r": 4,
+            "g": 158,
+            "b": 244
+        },
+        "clock-right-half-2": {
+            "r": 192,
+            "g": 28,
+            "b": 40
+        },
+        "OR-right": {
+            "r": 249,
+            "g": 240,
+            "b": 107
+        },
+        "sink-down": {
+            "r": 129,
+            "g": 61,
+            "b": 156
+        },
+        "wire-vertical": {
+            "r": 61,
+            "g": 56,
+            "b": 70
+        },
+        "wire-junction": {
+            "r": 154,
+            "g": 153,
+            "b": 150
+        },
+        "clock-right-half-3": {
+            "r": 192,
+            "g": 28,
+            "b": 40
+        }
+    }
+}
