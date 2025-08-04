@@ -1,3 +1,4 @@
+import { UpdateCacheButtons } from "./cache";
 import { stepBackwardButton, stepForwardButton } from "./elements";
 import { WangFile } from "./logic";
 import type { UIState } from "./UI";
@@ -7,9 +8,8 @@ function setUpStepForwardButton(ui_state : UIState, wf : WangFile): void
 {
 	stepForwardButton.addEventListener("click", ()=>
 	{
-		console.log("forward")
 		WangFile.simulate(false,wf)
-		console.log(ui_state)
+		UpdateCacheButtons(ui_state,wf)
 	})
 }
 
@@ -17,9 +17,8 @@ function setUpStepBackwardButton(ui_state : UIState, wf : WangFile): void
 {
 	stepBackwardButton.addEventListener("click", ()=>
 	{
-		console.log("back")
-		WangFile.simulate(false,wf)
-		console.log(ui_state)
+		WangFile.simulate(true,wf)
+		UpdateCacheButtons(ui_state,wf)
 	})
 }
 

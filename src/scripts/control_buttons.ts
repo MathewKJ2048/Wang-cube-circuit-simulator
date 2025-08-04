@@ -1,3 +1,4 @@
+import { UpdateCacheButtons } from "./cache";
 import { updateEditor } from "./editor";
 import { canvas, defaultButton,  eraseButton, placeButton, selectButton } from "./elements";
 import {  Tile, TileType, WangFile } from "./logic";
@@ -5,21 +6,22 @@ import { updatePicker } from "./picker";
 import { getMousePositionSnapped, Mode, type UIState } from "./UI";
 
 
-function setUpDefaultButton(ui_state: UIState, wf: WangFile) : void
+
+function setUpPrimaryGroup(ui_state: UIState, wf: WangFile): void
 {
-	defaultButton.addEventListener('click',()=>{
-		ui_state.mode = Mode.DEFAULT
-		updateControlButtons(ui_state, wf)
-	})
+	function setUp(button : HTMLButtonElement, mode : Mode): void
+	{
+		button.addEventListener("click", ()=>{
+			ui_state.mode = mode
+			updateControlButtons(ui_state, wf)
+		})
+	}
+	setUp(eraseButton,Mode.ERASE)
+	setUp(placeButton,Mode.PLACE)
+	setUp(selectButton, Mode.SELECT)
+	setUp(defaultButton, Mode.DEFAULT)
 }
 
-function setUpPlaceButton(ui_state: UIState, wf: WangFile) : void
-{
-	placeButton.addEventListener('click',()=>{
-		ui_state.mode = Mode.PLACE
-		updateControlButtons(ui_state, wf)
-	})
-}
 
 function setUpPlace(ui_state: UIState, wf: WangFile) : void
 {
@@ -34,11 +36,11 @@ function setUpPlace(ui_state: UIState, wf: WangFile) : void
 			t.r = mr
 			if(WangFile.addTile(t,wf))console.log("success")
 		}
-		
+		UpdateCacheButtons(ui_state,wf)
 	})
 }
 
-function setUpSelect(ui_state: UIState, wf: WangFile): void
+function setUpDefaultPicking(ui_state: UIState, wf: WangFile): void
 {
 	canvas.addEventListener('click',(e)=>
 	{
@@ -55,13 +57,7 @@ function setUpSelect(ui_state: UIState, wf: WangFile): void
 	})
 }
 
-function setUpEraseButton(ui_state: UIState, wf: WangFile): void
-{
-	eraseButton.addEventListener("click", ()=>{
-		ui_state.mode = Mode.ERASE
-		updateControlButtons(ui_state, wf)
-	})
-}
+
 
 function setUpErase(ui_state: UIState, wf: WangFile): void
 {
@@ -70,6 +66,7 @@ function setUpErase(ui_state: UIState, wf: WangFile): void
 		if(ui_state.mode!==Mode.ERASE)return
 		const mr = getMousePositionSnapped(e,ui_state.camera)
 		WangFile.deleteTileAt(mr,wf)
+		UpdateCacheButtons(ui_state,wf)
 	})
 }
 
@@ -99,10 +96,8 @@ export function updateControlButtons(ui_state: UIState, wf : WangFile)
 
 export function setUpControlButtons(ui_state: UIState, wf : WangFile)
 {
-	setUpDefaultButton(ui_state, wf)
-	setUpSelect(ui_state, wf)
-	setUpPlaceButton(ui_state, wf)
+	setUpPrimaryGroup(ui_state, wf)
+	setUpDefaultPicking(ui_state, wf)
 	setUpPlace(ui_state, wf)
-	setUpEraseButton(ui_state, wf)
 	setUpErase(ui_state,wf)
 }

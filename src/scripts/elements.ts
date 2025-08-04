@@ -41,7 +41,8 @@ export const deletePickerButton : HTMLButtonElement = document.getElementById('d
 
 export const stepForwardButton : HTMLButtonElement = document.getElementById('step-forward-button') as HTMLButtonElement;
 export const stepBackwardButton : HTMLButtonElement = document.getElementById('step-backward-button') as HTMLButtonElement;
-export const resetTimeButton : HTMLButtonElement = document.getElementById('reset-time-button') as HTMLButtonElement;
+export const reloadCachedButton : HTMLButtonElement = document.getElementById('reload-cached-button') as HTMLButtonElement;
+export const syncCacheButton : HTMLButtonElement = document.getElementById('sync-cache-button') as HTMLButtonElement;
 
 
 export const nameInput : HTMLInputElement = document.getElementById('editor-name') as HTMLInputElement;

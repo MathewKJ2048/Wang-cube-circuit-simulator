@@ -13,6 +13,7 @@ import { setUpEditor, updateEditor } from "./editor.js"
 import { setUpPreview } from "./preview.js"
 import { setUpControlButtons, updateControlButtons } from "./control_buttons.js"
 import { setUpSimulationButtons, updateSimulationButtons } from "./simulation_buttons.js"
+import { setUpCacheButtons,  UpdateCacheButtons, } from "./cache.js"
 
 
 const wf : WangFile = getStarterWangFile();
@@ -50,6 +51,9 @@ updateControlButtons(ui_state, wf)
 
 setUpSimulationButtons(ui_state,wf)
 updateSimulationButtons(ui_state, wf)
+
+setUpCacheButtons(ui_state,wf)
+UpdateCacheButtons(ui_state,wf)
 
 
 function animate() {

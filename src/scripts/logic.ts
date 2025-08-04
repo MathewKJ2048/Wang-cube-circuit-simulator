@@ -98,6 +98,17 @@ export class Tile
 		&& 'r' in obj && Vector.isVector(obj.r)
 		&& 'tileType' in obj && TileType.isTileType(obj.tileType)
 	}
+	public static equals(t: Tile, t_: Tile): boolean
+	{
+		return TileType.equals(t.tileType,t_.tileType)&&Vector.equals(t.r,t_.r)
+	}
+	public static copy(t: Tile): Tile // does not meddle with tile-types in any way, no creating copies
+	{
+		const t_new: Tile = new Tile(t.tileType)
+		t_new.r.x = t.r.x
+		t_new.r.y = t.r.y
+		return t_new
+	}
 }
 
 
@@ -123,6 +134,13 @@ export class PlaneTiling // stores a section of a tiling in space
 					return false
 		return true
 	}
+	public static copy(pt: PlaneTiling): PlaneTiling
+	{
+		const pt_new = new PlaneTiling()
+		pt_new.name = pt.name
+		pt.tiles.forEach(t => pt_new.tiles.push(Tile.copy(t)))
+		return pt_new
+	}
 	// avoid overlaps in added tiles
 	public static addTile(t : Tile, pt : PlaneTiling) : boolean
 	{
@@ -146,6 +164,29 @@ export class PlaneTiling // stores a section of a tiling in space
 			}
 		})
 		return answer
+	}
+	public static sortTiles(pt: PlaneTiling): void
+	{
+		function key(t : Tile): string
+		{
+			return String(t.r.x)+","+String(t.r.y)
+		}
+		pt.tiles.sort((a,b)=>key(a).localeCompare(key(b)))
+	}
+	public static equals(pt1 : PlaneTiling, pt2: PlaneTiling): boolean
+	{
+		const N = pt1.tiles.length
+		const M = pt2.tiles.length
+		if(M!==N)return false
+
+		PlaneTiling.sortTiles(pt1)
+		PlaneTiling.sortTiles(pt2)
+
+		for(let i=0;i<N;i++)
+			if(!Tile.equals(pt1.tiles[i],pt2.tiles[i]))
+				return false
+
+		return true
 	}
 }
 

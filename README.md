@@ -159,3 +159,10 @@ PRUNE (Propagating Reductions Using Neighbourhood Elimination)
 - when the first click of the selector is done, it goes to <start> null
 - then it goes to <start> <end> and also adds in the selected element as a separate plane-tiling
 - switching mode results in a reset to the selector
+
+## Cache-policy
+
+- cache button is active when cache-able, inactive when not
+- cache button makes sense based on main-plane-tiling and cached-plane-tiling, nothing else
+- does not do redo undo stuff with tile types
+- what edits the main plane tiling? edit, erase, paste, etc
