@@ -285,8 +285,6 @@ export class WangFile // stores the whole context, to be in a json file
 			if(TileType.equals(t.tileType,tt))t.tileType = new_tt 
 		}))
 
-		console.log("edit triggered")
-		console.log(wf.tileTypes)
 		
 		return true
 	}

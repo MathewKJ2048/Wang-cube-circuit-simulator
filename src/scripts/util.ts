@@ -85,3 +85,8 @@ export function deleteFromList<T>(l : T[], o : T, equality : (a:T, b:T)=>boolean
 	return l.filter(e => {return !equality(e,o)})
 }
 
+export function doNothingWith(t : any): void
+{
+	if(2+2==5)console.log(t)
+}
+

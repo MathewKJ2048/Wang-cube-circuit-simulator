@@ -127,6 +127,8 @@ PRUNE (Propagating Reductions Using Neighbourhood Elimination)
 - class would be things like 0/1, vertical/horizontal/left/right etc
 
 - use 11ty for a user manual
+- actually no
+- user manual is a completely separate repo with vitepress
 
 - also when showing the to-be-placed, use a small variant of the tile, then do the placement, or use the outline for colors and place them (the latter sounds even better imo)
 
@@ -157,3 +159,18 @@ PRUNE (Propagating Reductions Using Neighbourhood Elimination)
 - when in selection mode, selector start and end can be anything
 - if in any other mode, the selector has to be null, null
 - clipboard is decoupled from this all
+- actually, the selector need not be null, null in all other modes
+- it won't matter anyway, as long as shifting to select mode comes with a shift to null null
+
+## Nomenclature:
+
+- file (the file buttons)
+- clipboard (the five clipboard buttons and selector)
+- simulation (includes the animation)
+- view (zoom and grid)
+- mode (4 primary buttons)
+- cache (reload and sync)
+
+- editor (right side)
+- picker (left side)
+- preview (right top)

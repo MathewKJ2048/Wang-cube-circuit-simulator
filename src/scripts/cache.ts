@@ -1,6 +1,7 @@
 import { reloadCachedButton, syncCacheButton } from "./elements";
 import { PlaneTiling, type WangFile } from "./logic";
-import type { UIState } from "./UI";
+import { UIState } from "./UI";
+import { doNothingWith } from "./util";
 
 export function UpdateCacheButtons(ui_state: UIState, wf: WangFile): void
 {
@@ -14,7 +15,7 @@ export function UpdateCacheButtons(ui_state: UIState, wf: WangFile): void
 		syncCacheButton.disabled = false
 		reloadCachedButton.disabled = false
 	}
-	console.log(ui_state)
+	doNothingWith(ui_state)
 }
 
 

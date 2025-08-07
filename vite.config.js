@@ -1,8 +1,11 @@
-// vite.config.js
+import { defineConfig } from 'vite'
+// import eleventy from '@11ty/11ty-plugin-vite'
 
-  export default {
-	base: "./",
+export default defineConfig({
+	base: "./", // used to ensure the github page loads properly
 	build: {
-		assetsInlineLimit: 0 // Disable inlining for all assets
+	  outDir: 'dist',
+	  assetsInlineLimit: 0 // avoids inlining svg, for dynamic button changes
 	}
-  }
+  })
+

@@ -2,6 +2,7 @@ import { UpdateCacheButtons } from "./cache";
 import { stepBackwardButton, stepForwardButton } from "./elements";
 import { WangFile } from "./logic";
 import type { UIState } from "./UI";
+import { doNothingWith } from "./util";
 
 
 function setUpStepForwardButton(ui_state : UIState, wf : WangFile): void
@@ -24,8 +25,8 @@ function setUpStepBackwardButton(ui_state : UIState, wf : WangFile): void
 
 export function updateSimulationButtons(ui_state : UIState, wf : WangFile)
 {
-	console.log(ui_state)
-	console.log(wf)
+	doNothingWith(ui_state)
+	doNothingWith(wf)
 }
 
 

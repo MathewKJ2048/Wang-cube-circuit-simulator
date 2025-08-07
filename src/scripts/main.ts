@@ -1,19 +1,19 @@
 
 import { setUpCanvas, updateCanvas } from "./canvas.js"
-import { setUpUploadDownloadButtons } from "./file_manager.js"
+import { setUpUploadDownloadButtons } from "./file.js"
 import { render } from './render.js'
 import { UIState } from "./UI.js"
 import { setUpMouseDrag } from "./mouse_drag.js"
 import { WangFile, getStarterWangFile } from "./logic.js"
-import { setUpViewControls, updateViewControls } from "./view_controls.js";
-import { setUpGridToggle, updateGridToggle } from "./grid_toggle.js";
+import { setUpGridToggle, setUpViewControls, updateGridToggle, updateViewControls } from "./view.js";
 import { setUpSearch, updateSearch } from "./search.js";
 import { setUpPicker, updatePicker } from "./picker.js"
 import { setUpEditor, updateEditor } from "./editor.js"
 import { setUpPreview } from "./preview.js"
 import { setUpControlButtons, updateControlButtons } from "./control_buttons.js"
-import { setUpSimulationButtons, updateSimulationButtons } from "./simulation_buttons.js"
+import { setUpSimulationButtons, updateSimulationButtons } from "./simulation.js"
 import { setUpCacheButtons,  UpdateCacheButtons, } from "./cache.js"
+import { setUpSelection, updateSelectionButtons } from "./select.js"
 
 
 const wf : WangFile = getStarterWangFile();
@@ -54,6 +54,9 @@ updateSimulationButtons(ui_state, wf)
 
 setUpCacheButtons(ui_state,wf)
 UpdateCacheButtons(ui_state,wf)
+
+setUpSelection(ui_state, wf)
+updateSelectionButtons(ui_state, wf)
 
 
 function animate() {

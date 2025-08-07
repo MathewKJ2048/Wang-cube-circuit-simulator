@@ -29,15 +29,28 @@ export class UIState // to do with the main canvas
 	camera: Camera = new Camera() // camera used to render the canvas
 	perspectiveCamera : PerspectiveCamera = getPerspectiveCamera()
 	dragState: DragState = DragState.FREE // checks whether the mouse is dragging
-	mouseScreenPosition: Vector = new Vector() // stores old values of x and y
+	mouseScreenCoordinates: Vector = new Vector() // stores old values of mouse coordinates (not position)
 	private pickedToken : PickedToken = null;
-	mode: Mode = Mode.DEFAULT
+	private mode: Mode = Mode.DEFAULT
 	gridEnabled: boolean = true
 	regexEnabled: boolean = false
 	searchQuery: string = ""
-	public setPickedToken(pt: PickedToken, wf : WangFile) : void // conditions: picked token must be part of wangfile, and is tied to the mode - mode cannot be PLACe when picker is null
+	selectorUpLeft: Vector | null = null
+	selectorDownRight: Vector | null = null
+
+	public setMode(m : Mode): void
 	{
-		if(TileType.isTileType(pt) && !wf.tileTypes.some(tt => TileType.equals(tt,pt)))console.log("PT INTEGRITY VIOLATED - TILETYPE")
+		this.selectorDownRight = this.selectorUpLeft = null
+		this.mode = m
+	}
+	public getMode(): Mode
+	{
+		return this.mode
+	}
+
+	public setPickedToken(pt: PickedToken, wf : WangFile) : void // conditions: picked token must be part of Wang-file, and is tied to the mode - mode cannot be PLACe when picker is null
+	{
+		if(TileType.isTileType(pt) && !wf.tileTypes.some(tt => TileType.equals(tt,pt)))console.log("PT INTEGRITY VIOLATED - TILE TYPE")
 		this.pickedToken = pt
 		if(this.pickedToken === null && this.mode === Mode.PLACE)this.mode = Mode.DEFAULT
 	}

@@ -35,7 +35,6 @@ function generateResultForPickableToken( token : PickedToken,ui_state: UIState, 
 	radioInput.addEventListener('click', () => {
 		ui_state.setPickedToken(token, wf)
 		updateDependencies(ui_state,wf)
-		console.log(wf.tileTypes)
 	})
 
 	container.appendChild(textInput);
@@ -51,7 +50,6 @@ function setUpPickerCreateButton(ui_state: UIState, wf: WangFile): void
 		ui_state.setPickedToken(tt, wf)
 		updatePicker(ui_state, wf)
 		updateDependencies(ui_state,wf)
-		console.log(wf.tileTypes)
 	})
 }
 

@@ -3,7 +3,7 @@ import { regexToggleButton } from "./elements.js";
 import { UIState } from "./UI.js";
 import { searchInput } from "./elements.js";
 import { updatePicker } from "./picker.js"
-import { Tile, TileType, WangFile } from "./logic.js";
+import { WangFile } from "./logic.js";
 
 
 function updateRegexToggleButton(ui_state: UIState): void
@@ -25,9 +25,6 @@ function setUpRegexToggleButton(ui_state: UIState, wf : WangFile): void
 		ui_state.regexEnabled = !ui_state.regexEnabled
 		updatePicker(ui_state, wf)
 		updateRegexToggleButton(ui_state)
-		console.log(wf.tileTypes)
-		console.log(ui_state.getPickedToken())
-		if(Tile.isTile(ui_state.getPickedToken() && wf.tileTypes.every(tt => !TileType.equals(tt,ui_state.getPickedToken() as TileType))))console.log("ERRRRRRRRRRRRRRRRRRRRR")
 	})
 }
 

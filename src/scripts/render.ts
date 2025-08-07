@@ -162,14 +162,24 @@ function renderBackground(): void
 	ctx.fillRect(0,0,canvas.width,canvas.height)
 }
 
+function renderSelector(ui_state: UIState): void
+{
+	if(ui_state.getMode() !== Mode.SELECT)return
+	if(ui_state.selectorUpLeft === null) return
+	const dr : Vector = ui_state.selectorDownRight ?? fromScreenCoordinates(ui_state.mouseScreenCoordinates,ui_state.camera)
+	const c = dr.add(ui_state.selectorUpLeft).scale(1/2)
+	const d = dr.sub(ui_state.selectorUpLeft)
+	renderRect(c,d.x,d.y,new Color(0,255,255),ui_state.camera,true)
+}
+
 function renderMouse(ui_state: UIState, wf : WangFile): void
 {
-	const mr = snapToGrid(fromScreenCoordinates(ui_state.mouseScreenPosition,ui_state.camera))
-	if(ui_state.mode === Mode.DEFAULT)
+	const mr = snapToGrid(fromScreenCoordinates(ui_state.mouseScreenCoordinates,ui_state.camera))
+	if(ui_state.getMode() === Mode.DEFAULT)
 	{
 		// nothing to do
 	}
-	else if(ui_state.mode === Mode.PLACE && WangFile.getTileAt(mr,wf)===null)
+	else if(ui_state.getMode() === Mode.PLACE && WangFile.getTileAt(mr,wf)===null)
 	{
 		const pk = ui_state.getPickedToken()
 		if(TileType.isTileType(pk))
@@ -177,9 +187,13 @@ function renderMouse(ui_state: UIState, wf : WangFile): void
 			renderTileType(pk,mr.x,mr.y,ui_state.camera,wf,true)
 		}
 	}
-	else if(ui_state.mode === Mode.ERASE)
+	else if(ui_state.getMode() === Mode.ERASE)
 	{
 		renderErase(mr,ui_state.camera)
+	}
+	else if(ui_state.getMode() === Mode.SELECT)
+	{
+		// render selector symbol
 	}
 }
 
@@ -192,6 +206,7 @@ export function render(ui_state: UIState, wf : WangFile): void
 	renderTiles(ui_state,wf)
 	renderMouse(ui_state, wf)
 	renderGrid(ui_state)
+	renderSelector(ui_state)
 }
 
 

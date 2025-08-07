@@ -97,7 +97,6 @@ function NodePRUNE(n : Node) : boolean
 export function PRUNE(pt : PlaneTiling, tt_s : TileType[], reverse : boolean) : PlaneTiling | null
 {
 	const nodes : Node[] = generateNodes(pt, tt_s, reverse)
-	console.log(nodes)
 
 	// iterated pruning
 	while(nodes.some(n => NodePRUNE(n))){}

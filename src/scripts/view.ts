@@ -1,5 +1,5 @@
 import { Camera } from "./render_util.js";
-import { resetViewButton, zoomInButton, zoomOutButton, zoomSlider } from "./elements.js";
+import { resetViewButton, toggleGridButton, zoomInButton, zoomOutButton, zoomSlider } from "./elements.js";
 import { getFraction, getValue } from "./util.js";
 import { UIState } from "./UI.js";
 
@@ -7,6 +7,10 @@ import { UIState } from "./UI.js";
 const MAX_ZOOM = 110
 const MIN_ZOOM = 10
 const DEFAULT_FRACTION = 0.5
+
+const enableGridIconPath : string = "./icons/grid.svg"
+const disableGridIconPath : string = "./icons/no-grid.svg"
+const gridIcon : HTMLImageElement = toggleGridButton.querySelector(".grid-icon") as HTMLImageElement;
 
 
 function updateZoomSlider(c : Camera): void
@@ -65,4 +69,25 @@ export function updateViewControls(ui_state: UIState): void
 {
 	ui_state.camera.zoom = getValue(DEFAULT_FRACTION,MIN_ZOOM,MAX_ZOOM)
 	updateZoomSlider(ui_state.camera)
+}
+
+
+export function updateGridToggle(ui_state: UIState): void
+{
+	if(ui_state.gridEnabled)
+	{
+		gridIcon.src = disableGridIconPath;
+	}
+	else
+	{
+		gridIcon.src = enableGridIconPath;
+	}
+}
+
+export function setUpGridToggle(ui_state : UIState): void
+{
+	toggleGridButton.addEventListener("click",()=>{
+		ui_state.gridEnabled = ! ui_state.gridEnabled
+		updateGridToggle(ui_state)
+	})	
 }
