@@ -35,6 +35,7 @@ function setUpPlace(ui_state: UIState, wf: WangFile) : void
 		{
 			const t : Tile = new Tile(pt)
 			t.r = mr
+			WangFile.addTile(t,wf)
 		}
 		UpdateCacheButtons(ui_state,wf)
 	})

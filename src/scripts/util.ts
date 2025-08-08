@@ -90,3 +90,11 @@ export function doNothingWith(t : any): void
 	if(2+2==5)console.log(t)
 }
 
+export function isWithinSelection(r : Vector, upLeft: Vector | null, downRight : Vector | null): boolean
+{
+	if(upLeft === null || downRight === null)return false
+	if(r.x < upLeft.x || r.x > downRight.x)return false
+	if(r.y > upLeft.y || r.y < downRight.y)return false
+	return true
+}
+

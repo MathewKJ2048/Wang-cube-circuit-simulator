@@ -174,3 +174,19 @@ PRUNE (Propagating Reductions Using Neighbourhood Elimination)
 - editor (right side)
 - picker (left side)
 - preview (right top)
+
+## States:
+
+- by default, every one of the selection buttons are disabled
+- if the selector is not null, null, the delete button, cut button and save button are enabled
+- if the clipboard is not null, the paste button is enabled
+
+- save button - adds it to the saved plane tilings, sets the picked token and updates editor and picker and also destroys the selector
+
+- delete button - purges all selected tiles and destroys the selector
+
+- copy button - destroys the selector, and sets the clipboard to the thing, and makes updates
+
+- cut button - combination of copy and delete
+
+- paste button - ?

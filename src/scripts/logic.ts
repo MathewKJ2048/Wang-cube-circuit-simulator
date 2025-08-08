@@ -21,6 +21,11 @@ function isStringColorMap(obj: unknown): obj is stringColorMap
 }
 
 export const ANYTHING : string = "anything"
+export const DEFAULT_TILE_TYPE_NAME : string = "placeholder"
+export const DEFAULT_PLANE_TILING_NAME : string = "placeholder"
+
+
+
 export class TileType
 {
 	private static UID = 0;
@@ -185,6 +190,19 @@ export class PlaneTiling // stores a section of a tiling in space
 
 		return true
 	}
+	public static shift(d : Vector, pt: PlaneTiling): PlaneTiling
+	{
+		const pt_new = new PlaneTiling()
+		pt_new.name = pt.name
+		pt_new.tiles = pt.tiles.map(t => new Tile(t.tileType,t.r.add(d)))
+		return pt_new
+	}
+	public static reduce(pt : PlaneTiling): PlaneTiling
+	{
+		const min_x = pt.tiles.map(t => t.r.x).reduce((a,b)=>Math.min(a,b), Infinity)
+		const min_y = pt.tiles.map(t => t.r.y).reduce((a,b)=>Math.min(a,b), Infinity)
+		return PlaneTiling.shift(new Vector(-min_x,-min_y),pt)
+	}
 }
 
 
@@ -331,7 +349,7 @@ export class WangFile // stores the whole context, to be in a json file
 export function getPlaceholderTileType(): TileType
 {
 	let placeholder : TileType = new TileType();
-	placeholder.name = placeholder.front = placeholder.back = "placeholder"
+	placeholder.name = placeholder.front = placeholder.back = DEFAULT_PLANE_TILING_NAME
 	return placeholder
 }
 

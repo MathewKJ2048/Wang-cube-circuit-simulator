@@ -56,7 +56,7 @@ setUpCacheButtons(ui_state,wf)
 UpdateCacheButtons(ui_state,wf)
 
 setUpSelection(ui_state, wf)
-updateSelectionButtons(ui_state, wf)
+updateSelectionButtons(ui_state)
 
 
 function animate() {

@@ -31,6 +31,7 @@ export class UIState // to do with the main canvas
 	dragState: DragState = DragState.FREE // checks whether the mouse is dragging
 	mouseScreenCoordinates: Vector = new Vector() // stores old values of mouse coordinates (not position)
 	private pickedToken : PickedToken = null;
+	clipBoard: PlaneTiling | null = null
 	private mode: Mode = Mode.DEFAULT
 	gridEnabled: boolean = true
 	regexEnabled: boolean = false
