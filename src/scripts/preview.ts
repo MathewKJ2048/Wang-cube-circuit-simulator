@@ -109,10 +109,14 @@ function placeTile(tt : TileType, offset : Vector, wf : WangFile) : void
 		cuboidMesh.position.y = offset.y+y
 		cuboidMesh.position.z = z
 	}
+	function getColorNumber(s : string) : number
+	{
+		return Color.toNumber(WangFile.getColorFromString(s,wf))
+	}
 
 	const geometry = new BoxGeometry(m,m,m)
 	const material = new MeshBasicMaterial({
-	color: Color.toNumber(tt.color)
+	color: getColorNumber(tt.name)
 	});
 	const coreCube = new Mesh(geometry, material)
 	setPosition(coreCube,0,0,0)
@@ -120,10 +124,7 @@ function placeTile(tt : TileType, offset : Vector, wf : WangFile) : void
 	addEdgeLines(coreCube)
 
 	
-	function getColorNumber(s : string) : number
-	{
-		return Color.toNumber(WangFile.getColorFromString(s,wf))
-	}
+	
 
 	const frontMaterial = new MeshBasicMaterial({color: getColorNumber(tt.front)});
 	const backMaterial = new MeshBasicMaterial({color: getColorNumber(tt.back)});

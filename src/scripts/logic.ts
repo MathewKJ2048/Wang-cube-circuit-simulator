@@ -35,7 +35,6 @@ export class TileType
 	front : string = ANYTHING
 	back : string = ANYTHING
 	
-	color : Color = DEFAULT_COLOR;
 
 	constructor()
 	{
@@ -52,7 +51,6 @@ export class TileType
 		copy.front = tt.front
 		copy.back = tt.back
 		copy.name = tt.name
-		copy.color = new Color(tt.color.r,tt.color.g,tt.color.b)
 		return copy
 	}
 
@@ -66,7 +64,6 @@ export class TileType
 		&& 'front' in obj && typeof obj.front === 'string'
 		&& 'back' in obj && typeof obj.back === 'string'
 		&& 'name' in obj && typeof obj.name === 'string'
-		&& 'color' in obj && Color.isColor(obj.color)
 		&& 'uid' in obj && typeof obj.uid === 'number'
 	}
 	public static equals(tt: TileType, tt_ : TileType): boolean
@@ -334,17 +331,17 @@ export class WangFile // stores the whole context, to be in a json file
 export function getPlaceholderTileType(): TileType
 {
 	let placeholder : TileType = new TileType();
-	placeholder.color = DEFAULT_COLOR;
 	placeholder.name = placeholder.front = placeholder.back = "placeholder"
 	return placeholder
 }
 
 export function getStarterWangFile(): WangFile
 {
-	let w : WangFile = new WangFile();
+	let wf : WangFile = new WangFile();
 	let tt = getPlaceholderTileType()
-	w.tileTypes.push(tt)
-	return w
+	WangFile.registerColor(tt.name,DEFAULT_COLOR,wf)
+	wf.tileTypes.push(tt)
+	return wf
 }
 
 

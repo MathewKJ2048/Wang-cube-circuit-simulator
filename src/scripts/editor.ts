@@ -26,7 +26,7 @@ function setColors(name : Color,up: Color,down: Color,left: Color,right: Color,f
 	colorPickerFront.value = Color.toHex(front)
 	colorPickerBack.value = Color.toHex(back)
 }
-function toggleAllColorPickers(disabled : boolean = true): void
+function toggleColorPickers(disabled : boolean = true): void
 {
 	[colorPickerBack,colorPickerDown,colorPickerFront,colorPickerLeft,colorPickerRight,colorPickerUp, colorPickerName].forEach(cpx => cpx.disabled=disabled)
 }
@@ -39,17 +39,8 @@ function toggleDirectionInputs(disabled : boolean = true): void
 	[upInput,downInput,leftInput,rightInput,frontInput,backInput].forEach(inp => inp.disabled = disabled)
 }
 
-function setUpNameColorPicker(ui_state: UIState, wf : WangFile) : void
-{
-	colorPickerName.addEventListener('input', (e) => {
-		const hexColor = (e.target as HTMLInputElement).value;
-		const pt = ui_state.getPickedToken()
-		if(TileType.isTileType(pt))
-			pt.color = Color.fromHex(hexColor)
-			updateEditor(ui_state, wf)
-	})
-}
-function setUpDirectionColorPickers(ui_state: UIState, wf : WangFile): void
+
+function setUpColorPickers(ui_state: UIState, wf : WangFile): void
 {
 
 	function setUp(colorPicker: HTMLInputElement, cf : (tt : TileType) => string)
@@ -69,6 +60,7 @@ function setUpDirectionColorPickers(ui_state: UIState, wf : WangFile): void
 	setUp(colorPickerRight,tt => tt.right)
 	setUp(colorPickerFront,tt => tt.front)
 	setUp(colorPickerBack,tt => tt.back)
+	setUp(colorPickerName,tt => tt.name)
 }
 
 function setUpNameInput(ui_state : UIState, wf : WangFile): void
@@ -122,6 +114,7 @@ function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 
 export function updateEditor(ui_state : UIState, wf : WangFile): void
 {
+	console.log("editor updated")
 	updatePreview(ui_state,wf)
 	const pt = ui_state.getPickedToken() 
 	if(pt === null)
@@ -129,7 +122,7 @@ export function updateEditor(ui_state : UIState, wf : WangFile): void
 		const b : Color = new Color()
 		setValues("","","","","","","")
 		setColors(b,b,b,b,b,b,b)
-		toggleAllColorPickers()
+		toggleColorPickers()
 		toggleNameInput()
 		toggleDirectionInputs()
 	}
@@ -138,25 +131,24 @@ export function updateEditor(ui_state : UIState, wf : WangFile): void
 		const b : Color = new Color()
 		setValues(pt.name,"-","-","-","-","-","-")
 		setColors(b,b,b,b,b,b,b)
-		toggleAllColorPickers()
+		toggleColorPickers()
 		toggleNameInput(false)
 		toggleDirectionInputs()
 	}
 	else if(TileType.isTileType(pt))
 	{
 		setValues(pt.name,pt.up,pt.down,pt.left,pt.right,pt.front,pt.back)
-		toggleAllColorPickers(false)
+		toggleColorPickers(false)
 		toggleNameInput(false)
 		toggleDirectionInputs(false)
 		function foo (s:string) : Color {return WangFile.getColorFromString(s,wf)}
-		setColors(pt.color,foo(pt.up),foo(pt.down),foo(pt.left),foo(pt.right),foo(pt.front),foo(pt.back))
+		setColors(foo(pt.name),foo(pt.up),foo(pt.down),foo(pt.left),foo(pt.right),foo(pt.front),foo(pt.back))
 	}
 }
 
 export function setUpEditor(ui_state : UIState, wf : WangFile): void
 {
-	setUpNameColorPicker(ui_state, wf)
-	setUpDirectionColorPickers(ui_state, wf)
+	setUpColorPickers(ui_state, wf)
 	setUpNameInput(ui_state, wf)
 	setUpDirectionInputs(ui_state, wf)
 }
