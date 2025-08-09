@@ -1,7 +1,7 @@
 import { UpdateCacheButtons } from "./cache";
 import { updateEditor } from "./editor";
 import { canvas, defaultButton,  eraseButton, placeButton, selectButton } from "./elements";
-import {  Tile, TileType, WangFile } from "./logic";
+import {  PlaneTiling, Tile, TileType, WangFile } from "./logic";
 import { updatePicker } from "./picker";
 import { getMousePositionSnapped, Mode, type UIState } from "./UI";
 import { doNothingWith } from "./util";
@@ -30,12 +30,16 @@ function setUpPlace(ui_state: UIState, wf: WangFile) : void
 	{
 		if(ui_state.getMode() !== Mode.PLACE)return
 		const mr = getMousePositionSnapped(e,ui_state.camera)
-		const pt = ui_state.getPickedToken()
-		if(TileType.isTileType(pt))
+		const pk = ui_state.getPickedToken()
+		if(TileType.isTileType(pk))
 		{
-			const t : Tile = new Tile(pt)
+			const t : Tile = new Tile(pk)
 			t.r = mr
 			WangFile.addTile(t,wf)
+		}
+		else if(PlaneTiling.isPlaneTiling(pk))
+		{
+			WangFile.addPlaneTiling(pk,mr,wf)
 		}
 		UpdateCacheButtons(ui_state,wf)
 	})

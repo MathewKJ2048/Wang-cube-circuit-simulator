@@ -3,7 +3,7 @@ import { Camera, fromScreenCoordinates, getConnectionSize, getCoreSize, snapToGr
 import { canvas, ctx } from './elements.js'
 import { Mode, UIState } from './UI.js'
 
-import { Tile, TileType, WangFile } from './logic.js'
+import { PlaneTiling, Tile, TileType, WangFile } from './logic.js'
 
 
 function renderRect(r : Vector, width : number, height: number, color : Color, c : Camera, stroke : boolean = true): void
@@ -185,6 +185,10 @@ function renderMouse(ui_state: UIState, wf : WangFile): void
 		if(TileType.isTileType(pk))
 		{
 			renderTileType(pk,mr.x,mr.y,ui_state.camera,wf,true)
+		}
+		else if(PlaneTiling.isPlaneTiling(pk))
+		{
+			pk.tiles.forEach(t => renderTileType(t.tileType,mr.x+t.r.x,mr.y+t.r.y,ui_state.camera,wf,false))
 		}
 	}
 	else if(ui_state.getMode() === Mode.ERASE)

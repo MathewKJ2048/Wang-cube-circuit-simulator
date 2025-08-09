@@ -3,6 +3,7 @@ import { updateControlButtons } from "./control_buttons";
 import { updateEditor } from "./editor";
 import { canvas, copyButton, cutButton, deleteButton, pasteButton, saveButton } from "./elements";
 import { DEFAULT_PLANE_TILING_NAME, PlaneTiling, Tile, WangFile } from "./logic";
+import { updatePicker } from "./picker";
 import { updatePreview } from "./preview";
 import { getMousePosition, Mode, type UIState } from "./UI";
 import { isWithinSelection, Vector } from "./util";
@@ -31,6 +32,7 @@ function collapseModeAndUpdateDependencies(ui_state: UIState, wf: WangFile): voi
 	ui_state.setMode(Mode.DEFAULT)
 	updateSelectionButtons(ui_state)
 	updateControlButtons(ui_state,wf)
+	updatePicker(ui_state,wf)
 	updatePreview(ui_state,wf)
 	updateEditor(ui_state,wf)
 	UpdateCacheButtons(ui_state,wf)

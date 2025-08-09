@@ -151,6 +151,19 @@ export class PlaneTiling // stores a section of a tiling in space
 		pt.tiles.push(t)
 		return true
 	}
+	public static addPlaneTiling(pt_add : PlaneTiling, pin: Vector, pt: PlaneTiling): boolean
+	{
+		// if any tiles overlap, the function fails
+
+		if(pt.tiles.some(t => pt_add.tiles.some(t_add => 
+			Vector.equals(t.r,t_add.r.add(pin)))))
+				return false
+
+		pt_add.tiles.forEach(t_add => pt.tiles.push(
+			new Tile(t_add.tileType,t_add.r.add(pin))))
+
+		return true
+	}
 	public static getTileAt(r : Vector, pt : PlaneTiling): Tile | null
 	{
 		return pt.tiles.find(tile => Vector.equals(tile.r, r)) ?? null;
@@ -201,7 +214,11 @@ export class PlaneTiling // stores a section of a tiling in space
 	{
 		const min_x = pt.tiles.map(t => t.r.x).reduce((a,b)=>Math.min(a,b), Infinity)
 		const min_y = pt.tiles.map(t => t.r.y).reduce((a,b)=>Math.min(a,b), Infinity)
-		return PlaneTiling.shift(new Vector(-min_x,-min_y),pt)
+		const max_x = pt.tiles.map(t => t.r.x).reduce((a,b)=>Math.max(a,b), -Infinity)
+		const max_y = pt.tiles.map(t => t.r.y).reduce((a,b)=>Math.max(a,b), -Infinity)
+		const sx = Math.round((min_x+max_x)/2)
+		const sy = Math.round((min_y+max_y)/2)
+		return PlaneTiling.shift(new Vector(-sx,-sy),pt)
 	}
 }
 
@@ -329,6 +346,10 @@ export class WangFile // stores the whole context, to be in a json file
 	public static addTile(t : Tile, wf : WangFile) : boolean
 	{
 		return PlaneTiling.addTile(t,wf.mainPlaneTiling)
+	}
+	public static addPlaneTiling(pt : PlaneTiling, pin: Vector, wf : WangFile): boolean
+	{
+		return PlaneTiling.addPlaneTiling(pt,pin,wf.mainPlaneTiling)
 	}
 	public static getTileAt(r : Vector, wf : WangFile): Tile | null
 	{
