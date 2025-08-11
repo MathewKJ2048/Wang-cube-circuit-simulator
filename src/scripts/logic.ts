@@ -212,12 +212,19 @@ export class PlaneTiling // stores a section of a tiling in space
 	}
 	public static reduce(pt : PlaneTiling): PlaneTiling
 	{
-		const min_x = pt.tiles.map(t => t.r.x).reduce((a,b)=>Math.min(a,b), Infinity)
-		const min_y = pt.tiles.map(t => t.r.y).reduce((a,b)=>Math.min(a,b), Infinity)
-		const max_x = pt.tiles.map(t => t.r.x).reduce((a,b)=>Math.max(a,b), -Infinity)
-		const max_y = pt.tiles.map(t => t.r.y).reduce((a,b)=>Math.max(a,b), -Infinity)
-		const sx = Math.round((min_x+max_x)/2)
-		const sy = Math.round((min_y+max_y)/2)
+		const x_list = pt.tiles.map(t => t.r.x)
+		const y_list =  pt.tiles.map(t => t.r.y)
+		const min_x = x_list.reduce((a,b)=>Math.min(a,b), Infinity)
+		const min_y = y_list.reduce((a,b)=>Math.min(a,b), Infinity)
+		const max_x = x_list.reduce((a,b)=>Math.max(a,b), -Infinity)
+		const max_y = y_list.reduce((a,b)=>Math.max(a,b), -Infinity)
+		
+		function normalize(x : number):number
+		{
+			return Number.isNaN(x) ? 0 : x
+		}
+		const sx = Math.round(normalize(min_x+max_x)/2)
+		const sy = Math.round(normalize(min_y+max_y)/2)
 		return PlaneTiling.shift(new Vector(-sx,-sy),pt)
 	}
 }

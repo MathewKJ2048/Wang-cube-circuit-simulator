@@ -1,7 +1,7 @@
 import { UpdateCacheButtons } from "./cache";
 import { updateControlButtons } from "./control_buttons";
 import { updateEditor } from "./editor";
-import { canvas, copyButton, cutButton, deleteButton, pasteButton, saveButton } from "./elements";
+import { canvas, copyButton, cutButton, deleteButton, saveButton } from "./elements";
 import { DEFAULT_PLANE_TILING_NAME, PlaneTiling, Tile, WangFile } from "./logic";
 import { updatePicker } from "./picker";
 import { updatePreview } from "./preview";
@@ -67,7 +67,7 @@ function setUpSave(ui_state: UIState, wf: WangFile): void
 function setUpCopy(ui_state: UIState, wf: WangFile) : void
 {
 	copyButton.addEventListener("click",()=>{
-		ui_state.clipBoard = getReducedPlaneTilingInSelector(ui_state,wf)
+		ui_state.setClipBoard(getReducedPlaneTilingInSelector(ui_state,wf))
 		collapseModeAndUpdateDependencies(ui_state,wf)
 	})
 }
@@ -84,7 +84,7 @@ function setUpDelete(ui_state: UIState, wf: WangFile): void
 function setUpCut(ui_state: UIState,wf: WangFile): void
 {
 	cutButton.addEventListener("click",()=>{
-		ui_state.clipBoard = getReducedPlaneTilingInSelector(ui_state,wf)
+		ui_state.setClipBoard(getReducedPlaneTilingInSelector(ui_state,wf))
 		getSelectedTileList(ui_state,wf).forEach(t => 
 			PlaneTiling.deleteTileAt(t.r,wf.mainPlaneTiling))
 		collapseModeAndUpdateDependencies(ui_state,wf)
@@ -119,6 +119,4 @@ export function updateSelectionButtons(ui_state: UIState)
 		saveButton.disabled = true
 		copyButton.disabled = true
 	}
-	if(ui_state.clipBoard !== null)pasteButton.disabled=false
-	else pasteButton.disabled=true
 }

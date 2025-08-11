@@ -1,5 +1,5 @@
 import {Color, Vector} from './util.js'
-import { Camera, fromScreenCoordinates, getConnectionSize, getCoreSize, snapToGrid, toScreenCoordinates } from './render_util.js'
+import { BACKGROUND_COLOR, Camera, ERASE_COLOR, fromScreenCoordinates, getConnectionSize, getCoreSize, GRID_COLOR, PICK_COLOR, SELECT_COLOR, snapToGrid, toScreenCoordinates } from './render_util.js'
 import { canvas, ctx } from './elements.js'
 import { Mode, UIState } from './UI.js'
 
@@ -37,12 +37,11 @@ function renderRect(r : Vector, width : number, height: number, color : Color, c
 	
 }
 
-function renderTileType(tt : TileType, x: number, y:number, camera : Camera, wf: WangFile, picked : boolean = false)
+function renderTileType(tt : TileType, x: number, y:number, camera : Camera, wf: WangFile, outlineColor : null | Color = null)
 {
 	const m = getCoreSize()
 	const c = getConnectionSize()
 	const off = m/2+c/4
-	const outlineColor = new Color(256,256,256)
 
 	function getOffset(x_off:number,y_off:number) : Vector
 	{
@@ -57,31 +56,29 @@ function renderTileType(tt : TileType, x: number, y:number, camera : Camera, wf:
 	const coreColor = WangFile.getColorFromString(tt.name,wf)
 
 	
-	function draw(outline : boolean = false)
+	function util(co:Color,u:Color,d:Color,l:Color,r:Color,f:Color,stroke:boolean)
 	{
-		function pickColor(c:Color)
-		{
-			return outline ? outlineColor : c
-		}
 		//left and right
-		renderRect(getOffset(-off,0),c/2,c,pickColor(leftColor),camera,outline)
-		renderRect(getOffset(off,0),c/2,c,pickColor(rightColor),camera,outline)
+		renderRect(getOffset(-off,0),c/2,c,l,camera,stroke)
+		renderRect(getOffset(off,0),c/2,c,r,camera,stroke)
 		// up and down
-		renderRect(getOffset(0,-off),c,c/2,pickColor(downColor),camera,outline)
-		renderRect(getOffset(0,off),c,c/2,pickColor(upColor),camera,outline)
+		renderRect(getOffset(0,-off),c,c/2,d,camera,stroke)
+		renderRect(getOffset(0,off),c,c/2,u,camera,stroke)
 		// core
-		renderRect(getOffset(0,0),m,m, pickColor(coreColor),camera,outline)
+		renderRect(getOffset(0,0),m,m, co,camera,stroke)
 		// front
-		renderRect(getOffset(0,0),c,c,pickColor(frontColor),camera,outline)
+		renderRect(getOffset(0,0),c,c,f,camera,stroke)
 	}
 
-	draw()
-	if(picked)draw(true) // outlines if the type is currently picked
+	util(coreColor,upColor,downColor,leftColor,rightColor,frontColor,false)
+	if(outlineColor !== null)
+	util(outlineColor,outlineColor,outlineColor,outlineColor,outlineColor,outlineColor,true) 
+	// outlines with the outline color
 	
 }
 function renderTile(t : Tile, camera : Camera, wf: WangFile, picked : boolean = false)
 {
-	renderTileType(t.tileType,t.r.x,t.r.y,camera,wf, picked)
+	renderTileType(t.tileType,t.r.x,t.r.y,camera,wf, picked ? PICK_COLOR : null)
 }
 function renderTiles(ui_state: UIState, wf: WangFile): void
 {
@@ -105,7 +102,7 @@ function renderGrid(ui_state: UIState): void
 	let max_y = Math.ceil(fromScreenCoordinates(new Vector(0,0),c).y)
 	let min_y = Math.floor(fromScreenCoordinates(new Vector(0,canvas.height),c).y)
 
-	ctx.strokeStyle = "white"
+	ctx.strokeStyle = Color.toHex(GRID_COLOR)
 	for (let i = min_x-0.5; i <= max_x+0.5; i++)
 	{
 		let start = toScreenCoordinates(new Vector(i,min_y-0.5),c)
@@ -149,7 +146,7 @@ function renderErase(r : Vector, c : Camera) : void
 	ctx.moveTo(UR.x,UR.y)
 	ctx.lineTo(DL.x,DL.y)
 	ctx.closePath()
-	ctx.strokeStyle = Color.toHex(new Color(256,100,100))
+	ctx.strokeStyle = Color.toHex(ERASE_COLOR)
 	ctx.stroke()
 	
 }
@@ -158,7 +155,7 @@ function renderErase(r : Vector, c : Camera) : void
 function renderBackground(): void
 {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.fillStyle = '#000000';
+	ctx.fillStyle = Color.toHex(BACKGROUND_COLOR);
 	ctx.fillRect(0,0,canvas.width,canvas.height)
 }
 
@@ -169,7 +166,7 @@ function renderSelector(ui_state: UIState): void
 	const dr : Vector = ui_state.selectorDownRight ?? fromScreenCoordinates(ui_state.mouseScreenCoordinates,ui_state.camera)
 	const c = dr.add(ui_state.selectorUpLeft).scale(1/2)
 	const d = dr.sub(ui_state.selectorUpLeft)
-	renderRect(c,d.x,d.y,new Color(0,255,255),ui_state.camera,true)
+	renderRect(c,d.x,d.y,SELECT_COLOR,ui_state.camera,true)
 }
 
 function renderMouse(ui_state: UIState, wf : WangFile): void
@@ -179,16 +176,18 @@ function renderMouse(ui_state: UIState, wf : WangFile): void
 	{
 		// nothing to do
 	}
-	else if(ui_state.getMode() === Mode.PLACE && WangFile.getTileAt(mr,wf)===null)
+	else if(ui_state.getMode() === Mode.PLACE)
 	{
 		const pk = ui_state.getPickedToken()
-		if(TileType.isTileType(pk))
+		if(TileType.isTileType(pk) && WangFile.getTileAt(mr,wf)===null)
 		{
-			renderTileType(pk,mr.x,mr.y,ui_state.camera,wf,true)
+			renderTileType(pk,mr.x,mr.y,ui_state.camera,wf,PICK_COLOR)
 		}
-		else if(PlaneTiling.isPlaneTiling(pk))
+		else if(PlaneTiling.isPlaneTiling(pk) && 
+		pk.tiles.every(t => WangFile.getTileAt(t.r.add(mr),wf) === null))
 		{
-			pk.tiles.forEach(t => renderTileType(t.tileType,mr.x+t.r.x,mr.y+t.r.y,ui_state.camera,wf,false))
+			pk.tiles.forEach(t => 
+				renderTileType(t.tileType,mr.x+t.r.x,mr.y+t.r.y,ui_state.camera,wf,SELECT_COLOR))
 		}
 	}
 	else if(ui_state.getMode() === Mode.ERASE)
@@ -198,6 +197,13 @@ function renderMouse(ui_state: UIState, wf : WangFile): void
 	else if(ui_state.getMode() === Mode.SELECT)
 	{
 		// render selector symbol
+	}
+	else if(ui_state.getMode() === Mode.PASTE)
+	{
+		const cb = ui_state.getClipBoard()
+		if(cb!==null && cb.tiles.every(t => WangFile.getTileAt(t.r.add(mr),wf) === null))
+		cb.tiles.forEach(t => 
+			renderTileType(t.tileType,mr.x+t.r.x,mr.y+t.r.y,ui_state.camera,wf,SELECT_COLOR))
 	}
 }
 

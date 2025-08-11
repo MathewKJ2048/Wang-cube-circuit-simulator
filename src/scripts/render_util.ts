@@ -1,6 +1,12 @@
-import { Vector } from "./util.js"
+import { Color, Vector } from "./util.js"
 import { canvas } from "./elements.js"
 
+
+export const GRID_COLOR = new Color(255,255,255) // white
+export const ERASE_COLOR = new Color(255,100,100) // reddish
+export const SELECT_COLOR = new Color(0,255,255) // cyan
+export const PICK_COLOR = new Color(255,255,255) // white
+export const BACKGROUND_COLOR = new Color(0,0,0) // black
 
 export const CONNECTION_FRACTION = 0.5
 // assume core size is m and connection size is c
@@ -46,4 +52,6 @@ export function snapToGrid(r : Vector): Vector
 	const r_ = new Vector(Math.round(r.x),Math.round(r.y))
 	return r_
 }
+
+
 

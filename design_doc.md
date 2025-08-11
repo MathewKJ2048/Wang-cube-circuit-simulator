@@ -189,4 +189,6 @@ PRUNE (Propagating Reductions Using Neighbourhood Elimination)
 
 - cut button - combination of copy and delete
 
-- paste button - ?
+- paste button - it's its own mode
+
+- forbidden state - clipboard is null and the paste button is active

@@ -1,6 +1,6 @@
 import { UpdateCacheButtons } from "./cache";
 import { updateEditor } from "./editor";
-import { canvas, defaultButton,  eraseButton, placeButton, selectButton } from "./elements";
+import { canvas, defaultButton,  eraseButton, pasteButton, placeButton, selectButton } from "./elements";
 import {  PlaneTiling, Tile, TileType, WangFile } from "./logic";
 import { updatePicker } from "./picker";
 import { getMousePositionSnapped, Mode, type UIState } from "./UI";
@@ -21,6 +21,7 @@ function setUpPrimaryGroup(ui_state: UIState, wf: WangFile): void
 	setUp(placeButton,Mode.PLACE)
 	setUp(selectButton, Mode.SELECT)
 	setUp(defaultButton, Mode.DEFAULT)
+	setUp(pasteButton,Mode.PASTE)
 }
 
 
@@ -42,6 +43,16 @@ function setUpPlace(ui_state: UIState, wf: WangFile) : void
 			WangFile.addPlaneTiling(pk,mr,wf)
 		}
 		UpdateCacheButtons(ui_state,wf)
+	})
+}
+
+function setUpPaste(ui_state: UIState, wf: WangFile) : void
+{
+	canvas.addEventListener("click",(e)=>{
+		if(ui_state.getMode()!==Mode.PASTE)return
+		const mr = getMousePositionSnapped(e,ui_state.camera)
+		const cb = ui_state.getClipBoard()
+		if(cb!==null)WangFile.addPlaneTiling(cb,mr,wf)
 	})
 }
 
@@ -86,17 +97,17 @@ export function updateControlButtons(ui_state: UIState, wf : WangFile)
 	updateWithMode(eraseButton,Mode.ERASE)
 	updateWithMode(placeButton,Mode.PLACE)
 	updateWithMode(selectButton, Mode.SELECT)
+	updateWithMode(pasteButton,Mode.PASTE)
 
 
 
-	if(ui_state.getPickedToken() === null)
-	{
-		placeButton.disabled = true
-	}
-	else
-	{
-		placeButton.disabled = false
-	}
+	if(ui_state.getPickedToken() === null)placeButton.disabled = true
+	else placeButton.disabled = false	
+
+	if(ui_state.getClipBoard() !== null)pasteButton.disabled=false
+	else pasteButton.disabled=true
+
+
 	doNothingWith(wf)
 }
 
@@ -106,4 +117,5 @@ export function setUpControlButtons(ui_state: UIState, wf : WangFile)
 	setUpDefaultPicking(ui_state, wf)
 	setUpPlace(ui_state, wf)
 	setUpErase(ui_state,wf)
+	setUpPaste(ui_state,wf)
 }

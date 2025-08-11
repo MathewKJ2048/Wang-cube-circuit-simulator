@@ -1,9 +1,9 @@
 import { BoxGeometry, GridHelper , Mesh, MeshBasicMaterial, PerspectiveCamera, Scene, Vector3, WebGLRenderer } from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import type { UIState } from "./UI";
-import { TileType, WangFile } from "./logic";
+import { PlaneTiling, TileType, WangFile } from "./logic";
 import { Color, Vector } from "./util";
-import { getConnectionSize, getCoreSize } from "./render_util";
+import { getConnectionSize, getCoreSize, GRID_COLOR, PICK_COLOR, SELECT_COLOR } from "./render_util";
 
 
 
@@ -44,7 +44,7 @@ export function setUpPreview(ui_state: UIState) : void
 	animate()
 }
 
-function getLines(m : Mesh) : Mesh[]
+function getLines(m : Mesh, edgeColor : Color) : Mesh[]
 {
 	if(!(m.geometry instanceof BoxGeometry))
 	{
@@ -56,7 +56,7 @@ function getLines(m : Mesh) : Mesh[]
 	const d = boxGeometry.parameters.depth
 	const t = 0.02
 	
-	const edgeMaterial = new MeshBasicMaterial({ color: Color.toNumber(new Color(255,255,255)) });
+	const edgeMaterial = new MeshBasicMaterial({ color: Color.toNumber(edgeColor) });
 	const edgeGroup : Mesh[] = [];
 
 	function createEdge(position: Vector3, dimensions: Vector3)
@@ -93,7 +93,7 @@ function getLines(m : Mesh) : Mesh[]
     return edgeGroup
 }
 
-function placeTile(tt : TileType, offset : Vector, wf : WangFile) : void
+function placeTile(tt : TileType, offset : Vector, wf : WangFile, edgeColor: Color) : void
 {
 	const m = getCoreSize()
 	const c = getConnectionSize()
@@ -101,7 +101,7 @@ function placeTile(tt : TileType, offset : Vector, wf : WangFile) : void
 
 	function addEdgeLines(m : Mesh)
 	{
-		getLines(m).forEach(m_ => scene.add(m_))
+		getLines(m,edgeColor).forEach(m_ => scene.add(m_))
 	}
 	function setPosition(cuboidMesh: Mesh, x:number, y:number, z:number)
 	{
@@ -179,8 +179,16 @@ function rebuildScene(ui_state : UIState, wf : WangFile) : void
 	if(pt === null)return
 	if(TileType.isTileType(pt))
 	{
-		placeTile(pt,new Vector(0,0),wf)
-		const gridHelper = new GridHelper(3, 3);
+		placeTile(pt,new Vector(0,0),wf,PICK_COLOR)
+		const gridHelper = new GridHelper(3, 3, Color.toNumber(GRID_COLOR), Color.toNumber(GRID_COLOR));
+		gridHelper.rotation.x = Math.PI / 2;
+		scene.add(gridHelper);
+	}
+	else if(PlaneTiling.isPlaneTiling(pt))
+	{
+		pt.tiles.forEach(t => placeTile(t.tileType,t.r,wf,SELECT_COLOR))
+		const n = pt.tiles.length // extreme cases when the grid is a line
+		const gridHelper = new GridHelper(n,n);
 		gridHelper.rotation.x = Math.PI / 2;
 		scene.add(gridHelper);
 	}

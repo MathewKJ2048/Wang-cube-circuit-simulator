@@ -30,14 +30,18 @@ export class Vector
 
 export class Color
 {
-	r : number = 0
-	g : number = 0
-	b : number  = 0
+	readonly r : number
+	readonly g : number
+	readonly b : number
 	constructor(r: number = 0,g: number= 0,b: number = 0)
 	{
-		this.r = r
-		this.g = g
-		this.b = b
+		this.r = Color.normalize(r)
+		this.g = Color.normalize(g)
+		this.b = Color.normalize(b)
+	}
+	public static normalize(v: number): number
+	{
+		return Math.max(0,Math.min(255,Math.round(v)))
 	}
 	public static isColor(obj:unknown): obj is Color
 	{

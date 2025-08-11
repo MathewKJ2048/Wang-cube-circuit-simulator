@@ -17,6 +17,7 @@ export class Mode
 	static readonly SELECT = 2
 	static readonly ERASE = 3
 	static readonly PLACE = 4
+	static readonly PASTE = 5
 }
 
 
@@ -27,21 +28,32 @@ export type PickedToken = TileType | PlaneTiling | null
 export class UIState // to do with the main canvas
 {
 	camera: Camera = new Camera() // camera used to render the canvas
-	perspectiveCamera : PerspectiveCamera = getPerspectiveCamera()
+	perspectiveCamera : PerspectiveCamera = getPerspectiveCamera() // camera for preview screen
 	dragState: DragState = DragState.FREE // checks whether the mouse is dragging
 	mouseScreenCoordinates: Vector = new Vector() // stores old values of mouse coordinates (not position)
-	private pickedToken : PickedToken = null;
-	clipBoard: PlaneTiling | null = null
-	private mode: Mode = Mode.DEFAULT
 	gridEnabled: boolean = true
+
 	regexEnabled: boolean = false
 	searchQuery: string = ""
+
+
+	// these are all linked to each other
+	// c1: mode can be PLACE only if pickedToken is not null
+	// c2: mode can be PASTE only if clipBoard is not null
+	// c3: selector vectors must be null, null in any mode except SELECT
+	private pickedToken : PickedToken = null;
+	private clipBoard: PlaneTiling | null = null
+	private mode: Mode = Mode.DEFAULT
 	selectorUpLeft: Vector | null = null
 	selectorDownRight: Vector | null = null
 
+	
+
 	public setMode(m : Mode): void
 	{
-		this.selectorDownRight = this.selectorUpLeft = null
+		if(m === Mode.PASTE && this.clipBoard === null)return // c2
+		else if(m === Mode.PLACE && this.pickedToken === null) return //c1
+		this.selectorDownRight = this.selectorUpLeft = null // c3
 		this.mode = m
 	}
 	public getMode(): Mode
@@ -53,11 +65,20 @@ export class UIState // to do with the main canvas
 	{
 		if(TileType.isTileType(pt) && !wf.tileTypes.some(tt => TileType.equals(tt,pt)))console.log("PT INTEGRITY VIOLATED - TILE TYPE")
 		this.pickedToken = pt
-		if(this.pickedToken === null && this.mode === Mode.PLACE)this.mode = Mode.DEFAULT
+		if(this.pickedToken === null && this.mode === Mode.PLACE)this.setMode(Mode.DEFAULT)
 	}
 	public getPickedToken() : PickedToken
 	{
 		return this.pickedToken
+	}
+	public getClipBoard(): PlaneTiling | null
+	{
+		return this.clipBoard
+	}
+	public setClipBoard(cb : PlaneTiling | null)
+	{
+		this.clipBoard = cb
+		if(this.clipBoard === null)this.setMode(Mode.DEFAULT)
 	}
 }
 
