@@ -2,7 +2,7 @@
 import { updateControlButtons } from "./control_buttons";
 import { updateEditor } from "./editor";
 import { ccwPickerButton, copyPickerButton, createPickerButton, cwPickerButton, deletePickerButton, flipPickerButton } from "./elements";
-import { PlaneTiling, TileType, WangFile } from "./logic";
+import { Name, PlaneTiling, TileType, WangFile } from "./logic";
 import { UIState, type PickedToken } from "./UI";
 
 /*
@@ -27,7 +27,7 @@ function generateResultForPickableToken( token : PickedToken,ui_state: UIState, 
 
 	const textInput : HTMLInputElement = document.createElement('input');
 	textInput.type = 'text';
-	textInput.value = (token===null) ? "" : token.name.getFullyQualified();
+	textInput.value = (token===null) ? "" : Name.getFullyQualified(token.name)
 	textInput.readOnly = true;
 
 	const radioInput : HTMLInputElement = document.createElement('input');
@@ -159,10 +159,15 @@ export function updatePicker(ui_state: UIState, wf: WangFile): void
 	wf.savedSubPlaneTilings.forEach((pt) => resultTokens.push(pt)) // add all saved tilings
 
 	// remove null tokens and ones whose names don't match search query
-	let filteredResultTokens = resultTokens.filter(t => t!==null)
-	filteredResultTokens = filteredResultTokens.filter(t => match(t.name.getFullyQualified(),ui_state.searchQuery,ui_state.regexEnabled))
+	const filteredResultTokens : (PlaneTiling | TileType)[] = []
+	resultTokens.forEach(token => {
+		if(token===null)return
+		if(match(Name.getFullyQualified(token.name),ui_state.searchQuery,ui_state.regexEnabled))
+		filteredResultTokens.push(token)
+		
+	})
 
-	filteredResultTokens.sort((t1, t2) => t1.name.getFullyQualified().localeCompare(t2.name.getFullyQualified()))
+	filteredResultTokens.sort((t1, t2) => Name.getFullyQualified(t1.name).localeCompare(Name.getFullyQualified(t2.name)))
 
 	// DOM manipulation
 	const resultsPanel : HTMLBodyElement = document.getElementById("picker-dynamic") as HTMLBodyElement

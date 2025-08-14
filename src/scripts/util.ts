@@ -94,11 +94,15 @@ export function doNothingWith(t : any): void
 	if(2+2==5)console.log(t)
 }
 
-export function isWithinSelection(r : Vector, upLeft: Vector | null, downRight : Vector | null): boolean
+export function isWithinSelection(r : Vector, p1: Vector | null, p2 : Vector | null): boolean
 {
-	if(upLeft === null || downRight === null)return false
-	if(r.x < upLeft.x || r.x > downRight.x)return false
-	if(r.y > upLeft.y || r.y < downRight.y)return false
-	return true
+	if(p1 === null || p2 === null)return false
+	function inRange(v:number, l1:number, l2:number)
+	{
+		const l_max = Math.max(l1,l2)
+		const l_min = Math.min(l1,l2)
+		return (l_min<v && v<l_max)
+	}
+	return inRange(r.x,p1.x,p2.x) && inRange(r.y,p1.y,p2.y)
 }
 

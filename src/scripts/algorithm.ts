@@ -1,4 +1,4 @@
-import { ANYTHING, PlaneTiling, Tile, type TileType } from "./logic";
+import { ANYTHING, Name, PlaneTiling, Tile, type TileType } from "./logic";
 import { Vector } from "./util";
 
 
@@ -103,7 +103,18 @@ export function PRUNE(pt : PlaneTiling, tt_s : TileType[], reverse : boolean) : 
 
 	// if some node does not have exactly one possible next tile-type, PRUNE fails
 	if(nodes.some(n => n.possibleTileTypes.length !== 1))
+	{
+		nodes.forEach(n => {
+			if(n.possibleTileTypes.length !== 1)
+			{
+				console.log(n)
+				console.log(Name.getFullyQualified(n.tile.tileType.name)+"is the type of the problematic tile")
+				console.log("possible tile types are: "+n.possibleTileTypes.map(tt => Name.getFullyQualified(tt.name)))
+			}
+		})
 		return null
+	}
+		
 
 	const answer : PlaneTiling = new PlaneTiling()
 	answer.name = pt.name

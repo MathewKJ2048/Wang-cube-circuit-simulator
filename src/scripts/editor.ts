@@ -94,7 +94,6 @@ function setUpNameInputs(ui_state : UIState, wf : WangFile): void
 		const new_name: Name = new Name(nameInput.value);
 		new_name.classes = (event.target as HTMLInputElement).value
 		update(new_name)
-		console.log("AAAAAAAAAAAA")
 	})
 }
 

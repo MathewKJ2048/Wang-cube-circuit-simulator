@@ -34,15 +34,15 @@ export class Name
 	{
 		this.core = n
 	}
-	public parseClasses(): string[]
+	public static parseClasses(n : Name): string[]
 	{
-		return this.classes.split(CLASS_DIVIDER).sort()
+		return n.classes.split(CLASS_DIVIDER).sort()
 	}
 	public static equals(n1: Name, n2: Name): boolean
 	{
 		if(n1.core !== n2.core || n1.classes.length !== n2.classes.length)return false
-		const n1c = n1.parseClasses()
-		const n2c = n2.parseClasses()
+		const n1c = Name.parseClasses(n1)
+		const n2c = Name.parseClasses(n2)
 		for(let i = 0;i<n1c.length;i++)
 			if(n1c[i]!==n2c[i])
 				return false
@@ -54,15 +54,15 @@ export class Name
 		&& 'core' in obj && typeof obj.core === 'string'
 		&& 'classes' in obj && typeof obj.classes === "string"
 	}
-	public copy(): Name
+	public static copy(n : Name): Name
 	{
-		const copy : Name = new Name(this.core)
-		copy.classes = this.classes
+		const copy : Name = new Name(n.core)
+		copy.classes = n.classes
 		return copy
 	}
-	public getFullyQualified(): string
+	public static getFullyQualified(n : Name): string
 	{
-		return this.core+(this.classes.length===0?"":CLASS_DIVIDER+this.classes)
+		return n.core+(n.classes.length===0?"":CLASS_DIVIDER+n.classes)
 	}
 
 }
@@ -97,7 +97,7 @@ export class TileType
 		copy.right = tt.right
 		copy.front = tt.front
 		copy.back = tt.back
-		copy.name = tt.name.copy()
+		copy.name = Name.copy(tt.name)
 		return copy
 	}
 

@@ -17,9 +17,9 @@ function setUpSelector(ui_state: UIState): void
 		const mr: Vector = getMousePosition(e, ui_state.camera)
 
 		// cycle through the modes of the selector
-		if(ui_state.selectorUpLeft === null)ui_state.selectorUpLeft = mr
-		else if(ui_state.selectorDownRight === null)ui_state.selectorDownRight = mr
-		else ui_state.selectorDownRight = ui_state.selectorUpLeft = null
+		if(ui_state.selectorFirstCorner === null)ui_state.selectorFirstCorner = mr
+		else if(ui_state.selectorSecondCorner === null)ui_state.selectorSecondCorner = mr
+		else ui_state.selectorFirstCorner = ui_state.selectorSecondCorner = null
 
 		updateSelectionButtons(ui_state)
 
@@ -41,7 +41,7 @@ function collapseModeAndUpdateDependencies(ui_state: UIState, wf: WangFile): voi
 function getSelectedTileList(ui_state: UIState, wf: WangFile) : Tile[]
 {
 	return wf.mainPlaneTiling.tiles
-	.filter(t => isWithinSelection(t.r,ui_state.selectorUpLeft,ui_state.selectorDownRight))
+	.filter(t => isWithinSelection(t.r,ui_state.selectorFirstCorner,ui_state.selectorSecondCorner))
 }
 
 function getReducedPlaneTilingInSelector(ui_state: UIState, wf: WangFile): PlaneTiling
@@ -105,7 +105,7 @@ export function setUpSelection(ui_state: UIState, wf: WangFile): void
 
 export function updateSelectionButtons(ui_state: UIState)
 {
-	if(ui_state.selectorDownRight !== null && ui_state.selectorDownRight !== null)
+	if(ui_state.selectorFirstCorner !== null && ui_state.selectorSecondCorner !== null)
 	{
 		cutButton.disabled = false
 		deleteButton.disabled = false

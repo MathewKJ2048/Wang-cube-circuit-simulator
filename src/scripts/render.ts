@@ -166,16 +166,18 @@ function renderBackground(): void
 function renderSelector(ui_state: UIState, wf : WangFile): void
 {
 	if(ui_state.getMode() !== Mode.SELECT)return
-	if(ui_state.selectorUpLeft === null) return
+	if(ui_state.selectorFirstCorner === null) return
 
-	const dr : Vector = ui_state.selectorDownRight ?? fromScreenCoordinates(ui_state.mouseScreenCoordinates,ui_state.camera)
-	const c = dr.add(ui_state.selectorUpLeft).scale(1/2)
-	const d = dr.sub(ui_state.selectorUpLeft)
-	renderRect(c,d.x,d.y,SELECT_COLOR,ui_state.camera,true)
+	const fc : Vector = ui_state.selectorFirstCorner
+	const sc : Vector = ui_state.selectorSecondCorner ?? fromScreenCoordinates(ui_state.mouseScreenCoordinates,ui_state.camera)
+
+	const c = (sc.add(fc)).scale(1/2) // c = (fc+sc)/2
+	const d = sc.sub(fc)
+	renderRect(c,Math.abs(d.x),Math.abs(d.y),SELECT_COLOR,ui_state.camera,true)
 
 	const side : number = 1 - getConnectionSize()/2
 	wf.mainPlaneTiling.tiles.forEach(t => {
-		if(isWithinSelection(t.r,ui_state.selectorUpLeft,dr))
+		if(isWithinSelection(t.r,ui_state.selectorFirstCorner,sc))
 		renderRect(t.r,side,side,SELECT_COLOR,ui_state.camera,true)
 	})
 }

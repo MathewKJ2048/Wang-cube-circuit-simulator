@@ -44,8 +44,8 @@ export class UIState // to do with the main canvas
 	private pickedToken : PickedToken = null;
 	private clipBoard: PlaneTiling | null = null
 	private mode: Mode = Mode.DEFAULT
-	selectorUpLeft: Vector | null = null
-	selectorDownRight: Vector | null = null
+	selectorFirstCorner: Vector | null = null
+	selectorSecondCorner: Vector | null = null
 
 	
 
@@ -53,7 +53,7 @@ export class UIState // to do with the main canvas
 	{
 		if(m === Mode.PASTE && this.clipBoard === null)return // c2
 		else if(m === Mode.PLACE && this.pickedToken === null) return //c1
-		this.selectorDownRight = this.selectorUpLeft = null // c3
+		this.selectorFirstCorner = this.selectorSecondCorner = null // c3
 		this.mode = m
 	}
 	public getMode(): Mode
