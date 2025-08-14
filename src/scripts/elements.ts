@@ -37,6 +37,10 @@ export const searchInput : HTMLInputElement = document.getElementById('search-pi
 export const createPickerButton : HTMLButtonElement = document.getElementById('create-picker-button') as HTMLButtonElement;
 export const editPickerButton : HTMLButtonElement = document.getElementById('edit-picker-button') as HTMLButtonElement;
 export const deletePickerButton : HTMLButtonElement = document.getElementById('delete-picker-button') as HTMLButtonElement;
+export const copyPickerButton : HTMLButtonElement = document.getElementById('copy-picker-button') as HTMLButtonElement;
+export const flipPickerButton : HTMLButtonElement = document.getElementById('flip-picker-button') as HTMLButtonElement;
+export const cwPickerButton : HTMLButtonElement = document.getElementById('rotate-cw-picker-button') as HTMLButtonElement;
+export const ccwPickerButton : HTMLButtonElement = document.getElementById('rotate-ccw-picker-button') as HTMLButtonElement;
 
 
 export const stepForwardButton : HTMLButtonElement = document.getElementById('step-forward-button') as HTMLButtonElement;
@@ -46,6 +50,7 @@ export const syncCacheButton : HTMLButtonElement = document.getElementById('sync
 
 
 export const nameInput : HTMLInputElement = document.getElementById('editor-name') as HTMLInputElement;
+export const classesInput : HTMLInputElement = document.getElementById('editor-classes') as HTMLInputElement;
 export const upInput : HTMLInputElement = document.getElementById('editor-up') as HTMLInputElement;
 export const downInput : HTMLInputElement = document.getElementById('editor-down') as HTMLInputElement;
 export const leftInput : HTMLInputElement = document.getElementById('editor-left') as HTMLInputElement;

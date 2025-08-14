@@ -1,7 +1,7 @@
 
 import { updateControlButtons } from "./control_buttons";
 import { updateEditor } from "./editor";
-import { createPickerButton, deletePickerButton } from "./elements";
+import { ccwPickerButton, copyPickerButton, createPickerButton, cwPickerButton, deletePickerButton, flipPickerButton } from "./elements";
 import { PlaneTiling, TileType, WangFile } from "./logic";
 import { UIState, type PickedToken } from "./UI";
 
@@ -26,7 +26,7 @@ function generateResultForPickableToken( token : PickedToken,ui_state: UIState, 
 
 	const textInput : HTMLInputElement = document.createElement('input');
 	textInput.type = 'text';
-	textInput.value = (token===null) ? "" : token.name;
+	textInput.value = (token===null) ? "" : token.name.getFullyQualified();
 	textInput.readOnly = true;
 
 	const radioInput : HTMLInputElement = document.createElement('input');
@@ -48,6 +48,61 @@ function setUpPickerCreateButton(ui_state: UIState, wf: WangFile): void
 	createPickerButton.addEventListener('click',()=>{
 		const tt : TileType =  WangFile.addNewTileType(wf)
 		ui_state.setPickedToken(tt, wf)
+		updatePicker(ui_state, wf)
+		updateDependencies(ui_state,wf)
+	})
+}
+
+function setUpPickerCopyButton(ui_state : UIState, wf: WangFile): void
+{
+	copyPickerButton.addEventListener('click',()=>{
+		const pt = ui_state.getPickedToken()
+		if(pt===null || PlaneTiling.isPlaneTiling(pt))return
+		const tt : TileType =  WangFile.addCopyTileType(pt, wf)
+		ui_state.setPickedToken(tt, wf)
+		updatePicker(ui_state, wf)
+		updateDependencies(ui_state,wf)
+	})
+}
+
+function setUpPickerCwButton(ui_state : UIState, wf: WangFile): void
+{
+	cwPickerButton.addEventListener('click', ()=>{
+		const pt = ui_state.getPickedToken()
+		if(pt===null || PlaneTiling.isPlaneTiling(pt))return
+		const temp = pt.right
+		pt.right = pt.up
+		pt.up = pt.left
+		pt.left = pt.down
+		pt.down = temp
+		updatePicker(ui_state, wf)
+		updateDependencies(ui_state,wf)
+	})
+}
+
+function setUpPickerCcwButton(ui_state : UIState, wf: WangFile): void
+{
+	ccwPickerButton.addEventListener('click', ()=>{
+		const pt = ui_state.getPickedToken()
+		if(pt===null || PlaneTiling.isPlaneTiling(pt))return
+		const temp = pt.right
+		pt.right = pt.down
+		pt.down = pt.left
+		pt.left = pt.up
+		pt.up = temp
+		updatePicker(ui_state, wf)
+		updateDependencies(ui_state,wf)
+	})
+}
+
+function setUpPickerFlipButton(ui_state : UIState, wf: WangFile): void
+{
+	flipPickerButton.addEventListener('click', ()=>{
+		const pt = ui_state.getPickedToken()
+		if(pt===null || PlaneTiling.isPlaneTiling(pt))return
+		const temp = pt.right
+		pt.right = pt.left
+		pt.left = temp
 		updatePicker(ui_state, wf)
 		updateDependencies(ui_state,wf)
 	})
@@ -103,9 +158,9 @@ export function updatePicker(ui_state: UIState, wf: WangFile): void
 
 	// remove null tokens and ones whose names don't match search query
 	let filteredResultTokens = resultTokens.filter(t => t!==null)
-	filteredResultTokens = filteredResultTokens.filter(t => match(t.name,ui_state.searchQuery,ui_state.regexEnabled))
+	filteredResultTokens = filteredResultTokens.filter(t => match(t.name.getFullyQualified(),ui_state.searchQuery,ui_state.regexEnabled))
 
-	filteredResultTokens.sort((t1, t2) => t1.name.localeCompare(t2.name))
+	filteredResultTokens.sort((t1, t2) => t1.name.getFullyQualified().localeCompare(t2.name.getFullyQualified()))
 
 	// DOM manipulation
 	const resultsPanel : HTMLBodyElement = document.getElementById("picker-dynamic") as HTMLBodyElement
@@ -118,4 +173,8 @@ export function setUpPicker(ui_state: UIState, wf: WangFile) : void
 {
 	setUpPickerCreateButton(ui_state, wf)
 	setUpPickerDeleteButton(ui_state, wf)
+	setUpPickerCopyButton(ui_state, wf)
+	setUpPickerCwButton(ui_state, wf)
+	setUpPickerCcwButton(ui_state, wf)
+	setUpPickerFlipButton(ui_state, wf)
 }

@@ -2,7 +2,7 @@ import { UpdateCacheButtons } from "./cache";
 import { updateControlButtons } from "./control_buttons";
 import { updateEditor } from "./editor";
 import { canvas, copyButton, cutButton, deleteButton, saveButton } from "./elements";
-import { DEFAULT_PLANE_TILING_NAME, PlaneTiling, Tile, WangFile } from "./logic";
+import { DEFAULT_PLANE_TILING_NAME, Name, PlaneTiling, Tile, WangFile } from "./logic";
 import { updatePicker } from "./picker";
 import { updatePreview } from "./preview";
 import { getMousePosition, Mode, type UIState } from "./UI";
@@ -47,7 +47,7 @@ function getSelectedTileList(ui_state: UIState, wf: WangFile) : Tile[]
 function getReducedPlaneTilingInSelector(ui_state: UIState, wf: WangFile): PlaneTiling
 {
 	const pt = new PlaneTiling()
-	pt.name = DEFAULT_PLANE_TILING_NAME
+	pt.name = new Name(DEFAULT_PLANE_TILING_NAME)
 	pt.tiles = getSelectedTileList(ui_state,wf).map(t => Tile.copy(t))
 	return PlaneTiling.reduce(pt)
 }

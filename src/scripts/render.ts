@@ -53,7 +53,7 @@ function renderTileType(tt : TileType, x: number, y:number, camera : Camera, wf:
 	const leftColor = WangFile.getColorFromString(tt.left,wf)
 	const rightColor = WangFile.getColorFromString(tt.right,wf)
 	const frontColor = WangFile.getColorFromString(tt.front,wf)
-	const coreColor = WangFile.getColorFromString(tt.name,wf)
+	const coreColor = WangFile.getColorFromString(tt.name.core,wf)
 
 	
 	function util(co:Color,u:Color,d:Color,l:Color,r:Color,f:Color,stroke:boolean)

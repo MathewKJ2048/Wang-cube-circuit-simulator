@@ -23,7 +23,49 @@ function isStringColorMap(obj: unknown): obj is stringColorMap
 export const ANYTHING : string = "anything"
 export const DEFAULT_TILE_TYPE_NAME : string = "placeholder"
 export const DEFAULT_PLANE_TILING_NAME : string = "placeholder"
+export const CLASS_DIVIDER : string = "-"
 
+
+export class Name
+{
+	classes: string = "";
+	core: string;
+	constructor(n: string)
+	{
+		this.core = n
+	}
+	public parseClasses(): string[]
+	{
+		return this.classes.split(CLASS_DIVIDER).sort()
+	}
+	public static equals(n1: Name, n2: Name): boolean
+	{
+		if(n1.core !== n2.core || n1.classes.length !== n2.classes.length)return false
+		const n1c = n1.parseClasses()
+		const n2c = n2.parseClasses()
+		for(let i = 0;i<n1c.length;i++)
+			if(n1c[i]!==n2c[i])
+				return false
+		return true
+	}
+	public static isName(obj : unknown): obj is Name
+	{
+		return typeof obj === 'object' && obj !== null 
+		&& 'core' in obj && typeof obj.core === 'string'
+		&& 'classes' in obj && typeof obj.classes === "string"
+	}
+	public copy(): Name
+	{
+		const copy : Name = new Name(this.core)
+		copy.classes = this.classes
+		return copy
+	}
+	public getFullyQualified(): string
+	{
+		return this.core+CLASS_DIVIDER+this.classes
+	}
+
+}
 
 
 export class TileType
@@ -31,7 +73,7 @@ export class TileType
 	private static UID = 0;
 	public readonly uid: number;
 
-	name : string = ""
+	name : Name = new Name("")
 
 	up : string = ANYTHING
 	down : string = ANYTHING
@@ -55,7 +97,7 @@ export class TileType
 		copy.right = tt.right
 		copy.front = tt.front
 		copy.back = tt.back
-		copy.name = tt.name
+		copy.name = tt.name.copy()
 		return copy
 	}
 
@@ -68,7 +110,7 @@ export class TileType
 		&& 'right' in obj && typeof obj.right === 'string'
 		&& 'front' in obj && typeof obj.front === 'string'
 		&& 'back' in obj && typeof obj.back === 'string'
-		&& 'name' in obj && typeof obj.name === 'string'
+		&& 'name' in obj && Name.isName(obj.name)
 		&& 'uid' in obj && typeof obj.uid === 'number'
 	}
 	public static equals(tt: TileType, tt_ : TileType): boolean
@@ -119,12 +161,12 @@ export class PlaneTiling // stores a section of a tiling in space
 	
 
 	tiles : Tile[] = [];
-	name : string = "";
+	name : Name = new Name("");
 
 	public static isPlaneTiling(obj: unknown) : obj is PlaneTiling
 	{
 		return typeof obj === 'object' && obj !== null
-		&& 'name' in obj && typeof obj.name === 'string'
+		&& 'name' in obj && Name.isName(obj.name)
 		&& 'tiles' in obj && Array.isArray(obj.tiles) && obj.tiles.every(Tile.isTile)
 	}
 	public static validate(pt : PlaneTiling) : boolean
@@ -295,9 +337,22 @@ export class WangFile // stores the whole context, to be in a json file
 		}
 		const name = generateName(base, num) // unique string
 		const tt : TileType = new TileType()
-		tt.name = tt.front = tt.back = name // guarantees difference, and persistence
+		tt.name.core = tt.front = tt.back = name // guarantees difference, and persistence
 		wf.tileTypes.push(tt)
 		return tt
+	}
+	public static addCopyTileType(tt: TileType, wf: WangFile): TileType
+	{
+		const tt_copy = TileType.getCopy(tt)
+		let new_classes = tt_copy.name.classes
+
+		if(new_classes.length!==0)
+			new_classes = new_classes.concat(CLASS_DIVIDER)
+		new_classes = new_classes.concat("copy")
+		
+		tt_copy.name.classes = new_classes
+		wf.tileTypes.push(tt_copy)
+		return tt_copy
 	}
 	public static deleteTileType(tt : TileType, wf : WangFile) : boolean 
 	{
@@ -377,7 +432,7 @@ export class WangFile // stores the whole context, to be in a json file
 export function getPlaceholderTileType(): TileType
 {
 	let placeholder : TileType = new TileType();
-	placeholder.name = placeholder.front = placeholder.back = DEFAULT_PLANE_TILING_NAME
+	placeholder.name.core = placeholder.front = placeholder.back = DEFAULT_PLANE_TILING_NAME
 	return placeholder
 }
 
@@ -385,7 +440,7 @@ export function getStarterWangFile(): WangFile
 {
 	let wf : WangFile = new WangFile();
 	let tt = getPlaceholderTileType()
-	WangFile.registerColor(tt.name,DEFAULT_COLOR,wf)
+	WangFile.registerColor(tt.name.core,DEFAULT_COLOR,wf)
 	wf.tileTypes.push(tt)
 	return wf
 }

@@ -1,14 +1,16 @@
-import { backInput, colorPickerBack, colorPickerDown, colorPickerFront, colorPickerLeft, colorPickerName, colorPickerRight, colorPickerUp, downInput, frontInput, leftInput, nameInput, rightInput, upInput } from "./elements";
-import { PlaneTiling, TileType, WangFile, } from "./logic";
+import { backInput, classesInput, colorPickerBack, colorPickerDown, colorPickerFront, colorPickerLeft, colorPickerName, colorPickerRight, colorPickerUp, downInput, frontInput, leftInput, nameInput, rightInput, upInput } from "./elements";
+import { Name, PlaneTiling, TileType, WangFile, } from "./logic";
 import { updatePicker } from "./picker";
 import { updatePreview } from "./preview";
+import { BACKGROUND_COLOR } from "./render_util";
 import type { UIState } from "./UI";
 import { Color } from "./util";
 
 
-function setValues(name : string,up : string,down: string,left: string,right: string,front: string,back: string) : void
+function setValues(name : Name,up : string,down: string,left: string,right: string,front: string,back: string) : void
 {
-	nameInput.value = name
+	classesInput.value = name.classes
+	nameInput.value = name.core
 	upInput.value = up
 	downInput.value = down
 	leftInput.value = left
@@ -60,27 +62,39 @@ function setUpColorPickers(ui_state: UIState, wf : WangFile): void
 	setUp(colorPickerRight,tt => tt.right)
 	setUp(colorPickerFront,tt => tt.front)
 	setUp(colorPickerBack,tt => tt.back)
-	setUp(colorPickerName,tt => tt.name)
+	setUp(colorPickerName,tt => tt.name.core)
 }
 
-function setUpNameInput(ui_state : UIState, wf : WangFile): void
+function setUpNameInputs(ui_state : UIState, wf : WangFile): void
 {
-	nameInput.addEventListener("input",(event)=>{
-		const new_name: string = (event.target as HTMLInputElement).value
+	function update(name: Name)
+	{
 		const pt = ui_state.getPickedToken() 
 		if(pt === null)return
 		if(PlaneTiling.isPlaneTiling(pt))
 		{
-			pt.name = new_name
+			pt.name = name
 		}
-		if(TileType.isTileType(pt))
+		else if(TileType.isTileType(pt))
 		{
 			const new_tt = TileType.getCopy(pt)
-			new_tt.name = new_name
+			new_tt.name = name
 			if(WangFile.editTileType(pt,new_tt,wf))ui_state.setPickedToken(new_tt,wf)
 		}
 		updateEditor(ui_state, wf)
 		updatePicker(ui_state, wf)
+
+	}
+	nameInput.addEventListener("input",(event)=>{
+		const new_name: Name = new Name((event.target as HTMLInputElement).value)
+		new_name.classes = (classesInput.value)
+		update(new_name)
+	})
+	classesInput.addEventListener("input",(event)=>{
+		const new_name: Name = new Name(nameInput.value);
+		new_name.classes = (event.target as HTMLInputElement).value
+		update(new_name)
+		console.log("AAAAAAAAAAAA")
 	})
 }
 
@@ -114,13 +128,12 @@ function setUpDirectionInputs(ui_state: UIState, wf: WangFile): void
 
 export function updateEditor(ui_state : UIState, wf : WangFile): void
 {
-	console.log("editor updated")
 	updatePreview(ui_state,wf)
 	const pt = ui_state.getPickedToken() 
+	const b = BACKGROUND_COLOR
 	if(pt === null)
 	{
-		const b : Color = new Color()
-		setValues("","","","","","","")
+		setValues(new Name(""),"","","","","","")
 		setColors(b,b,b,b,b,b,b)
 		toggleColorPickers()
 		toggleNameInput()
@@ -128,7 +141,6 @@ export function updateEditor(ui_state : UIState, wf : WangFile): void
 	}
 	else if(PlaneTiling.isPlaneTiling(pt))
 	{
-		const b : Color = new Color()
 		setValues(pt.name,"-","-","-","-","-","-")
 		setColors(b,b,b,b,b,b,b)
 		toggleColorPickers()
@@ -142,13 +154,13 @@ export function updateEditor(ui_state : UIState, wf : WangFile): void
 		toggleNameInput(false)
 		toggleDirectionInputs(false)
 		function foo (s:string) : Color {return WangFile.getColorFromString(s,wf)}
-		setColors(foo(pt.name),foo(pt.up),foo(pt.down),foo(pt.left),foo(pt.right),foo(pt.front),foo(pt.back))
+		setColors(foo(pt.name.core),foo(pt.up),foo(pt.down),foo(pt.left),foo(pt.right),foo(pt.front),foo(pt.back))
 	}
 }
 
 export function setUpEditor(ui_state : UIState, wf : WangFile): void
 {
 	setUpColorPickers(ui_state, wf)
-	setUpNameInput(ui_state, wf)
+	setUpNameInputs(ui_state, wf)
 	setUpDirectionInputs(ui_state, wf)
 }

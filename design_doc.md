@@ -192,3 +192,8 @@ PRUNE (Propagating Reductions Using Neighbourhood Elimination)
 - paste button - it's its own mode
 
 - forbidden state - clipboard is null and the paste button is active
+
+## Name:
+
+- classes parsed on demand, but stored as string
+- this is to make editing easier

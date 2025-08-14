@@ -116,7 +116,7 @@ function placeTile(tt : TileType, offset : Vector, wf : WangFile, edgeColor: Col
 
 	const geometry = new BoxGeometry(m,m,m)
 	const material = new MeshBasicMaterial({
-	color: getColorNumber(tt.name)
+	color: getColorNumber(tt.name.core)
 	});
 	const coreCube = new Mesh(geometry, material)
 	setPosition(coreCube,0,0,0)
