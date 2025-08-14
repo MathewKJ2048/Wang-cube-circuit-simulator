@@ -1,4 +1,4 @@
-import {Color, Vector} from './util.js'
+import {Color, isWithinSelection, Vector} from './util.js'
 import { BACKGROUND_COLOR, Camera, ERASE_COLOR, fromScreenCoordinates, getConnectionSize, getCoreSize, GRID_COLOR, PICK_COLOR, SELECT_COLOR, snapToGrid, toScreenCoordinates } from './render_util.js'
 import { canvas, ctx } from './elements.js'
 import { Mode, UIState } from './UI.js'
@@ -76,16 +76,19 @@ function renderTileType(tt : TileType, x: number, y:number, camera : Camera, wf:
 	// outlines with the outline color
 	
 }
-function renderTile(t : Tile, camera : Camera, wf: WangFile, picked : boolean = false)
+function renderTile(t : Tile, ui_state: UIState, wf: WangFile, picked : boolean = false)
 {
-	renderTileType(t.tileType,t.r.x,t.r.y,camera,wf, picked ? PICK_COLOR : null)
+	renderTileType(t.tileType,t.r.x,t.r.y,ui_state.camera,wf, picked ? PICK_COLOR : null)
 }
+
+
+
 function renderTiles(ui_state: UIState, wf: WangFile): void
 {
 	const pt = ui_state.getPickedToken()
 	wf.mainPlaneTiling.tiles.forEach(t =>
 	{
-		renderTile(t,ui_state.camera,wf,
+		renderTile(t,ui_state,wf,
 			TileType.isTileType(pt) && TileType.equals(pt,t.tileType)
 			)
 	})
@@ -159,14 +162,22 @@ function renderBackground(): void
 	ctx.fillRect(0,0,canvas.width,canvas.height)
 }
 
-function renderSelector(ui_state: UIState): void
+
+function renderSelector(ui_state: UIState, wf : WangFile): void
 {
 	if(ui_state.getMode() !== Mode.SELECT)return
 	if(ui_state.selectorUpLeft === null) return
+
 	const dr : Vector = ui_state.selectorDownRight ?? fromScreenCoordinates(ui_state.mouseScreenCoordinates,ui_state.camera)
 	const c = dr.add(ui_state.selectorUpLeft).scale(1/2)
 	const d = dr.sub(ui_state.selectorUpLeft)
 	renderRect(c,d.x,d.y,SELECT_COLOR,ui_state.camera,true)
+
+	const side : number = 1 - getConnectionSize()/2
+	wf.mainPlaneTiling.tiles.forEach(t => {
+		if(isWithinSelection(t.r,ui_state.selectorUpLeft,dr))
+		renderRect(t.r,side,side,SELECT_COLOR,ui_state.camera,true)
+	})
 }
 
 function renderMouse(ui_state: UIState, wf : WangFile): void
@@ -196,7 +207,7 @@ function renderMouse(ui_state: UIState, wf : WangFile): void
 	}
 	else if(ui_state.getMode() === Mode.SELECT)
 	{
-		// render selector symbol
+		
 	}
 	else if(ui_state.getMode() === Mode.PASTE)
 	{
@@ -216,7 +227,7 @@ export function render(ui_state: UIState, wf : WangFile): void
 	renderTiles(ui_state,wf)
 	renderMouse(ui_state, wf)
 	renderGrid(ui_state)
-	renderSelector(ui_state)
+	renderSelector(ui_state, wf)
 }
 
 

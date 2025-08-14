@@ -16,6 +16,7 @@ function updateDependencies(ui_state: UIState, wf : WangFile): void
 {
 	updateEditor(ui_state, wf)
 	updateControlButtons(ui_state, wf)
+	updatePickerButtons(ui_state)
 }
 
 function generateResultForPickableToken( token : PickedToken,ui_state: UIState, wf : WangFile): HTMLDivElement
@@ -36,6 +37,7 @@ function generateResultForPickableToken( token : PickedToken,ui_state: UIState, 
 		ui_state.setPickedToken(token, wf)
 		updateDependencies(ui_state,wf)
 	})
+	if(ui_state.getPickedToken()===token)radioInput.checked=true
 
 	container.appendChild(textInput);
 	container.appendChild(radioInput);
@@ -167,6 +169,16 @@ export function updatePicker(ui_state: UIState, wf: WangFile): void
 	resultsPanel.innerHTML = ""
 	filteredResultTokens.forEach(t => resultsPanel.appendChild(generateResultForPickableToken(t, ui_state,wf)))
 
+	
+
+}
+
+export function updatePickerButtons(ui_state: UIState): void
+{
+	const buttons = [deletePickerButton, copyPickerButton, cwPickerButton, ccwPickerButton, flipPickerButton]
+	const pt = ui_state.getPickedToken()
+	if(TileType.isTileType(pt))buttons.forEach(b => b.disabled = false)
+	else buttons.forEach(b => b.disabled = true)
 }
 
 export function setUpPicker(ui_state: UIState, wf: WangFile) : void

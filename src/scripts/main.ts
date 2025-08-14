@@ -7,7 +7,7 @@ import { setUpMouseDrag } from "./mouse_drag.js"
 import { WangFile, getStarterWangFile } from "./logic.js"
 import { setUpGridToggle, setUpViewControls, updateGridToggle, updateViewControls } from "./view.js";
 import { setUpSearch, updateSearch } from "./search.js";
-import { setUpPicker, updatePicker } from "./picker.js"
+import { setUpPicker, updatePicker, updatePickerButtons } from "./picker.js"
 import { setUpEditor, updateEditor } from "./editor.js"
 import { setUpPreview } from "./preview.js"
 import { setUpControlButtons, updateControlButtons } from "./control_buttons.js"
@@ -41,6 +41,7 @@ updateSearch(ui_state) // no need wang file since search bar state doesn't depen
 
 setUpPicker(ui_state, wf)
 updatePicker(ui_state, wf)
+updatePickerButtons(ui_state)
 
 setUpEditor(ui_state, wf)
 setUpPreview(ui_state)

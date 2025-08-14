@@ -62,7 +62,7 @@ export class Name
 	}
 	public getFullyQualified(): string
 	{
-		return this.core+CLASS_DIVIDER+this.classes
+		return this.core+(this.classes.length===0?"":CLASS_DIVIDER+this.classes)
 	}
 
 }
@@ -349,7 +349,7 @@ export class WangFile // stores the whole context, to be in a json file
 		if(new_classes.length!==0)
 			new_classes = new_classes.concat(CLASS_DIVIDER)
 		new_classes = new_classes.concat("copy")
-		
+
 		tt_copy.name.classes = new_classes
 		wf.tileTypes.push(tt_copy)
 		return tt_copy

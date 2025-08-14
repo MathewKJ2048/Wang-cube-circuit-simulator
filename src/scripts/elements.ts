@@ -35,7 +35,6 @@ export const searchInput : HTMLInputElement = document.getElementById('search-pi
 
 
 export const createPickerButton : HTMLButtonElement = document.getElementById('create-picker-button') as HTMLButtonElement;
-export const editPickerButton : HTMLButtonElement = document.getElementById('edit-picker-button') as HTMLButtonElement;
 export const deletePickerButton : HTMLButtonElement = document.getElementById('delete-picker-button') as HTMLButtonElement;
 export const copyPickerButton : HTMLButtonElement = document.getElementById('copy-picker-button') as HTMLButtonElement;
 export const flipPickerButton : HTMLButtonElement = document.getElementById('flip-picker-button') as HTMLButtonElement;
