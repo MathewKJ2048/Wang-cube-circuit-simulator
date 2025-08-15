@@ -1,6 +1,7 @@
 
 import { PRUNE } from './algorithm.js';
-import {Vector, Color, deleteFromList, DEFAULT_COLOR} from './util.js'
+import { BACKGROUND_COLOR } from './render_util.js';
+import {Vector, Color, deleteFromList, DEFAULT_COLOR, NEW_COLOR} from './util.js'
 
 export type stringColorMap = {
 	[key: string]: Color;
@@ -389,11 +390,11 @@ export class WangFile // stores the whole context, to be in a json file
 			(a:PlaneTiling,b:PlaneTiling)=>{return a===b})
 		return true
 	}
-
 	public static getColorFromString(s : string, wf : WangFile): Color
 	{
 		if(s in wf.colorMap) return wf.colorMap[s]
-		return new Color()
+		if(s === ANYTHING)return BACKGROUND_COLOR
+		return NEW_COLOR
 	}
 	public static registerColor(s: string, c : Color, wf : WangFile): void
 	{

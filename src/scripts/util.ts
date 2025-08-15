@@ -73,6 +73,7 @@ export class Color
 }
 
 export const DEFAULT_COLOR : Color = new Color(100,100,100)
+export const NEW_COLOR : Color = new Color(255, 255, 255)
 
 export function getFraction(value: number, min: number, max: number) : number
 {

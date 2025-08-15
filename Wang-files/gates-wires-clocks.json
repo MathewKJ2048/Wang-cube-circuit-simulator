@@ -1,0 +1,2908 @@
+{
+    "tileTypes": [
+        {
+            "uid": 1,
+            "name": {
+                "classes": "",
+                "core": "placeholder"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "placeholder",
+            "back": "placeholder"
+        },
+        {
+            "uid": 116,
+            "name": {
+                "classes": "clock-standalone-1f-0",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-1f-1",
+            "back": "clock-1f-0"
+        },
+        {
+            "uid": 118,
+            "name": {
+                "classes": "clock-standalone-1f-1",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-1f-0",
+            "back": "clock-1f-1"
+        },
+        {
+            "uid": 141,
+            "name": {
+                "classes": "clock-standalone-2f-00",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-2f-01",
+            "back": "clock-2f-00"
+        },
+        {
+            "uid": 149,
+            "name": {
+                "classes": "clock-standalone-2f-01",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-2f-10",
+            "back": "clock-2f-01"
+        },
+        {
+            "uid": 158,
+            "name": {
+                "classes": "clock-standalone-2f-10",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-2f-11",
+            "back": "clock-2f-10"
+        },
+        {
+            "uid": 169,
+            "name": {
+                "classes": "clock-standalone-2f-11",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-2f-00",
+            "back": "clock-2f-11"
+        },
+        {
+            "uid": 192,
+            "name": {
+                "classes": "right-0",
+                "core": "sink"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "0",
+            "right": "anything",
+            "front": "sink",
+            "back": "sink"
+        },
+        {
+            "uid": 196,
+            "name": {
+                "classes": "right-1",
+                "core": "sink"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "1",
+            "right": "anything",
+            "front": "sink",
+            "back": "sink"
+        },
+        {
+            "uid": 224,
+            "name": {
+                "classes": "down-0",
+                "core": "sink"
+            },
+            "up": "0",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "sink",
+            "back": "sink"
+        },
+        {
+            "uid": 228,
+            "name": {
+                "classes": "down-1",
+                "core": "sink"
+            },
+            "up": "1",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "sink",
+            "back": "sink"
+        },
+        {
+            "uid": 301,
+            "name": {
+                "classes": "wire-horizontal",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "0",
+            "right": "0",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 313,
+            "name": {
+                "classes": "wire-horizontal",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "1",
+            "right": "1",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 327,
+            "name": {
+                "classes": "clock-right-1f-0",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "0",
+            "front": "clock-1f-1",
+            "back": "clock-1f-0"
+        },
+        {
+            "uid": 337,
+            "name": {
+                "classes": "clock-right-1f-1",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "1",
+            "front": "clock-1f-0",
+            "back": "clock-1f-1"
+        },
+        {
+            "uid": 346,
+            "name": {
+                "classes": "wire-vertical",
+                "core": "0"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "anything",
+            "right": "anything",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 355,
+            "name": {
+                "classes": "wire-vertical",
+                "core": "1"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "anything",
+            "right": "anything",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 403,
+            "name": {
+                "classes": "wire-bend-up-left",
+                "core": "0"
+            },
+            "up": "0",
+            "down": "anything",
+            "left": "0",
+            "right": "anything",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 409,
+            "name": {
+                "classes": "wire-bend-up-right",
+                "core": "0"
+            },
+            "up": "0",
+            "down": "anything",
+            "left": "anything",
+            "right": "0",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 419,
+            "name": {
+                "classes": "wire-bend-down-left",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "0",
+            "left": "0",
+            "right": "anything",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 425,
+            "name": {
+                "classes": "wire-bend-down-right",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "0",
+            "left": "anything",
+            "right": "0",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 434,
+            "name": {
+                "classes": "wire-bend-down-left",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "1",
+            "left": "1",
+            "right": "anything",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 446,
+            "name": {
+                "classes": "wire-bend-down-right",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "1",
+            "left": "anything",
+            "right": "1",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 452,
+            "name": {
+                "classes": "wire-bend-up-left",
+                "core": "1"
+            },
+            "up": "1",
+            "down": "anything",
+            "left": "1",
+            "right": "anything",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 465,
+            "name": {
+                "classes": "wire-bend-up-right",
+                "core": "1"
+            },
+            "up": "1",
+            "down": "anything",
+            "left": "anything",
+            "right": "1",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 490,
+            "name": {
+                "classes": "wire-T-down",
+                "core": "0"
+            },
+            "up": "0",
+            "down": "anything",
+            "left": "0",
+            "right": "0",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 500,
+            "name": {
+                "classes": "wire-T-right",
+                "core": "0"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "0",
+            "right": "anything",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 510,
+            "name": {
+                "classes": "wire-T-down",
+                "core": "1"
+            },
+            "up": "1",
+            "down": "anything",
+            "left": "1",
+            "right": "1",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 520,
+            "name": {
+                "classes": "wire-T-right",
+                "core": "1"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "1",
+            "right": "anything",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 525,
+            "name": {
+                "classes": "wire-T-left",
+                "core": "0"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "anything",
+            "right": "0",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 528,
+            "name": {
+                "classes": "wire-T-up",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "0",
+            "left": "0",
+            "right": "0",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 531,
+            "name": {
+                "classes": "wire-T-up",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "1",
+            "left": "1",
+            "right": "1",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 536,
+            "name": {
+                "classes": "wire-T-left",
+                "core": "1"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "anything",
+            "right": "1",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 541,
+            "name": {
+                "classes": "up-0",
+                "core": "sink"
+            },
+            "up": "anything",
+            "down": "0",
+            "left": "anything",
+            "right": "anything",
+            "front": "sink",
+            "back": "sink"
+        },
+        {
+            "uid": 544,
+            "name": {
+                "classes": "up-1",
+                "core": "sink"
+            },
+            "up": "anything",
+            "down": "1",
+            "left": "anything",
+            "right": "anything",
+            "front": "sink",
+            "back": "sink"
+        },
+        {
+            "uid": 551,
+            "name": {
+                "classes": "left-1",
+                "core": "sink"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "1",
+            "front": "sink",
+            "back": "sink"
+        },
+        {
+            "uid": 554,
+            "name": {
+                "classes": "left-0",
+                "core": "sink"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "0",
+            "front": "sink",
+            "back": "sink"
+        },
+        {
+            "uid": 569,
+            "name": {
+                "classes": "clock-down-1f-0",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "0",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-1f-1",
+            "back": "clock-1f-0"
+        },
+        {
+            "uid": 584,
+            "name": {
+                "classes": "clock-left-1f-0",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "0",
+            "right": "anything",
+            "front": "clock-1f-1",
+            "back": "clock-1f-0"
+        },
+        {
+            "uid": 592,
+            "name": {
+                "classes": "clock-up-1f-0",
+                "core": "0"
+            },
+            "up": "0",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-1f-1",
+            "back": "clock-1f-0"
+        },
+        {
+            "uid": 602,
+            "name": {
+                "classes": "clock-left-1f-1",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "1",
+            "right": "anything",
+            "front": "clock-1f-0",
+            "back": "clock-1f-1"
+        },
+        {
+            "uid": 614,
+            "name": {
+                "classes": "clock-up-1f-1",
+                "core": "1"
+            },
+            "up": "1",
+            "down": "anything",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-1f-0",
+            "back": "clock-1f-1"
+        },
+        {
+            "uid": 626,
+            "name": {
+                "classes": "clock-down-1f-1",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "1",
+            "left": "anything",
+            "right": "anything",
+            "front": "clock-1f-0",
+            "back": "clock-1f-1"
+        },
+        {
+            "uid": 637,
+            "name": {
+                "classes": "wire-join",
+                "core": "0"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "0",
+            "right": "0",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 645,
+            "name": {
+                "classes": "wire-join",
+                "core": "1"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "1",
+            "right": "1",
+            "front": "wire",
+            "back": "wire"
+        },
+        {
+            "uid": 792,
+            "name": {
+                "classes": "none",
+                "core": "junction"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "0",
+            "right": "0",
+            "front": "junction",
+            "back": "junction"
+        },
+        {
+            "uid": 802,
+            "name": {
+                "classes": "vertical",
+                "core": "junction"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "0",
+            "right": "0",
+            "front": "junction",
+            "back": "junction"
+        },
+        {
+            "uid": 812,
+            "name": {
+                "classes": "horizontal",
+                "core": "junction"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "1",
+            "right": "1",
+            "front": "junction",
+            "back": "junction"
+        },
+        {
+            "uid": 822,
+            "name": {
+                "classes": "both",
+                "core": "junction"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "1",
+            "right": "1",
+            "front": "junction",
+            "back": "junction"
+        },
+        {
+            "uid": 843,
+            "name": {
+                "classes": "right-00",
+                "core": "AND"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "anything",
+            "right": "0",
+            "front": "AND",
+            "back": "AND"
+        },
+        {
+            "uid": 847,
+            "name": {
+                "classes": "right-01",
+                "core": "AND"
+            },
+            "up": "0",
+            "down": "1",
+            "left": "anything",
+            "right": "0",
+            "front": "AND",
+            "back": "AND"
+        },
+        {
+            "uid": 852,
+            "name": {
+                "classes": "right-10",
+                "core": "AND"
+            },
+            "up": "1",
+            "down": "0",
+            "left": "anything",
+            "right": "0",
+            "front": "AND",
+            "back": "AND"
+        },
+        {
+            "uid": 856,
+            "name": {
+                "classes": "right-11",
+                "core": "AND"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "anything",
+            "right": "1",
+            "front": "AND",
+            "back": "AND"
+        },
+        {
+            "uid": 878,
+            "name": {
+                "classes": "clock-right-2f-00",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "0",
+            "front": "clock-2f-01",
+            "back": "clock-2f-00"
+        },
+        {
+            "uid": 889,
+            "name": {
+                "classes": "clock-right-2f-01",
+                "core": "0"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "0",
+            "front": "clock-2f-10",
+            "back": "clock-2f-01"
+        },
+        {
+            "uid": 900,
+            "name": {
+                "classes": "clock-right-2f-10",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "1",
+            "front": "clock-2f-11",
+            "back": "clock-2f-10"
+        },
+        {
+            "uid": 907,
+            "name": {
+                "classes": "clock-right-2f-11",
+                "core": "1"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "anything",
+            "right": "1",
+            "front": "clock-2f-00",
+            "back": "clock-2f-11"
+        },
+        {
+            "uid": 919,
+            "name": {
+                "classes": "right-00",
+                "core": "OR"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "anything",
+            "right": "0",
+            "front": "OR",
+            "back": "OR"
+        },
+        {
+            "uid": 931,
+            "name": {
+                "classes": "right-01",
+                "core": "OR"
+            },
+            "up": "0",
+            "down": "1",
+            "left": "anything",
+            "right": "1",
+            "front": "OR",
+            "back": "OR"
+        },
+        {
+            "uid": 940,
+            "name": {
+                "classes": "right-10",
+                "core": "OR"
+            },
+            "up": "1",
+            "down": "0",
+            "left": "anything",
+            "right": "1",
+            "front": "OR",
+            "back": "OR"
+        },
+        {
+            "uid": 947,
+            "name": {
+                "classes": "right-11",
+                "core": "OR"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "anything",
+            "right": "1",
+            "front": "OR",
+            "back": "OR"
+        },
+        {
+            "uid": 969,
+            "name": {
+                "classes": "right-1",
+                "core": "NOT"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "1",
+            "right": "0",
+            "front": "NOT",
+            "back": "NOT"
+        },
+        {
+            "uid": 970,
+            "name": {
+                "classes": "right-0",
+                "core": "NOT"
+            },
+            "up": "anything",
+            "down": "anything",
+            "left": "0",
+            "right": "1",
+            "front": "NOT",
+            "back": "NOT"
+        },
+        {
+            "uid": 989,
+            "name": {
+                "classes": "right-00",
+                "core": "NAND"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "anything",
+            "right": "1",
+            "front": "NAND",
+            "back": "NAND"
+        },
+        {
+            "uid": 993,
+            "name": {
+                "classes": "right-01",
+                "core": "NAND"
+            },
+            "up": "0",
+            "down": "1",
+            "left": "anything",
+            "right": "1",
+            "front": "NAND",
+            "back": "NAND"
+        },
+        {
+            "uid": 998,
+            "name": {
+                "classes": "right-10",
+                "core": "NAND"
+            },
+            "up": "1",
+            "down": "0",
+            "left": "anything",
+            "right": "1",
+            "front": "NAND",
+            "back": "NAND"
+        },
+        {
+            "uid": 1002,
+            "name": {
+                "classes": "right-11",
+                "core": "NAND"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "anything",
+            "right": "0",
+            "front": "NAND",
+            "back": "NAND"
+        },
+        {
+            "uid": 1014,
+            "name": {
+                "classes": "right-00",
+                "core": "NOR"
+            },
+            "up": "0",
+            "down": "0",
+            "left": "anything",
+            "right": "1",
+            "front": "NOR",
+            "back": "NOR"
+        },
+        {
+            "uid": 1020,
+            "name": {
+                "classes": "right-01",
+                "core": "NOR"
+            },
+            "up": "0",
+            "down": "1",
+            "left": "anything",
+            "right": "0",
+            "front": "NOR",
+            "back": "NOR"
+        },
+        {
+            "uid": 1025,
+            "name": {
+                "classes": "right-10",
+                "core": "NOR"
+            },
+            "up": "1",
+            "down": "0",
+            "left": "anything",
+            "right": "0",
+            "front": "NOR",
+            "back": "NOR"
+        },
+        {
+            "uid": 1028,
+            "name": {
+                "classes": "right-11",
+                "core": "NOR"
+            },
+            "up": "1",
+            "down": "1",
+            "left": "anything",
+            "right": "0",
+            "front": "NOR",
+            "back": "NOR"
+        }
+    ],
+    "savedSubPlaneTilings": [],
+    "mainPlaneTiling": {
+        "tiles": [
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": -1,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 947,
+                    "name": {
+                        "classes": "right-11",
+                        "core": "OR"
+                    },
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "OR",
+                    "back": "OR"
+                },
+                "r": {
+                    "x": -1,
+                    "y": -5
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": -1,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": -1,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 224,
+                    "name": {
+                        "classes": "down-0",
+                        "core": "sink"
+                    },
+                    "up": "0",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": -1,
+                    "y": 3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 569,
+                    "name": {
+                        "classes": "clock-down-1f-0",
+                        "core": "0"
+                    },
+                    "up": "anything",
+                    "down": "0",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "clock-1f-1",
+                    "back": "clock-1f-0"
+                },
+                "r": {
+                    "x": -1,
+                    "y": 4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": -2,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": -2,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 465,
+                    "name": {
+                        "classes": "wire-bend-up-right",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": -2,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": -2,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": -3,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": -3,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 569,
+                    "name": {
+                        "classes": "clock-down-1f-0",
+                        "core": "0"
+                    },
+                    "up": "anything",
+                    "down": "0",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "clock-1f-1",
+                    "back": "clock-1f-0"
+                },
+                "r": {
+                    "x": -4,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 812,
+                    "name": {
+                        "classes": "horizontal",
+                        "core": "junction"
+                    },
+                    "up": "0",
+                    "down": "0",
+                    "left": "1",
+                    "right": "1",
+                    "front": "junction",
+                    "back": "junction"
+                },
+                "r": {
+                    "x": -4,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 224,
+                    "name": {
+                        "classes": "down-0",
+                        "core": "sink"
+                    },
+                    "up": "0",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": -4,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": -5,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 0,
+                    "y": -5
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 541,
+                    "name": {
+                        "classes": "up-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "0",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 1,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 592,
+                    "name": {
+                        "classes": "clock-up-1f-0",
+                        "core": "0"
+                    },
+                    "up": "0",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "clock-1f-1",
+                    "back": "clock-1f-0"
+                },
+                "r": {
+                    "x": 1,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 192,
+                    "name": {
+                        "classes": "right-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "0",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 10,
+                    "y": 2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": 2,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 554,
+                    "name": {
+                        "classes": "left-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "0",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 2,
+                    "y": 3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": 3,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": 3,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": 3,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 465,
+                    "name": {
+                        "classes": "wire-bend-up-right",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 3,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 3,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 584,
+                    "name": {
+                        "classes": "clock-left-1f-0",
+                        "core": "0"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "0",
+                    "right": "anything",
+                    "front": "clock-1f-1",
+                    "back": "clock-1f-0"
+                },
+                "r": {
+                    "x": 3,
+                    "y": 3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 4,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 856,
+                    "name": {
+                        "classes": "right-11",
+                        "core": "AND"
+                    },
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "AND",
+                    "back": "AND"
+                },
+                "r": {
+                    "x": 4,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 4,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 969,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "NOT"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "0",
+                    "front": "NOT",
+                    "back": "NOT"
+                },
+                "r": {
+                    "x": 4,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 313,
+                    "name": {
+                        "classes": "wire-horizontal",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "1",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 4,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 5,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 192,
+                    "name": {
+                        "classes": "right-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "0",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 5,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 5,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 446,
+                    "name": {
+                        "classes": "wire-bend-down-right",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 5,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 6,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": 7,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": 7,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 8,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1002,
+                    "name": {
+                        "classes": "right-11",
+                        "core": "NAND"
+                    },
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "0",
+                    "front": "NAND",
+                    "back": "NAND"
+                },
+                "r": {
+                    "x": 8,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 8,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": 8,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": 8,
+                    "y": 3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 192,
+                    "name": {
+                        "classes": "right-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "0",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 9,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 9,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1028,
+                    "name": {
+                        "classes": "right-11",
+                        "core": "NOR"
+                    },
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "0",
+                    "front": "NOR",
+                    "back": "NOR"
+                },
+                "r": {
+                    "x": 9,
+                    "y": 2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 9,
+                    "y": 3
+                }
+            }
+        ],
+        "name": {
+            "classes": "",
+            "core": ""
+        }
+    },
+    "cachedPlaneTiling": {
+        "tiles": [
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": -1,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 947,
+                    "name": {
+                        "classes": "right-11",
+                        "core": "OR"
+                    },
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "OR",
+                    "back": "OR"
+                },
+                "r": {
+                    "x": -1,
+                    "y": -5
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": -1,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": -1,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 224,
+                    "name": {
+                        "classes": "down-0",
+                        "core": "sink"
+                    },
+                    "up": "0",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": -1,
+                    "y": 3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 569,
+                    "name": {
+                        "classes": "clock-down-1f-0",
+                        "core": "0"
+                    },
+                    "up": "anything",
+                    "down": "0",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "clock-1f-1",
+                    "back": "clock-1f-0"
+                },
+                "r": {
+                    "x": -1,
+                    "y": 4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": -2,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": -2,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 465,
+                    "name": {
+                        "classes": "wire-bend-up-right",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": -2,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": -2,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": -3,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": -3,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 569,
+                    "name": {
+                        "classes": "clock-down-1f-0",
+                        "core": "0"
+                    },
+                    "up": "anything",
+                    "down": "0",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "clock-1f-1",
+                    "back": "clock-1f-0"
+                },
+                "r": {
+                    "x": -4,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 812,
+                    "name": {
+                        "classes": "horizontal",
+                        "core": "junction"
+                    },
+                    "up": "0",
+                    "down": "0",
+                    "left": "1",
+                    "right": "1",
+                    "front": "junction",
+                    "back": "junction"
+                },
+                "r": {
+                    "x": -4,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 224,
+                    "name": {
+                        "classes": "down-0",
+                        "core": "sink"
+                    },
+                    "up": "0",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": -4,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": -5,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 0,
+                    "y": -5
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 541,
+                    "name": {
+                        "classes": "up-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "0",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 1,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 592,
+                    "name": {
+                        "classes": "clock-up-1f-0",
+                        "core": "0"
+                    },
+                    "up": "0",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "anything",
+                    "front": "clock-1f-1",
+                    "back": "clock-1f-0"
+                },
+                "r": {
+                    "x": 1,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 192,
+                    "name": {
+                        "classes": "right-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "0",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 10,
+                    "y": 2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": 2,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 554,
+                    "name": {
+                        "classes": "left-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "0",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 2,
+                    "y": 3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": 3,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": 3,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": 3,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 465,
+                    "name": {
+                        "classes": "wire-bend-up-right",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 3,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 3,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 584,
+                    "name": {
+                        "classes": "clock-left-1f-0",
+                        "core": "0"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "0",
+                    "right": "anything",
+                    "front": "clock-1f-1",
+                    "back": "clock-1f-0"
+                },
+                "r": {
+                    "x": 3,
+                    "y": 3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 4,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 856,
+                    "name": {
+                        "classes": "right-11",
+                        "core": "AND"
+                    },
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "AND",
+                    "back": "AND"
+                },
+                "r": {
+                    "x": 4,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 4,
+                    "y": -4
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 969,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "NOT"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "0",
+                    "front": "NOT",
+                    "back": "NOT"
+                },
+                "r": {
+                    "x": 4,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 313,
+                    "name": {
+                        "classes": "wire-horizontal",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "1",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 4,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 5,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 192,
+                    "name": {
+                        "classes": "right-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "0",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 5,
+                    "y": -6
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 5,
+                    "y": 0
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 446,
+                    "name": {
+                        "classes": "wire-bend-down-right",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 5,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 196,
+                    "name": {
+                        "classes": "right-1",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 6,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": 7,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": 7,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 8,
+                    "y": -1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1002,
+                    "name": {
+                        "classes": "right-11",
+                        "core": "NAND"
+                    },
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "0",
+                    "front": "NAND",
+                    "back": "NAND"
+                },
+                "r": {
+                    "x": 8,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 8,
+                    "y": -3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 907,
+                    "name": {
+                        "classes": "clock-right-2f-11",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-2f-00",
+                    "back": "clock-2f-11"
+                },
+                "r": {
+                    "x": 8,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 337,
+                    "name": {
+                        "classes": "clock-right-1f-1",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "anything",
+                    "right": "1",
+                    "front": "clock-1f-0",
+                    "back": "clock-1f-1"
+                },
+                "r": {
+                    "x": 8,
+                    "y": 3
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 192,
+                    "name": {
+                        "classes": "right-0",
+                        "core": "sink"
+                    },
+                    "up": "anything",
+                    "down": "anything",
+                    "left": "0",
+                    "right": "anything",
+                    "front": "sink",
+                    "back": "sink"
+                },
+                "r": {
+                    "x": 9,
+                    "y": -2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 452,
+                    "name": {
+                        "classes": "wire-bend-up-left",
+                        "core": "1"
+                    },
+                    "up": "1",
+                    "down": "anything",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 9,
+                    "y": 1
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 1028,
+                    "name": {
+                        "classes": "right-11",
+                        "core": "NOR"
+                    },
+                    "up": "1",
+                    "down": "1",
+                    "left": "anything",
+                    "right": "0",
+                    "front": "NOR",
+                    "back": "NOR"
+                },
+                "r": {
+                    "x": 9,
+                    "y": 2
+                }
+            },
+            {
+                "tileType": {
+                    "uid": 434,
+                    "name": {
+                        "classes": "wire-bend-down-left",
+                        "core": "1"
+                    },
+                    "up": "anything",
+                    "down": "1",
+                    "left": "1",
+                    "right": "anything",
+                    "front": "wire",
+                    "back": "wire"
+                },
+                "r": {
+                    "x": 9,
+                    "y": 3
+                }
+            }
+        ],
+        "name": {
+            "classes": "",
+            "core": ""
+        }
+    },
+    "colorMap": {
+        "0": {
+            "r": 100,
+            "g": 100,
+            "b": 100
+        },
+        "1": {
+            "r": 4,
+            "g": 158,
+            "b": 244
+        },
+        "ANYTHING": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+        },
+        "placeholder": {
+            "r": 100,
+            "g": 100,
+            "b": 100
+        },
+        "clock-10": {
+            "r": 100,
+            "g": 100,
+            "b": 100
+        },
+        "clock-1f-1": {
+            "r": 4,
+            "g": 158,
+            "b": 244
+        },
+        "clock-1f-0": {
+            "r": 100,
+            "g": 100,
+            "b": 100
+        },
+        "clock-0": {
+            "r": 100,
+            "g": 100,
+            "b": 100
+        },
+        "clock-2f-01": {
+            "r": 100,
+            "g": 100,
+            "b": 100
+        },
+        "clock-2f-00": {
+            "r": 100,
+            "g": 100,
+            "b": 100
+        },
+        "clock-2f-10": {
+            "r": 4,
+            "g": 158,
+            "b": 244
+        },
+        "clock-2f-11": {
+            "r": 4,
+            "g": 158,
+            "b": 244
+        },
+        "sink": {
+            "r": 97,
+            "g": 53,
+            "b": 131
+        },
+        "wire": {
+            "r": 36,
+            "g": 31,
+            "b": 49
+        },
+        "junction": {
+            "r": 6,
+            "g": 70,
+            "b": 79
+        },
+        "AND": {
+            "r": 165,
+            "g": 29,
+            "b": 45
+        },
+        "OR": {
+            "r": 229,
+            "g": 165,
+            "b": 10
+        },
+        "NOT": {
+            "r": 38,
+            "g": 162,
+            "b": 105
+        },
+        "NAND": {
+            "r": 246,
+            "g": 97,
+            "b": 81
+        },
+        "NOR": {
+            "r": 249,
+            "g": 240,
+            "b": 107
+        }
+    }
+}
