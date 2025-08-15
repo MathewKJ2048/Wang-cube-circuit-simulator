@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Wang Cube Simulator</title>
+		<link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
+		<script type="module" crossorigin src="./assets/index-CYavbh7I.js"></script>
+		<link rel="stylesheet" crossorigin href="./assets/index-D7TU3Mpl.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="side-section">
+				<div class="picker-pane">
+					<div class="picker-static">
+						<button class="state-button" title="enable regex search" id="regex-button"><img src = "./icons/regex.svg"/></button>
+						<input type="text" id="search-picker" placeholder="search">
+					</div>
+					<div class="picker-dynamic" id="picker-dynamic">
+						<div class="picker-search-result">
+							<input type="text" value="This is a long non-editable text that can be scrolled horizontally, placed as a placeholder for testing" readonly><input type="radio" name="radioGroup">
+						</div>
+					</div>
+					<div class="control-pane" id="picker-controls">
+						
+						<div class="control-group">
+							<button title="create tile" id="create-picker-button"><img src = "./icons/add.svg"/></button>
+							<button title = "delete selection"  id="delete-picker-button"><img src = "./icons/delete.svg"></button>
+							<button title = "create copy of selection"  id="copy-picker-button"><img src = "./icons/copy.svg"></button>
+
+						</div>
+						<div class="control-group">
+							<button title = "rotate selection clockwise"  id="rotate-cw-picker-button"><img src = "./icons/rotate_cw.svg"></button>
+							<button title = "rotate selection counter-clockwise"  id="rotate-ccw-picker-button"><img src = "./icons/rotate_ccw.svg"></button>
+							<button title = "flip selection"  id="flip-picker-button"><img src = "./icons/flip.svg"></button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="centre-section">
+				<div class="control-pane" id="upper-control-pane">
+					<div class="control-pane-left">
+						<div class="control-group">
+							<button title="view" class="state-button" id="default-button"><img src = "./icons/arrow.svg"/></button>
+							<button title="select" class="state-button" id="select-button"><img src = "./icons/select.svg"/></button>
+							<button title="erase" class="state-button" id="erase-button"><img src = "./icons/erase.svg"/></button>
+							<button title="place tile/tiling" class="state-button" id="place-button"><img src="./icons/token.svg"></button>
+						</div>
+						<div class="control-group">
+							<button title="save selection" id="save-button"><img src = "./icons/save.svg"/></button>
+							
+							<button title = "delete selection"  id="delete-button"><img src = "./icons/delete.svg"></button>
+							<button title = "copy selection"  id="copy-button"><img src = "./icons/copy.svg"></button>
+							<button title = "cut selection"  id="cut-button"><img src = "./icons/cut.svg"></button>
+							<button title = "paste selection"  id="paste-button"><img src = "./icons/paste.svg"></button>
+
+						</div>
+					</div>
+					<div class="control-pane-right">
+						<div class="control-group">
+							<button title="step backward" id="step-backward-button"><img src = "./icons/left.svg"/></button>
+							<button title="step forward" id="step-forward-button"><img src = "./icons/right.svg"/></button>
+							<button title="reload cached" id="reload-cached-button"><img src = "./icons/reset.svg"/></button>
+							<button title="sync cache" id="sync-cache-button"><img src = "./icons/merge.svg"/></button>
+						</div>
+						<div class = "control-group">
+							<button title="upload file" id="upload-button"><img src = "./icons/upload.svg"/></button>
+							<button title="download file" id="download-button"><img src = "./icons/download.svg"/></button>
+							<a href="https://mathewkj2048.github.io/Wang-cube-circuit-simulator-user-manual/" target="_blank">
+								<button title="help" id="help-button"><img src = "./icons/help.svg"/></button>
+							</a>
+							
+						</div>
+					</div>
+					
+				</div>
+				<div class = "canvas-pane">
+					<canvas id="canvas"></canvas>
+				</div>
+				<div class = "control-pane" id="lower-control-pane">
+					<div class="control-pane-left">
+						<div class="control-group">
+							<button title="pause/play" id="pause-play-button"><img src = "./icons/play.svg"/></button>
+							<button title="slow down" id="slow-down-button"><img src = "./icons/slow.svg"/></button>
+							<input type="range" id="speed-slider" min="0" max="100" value="50">
+							<button title="speed up" id="speed-up-button"><img src = "./icons/fast.svg"/></button>
+						</div>
+					</div>
+					<div class="control-pane-right">
+						<div class = "control-group">
+							<button title="toggle grid" id="toggle-grid-button"><img src = "./icons/no-grid.svg" class="grid-icon"/></button>
+							<button title="reset view" id="reset-view-button"><img src = "./icons/reset-view.svg"/></button>
+							<button title="zoom out" id="zoom-out-button"><img src = "./icons/zoom-out.svg"/></button>
+							<input type="range" id="zoom-slider" min="0" max="100" value="50">
+							<button title="zoom in" id="zoom-in-button"><img src = "./icons/zoom-in.svg"/></button>
+						</div>
+					</div>
+					
+				</div>
+
+			</div>
+			<div class="side-section">
+				<div class="preview-pane">
+					<div class = "preview-canvas-container" id="preview-canvas-container">
+					</div>
+				</div>
+				<div class="editor-pane">
+					<div class="editor-field">
+						<input type="text" id="editor-classes" name="editor-classes" placeholder="classes">
+					</div>
+					<div class="editor-field">
+						<input type="text" id="editor-name" name="editor-name" placeholder="name">
+						<input type="color" id="color-chooser-name">
+					</div>
+					<div class="editor-field">
+						<input type="text" id="editor-up" name="editor-up" placeholder="up">
+						<input type="color" id="color-chooser-up">
+					</div>
+					<div class="editor-field">
+						<input type="text" id="editor-down" name="editor-down" placeholder="down">
+						<input type="color" id="color-chooser-down">
+					</div>
+					<div class="editor-field">
+						<input type="text" id="editor-left" name="editor-left" placeholder="left">
+						<input type="color" id="color-chooser-left">
+					</div>
+					<div class="editor-field">
+						<input type="text" id="editor-right" name="editor-right" placeholder="right">
+						<input type="color" id="color-chooser-right">
+					</div>
+					<div class="editor-field">
+						<input type="text" id="editor-front" name="editor-front" placeholder="front">
+						<input type="color" id="color-chooser-front">
+					</div>
+					<div class="editor-field">
+						<input type="text" id="editor-back" name="editor-back" placeholder="back">
+						<input type="color" id="color-chooser-back">
+					</div>
+					
+				</div>
+					
+			</div>
+		</div>
+		
+	</body>
+</html>
